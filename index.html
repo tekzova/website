@@ -7,6 +7,7 @@
 <meta name="description" content="Practical Android apps for everyday problems. Nothing is uploaded, no accounts, no ads. Free to use, with optional one-time upgrades and a 30-day refund.">
 <link rel="canonical" href="https://www.tekzova.com/">
 <meta name="theme-color" content="#fdf8f3">
+<link rel="icon" href="assets/icon-tekzova-tile.svg" type="image/svg+xml">
 <link rel="icon" href="assets/favicon.png" type="image/png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 
@@ -19,7 +20,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=Figtree:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@700;800&family=Figtree:wght@400;500;600;700&display=swap">
 <link rel="stylesheet" href="assets/theme.css">
 
 <script type="application/ld+json">
@@ -40,15 +41,11 @@
 <!-- ============================ NAV ============================ -->
 <header class="nav">
   <div class="container">
-    <a class="brand" href="index.html">
-      <svg class="g" viewBox="0 0 32 32" aria-hidden="true">
-        <rect x="1" y="1" width="30" height="30" rx="9" fill="var(--violet)"/>
-        <path d="M7.6 9.4h12.8" stroke="#fff" stroke-width="3.1" stroke-linecap="round"/>
-        <path d="M14 9.4v8" stroke="#fff" stroke-width="3.1" stroke-linecap="round"/>
-        <path d="m12.2 21.2 3.2 3.2 9-10" stroke="#fff" stroke-width="3.1"
-              fill="none" stroke-linecap="round" stroke-linejoin="round" opacity=".68"/>
-      </svg>
-      <span>Tekzova<i>.</i></span>
+    <a class="brand brand--logo" href="index.html" aria-label="Tekzova Technologies — home">
+      <img class="lgo lgo--light" src="assets/logo-tekzova.svg"
+           alt="Tekzova Technologies" width="668" height="142">
+      <img class="lgo lgo--dark" src="assets/logo-tekzova-dark.svg"
+           alt="" aria-hidden="true" width="668" height="142">
     </a>
     <nav class="nlinks">
       <a href="#toolkit">Toolkit</a>
@@ -150,12 +147,12 @@
               <div class="scr" style="--sc:#0fae7f">
                 <div class="shd"><span class="em">🧭</span><b>Financial year 2026&ndash;27</b></div>
                 <div class="box">
-                  <div class="kk">Days outside the country</div>
-                  <div class="vv">198 / 184</div>
-                  <div class="bar"><i style="width:100%"></i></div>
+                  <div class="kk">Days in India, of the 182 limit</div>
+                  <div class="vv">142 / 182</div>
+                  <div class="bar"><i style="width:78%"></i></div>
                 </div>
-                <div class="li"><span class="n">Sign-on &mdash; 14 Feb</span><span class="sm">112 d</span></div>
-                <div class="li"><span class="n">Sign-off &mdash; 06 Jun</span><span class="sm">86 d</span></div>
+                <div class="li"><span class="n">MT St. Clemens</span><span class="sm">112 d</span></div>
+                <div class="li"><span class="n">MT Discovery</span><span class="sm">86 d</span></div>
                 <div class="li" style="opacity:.6"><span class="n">+ Add a contract</span></div>
               </div>
 
@@ -233,20 +230,17 @@
     <div class="head">
       <p class="tag" style="--c:var(--violet);--cs:var(--violet-soft)"><span class="dot"></span>The toolkit</p>
       <h2 class="rv">Out now, and building.</h2>
-      <p class="lede rv">Each app came from a job we kept doing badly on paper. Three have names
-        and pages; several more are on the bench. Every one of them follows the same rules.</p>
+      <p class="lede rv">Each app came from a job we kept doing badly on paper. Three are finished
+        and in daily use; several more are on the bench. Every one of them follows the same
+        rules.</p>
     </div>
 
     <div class="apps">
 
       <a class="ablock rv" href="apps/toptick.html"
          style="--ac:#6d3bf5;--as:var(--violet-soft)">
-        <div class="icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
-               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <rect x="4" y="3.5" width="16" height="17" rx="2.8"/>
-            <path d="M9 2.5h6v3H9z" fill="currentColor" stroke="none"/>
-            <path d="m8.5 12 2.2 2.2 4.6-4.8"/><path d="M8.5 17.5h7"/></svg>
+        <div class="icon icon--app">
+          <img src="assets/icon-toptick.png" alt="TopTick app icon" width="320" height="320">
         </div>
         <div class="role">Checklists</div>
         <h3>TopTick</h3>
@@ -274,30 +268,27 @@
 
       <a class="ablock rv" href="apps/nre-tracker.html"
          style="--ac:#0fae7f;--as:var(--mint-soft)">
-        <div class="icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
-               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <rect x="3" y="4.5" width="18" height="16" rx="2.8"/><path d="M3 9.5h18"/>
-            <path d="M8 2.5v4M16 2.5v4"/></svg>
+        <div class="icon icon--app icon--round">
+          <img src="assets/icon-nre-tracker.png" alt="NRE Tracker app icon" width="320" height="320">
         </div>
         <div class="role">Days &amp; records</div>
         <h3>NRE Tracker</h3>
-        <p>If your tax status depends on days spent outside the country, counting them on a
-          calendar in March is a bad plan. This keeps the running total as you go.</p>
+        <p>Residential status decided by a day count, kept as you go &mdash; with the voyages, CDC
+          sea service and reports that have to back it up.</p>
         <ul>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.7"
                    stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg>
-            A day count that is always current</li>
+            India and abroad days, always current</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.7"
                    stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg>
-            Contracts and dates in one place</li>
+            RNOR conditions over eleven years</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.7"
                    stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg>
-            Financial records that stay on the phone</li>
+            Excel import, Excel and PDF reports out</li>
         </ul>
         <div class="foot">
-          <span class="chip soon">In development</span>
-          <span class="go">Learn more
+          <span class="chip live">Direct download</span>
+          <span class="go">Explore
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                  stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
               <path d="M5 12h13"/><path d="m12 5 7 7-7 7"/></svg></span>
@@ -306,30 +297,27 @@
 
       <a class="ablock rv" href="apps/portfolio-tracker.html"
          style="--ac:#2b8cff;--as:var(--sky-soft)">
-        <div class="icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
-               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M3 19.5h18"/>
-            <path d="M4.5 15.5V11M9.5 15.5V6.5M14.5 15.5V9M19.5 15.5V4"/></svg>
+        <div class="icon icon--app">
+          <img src="assets/icon-portfolio-tracker.png" alt="Portfolio Tracker app icon" width="320" height="320">
         </div>
         <div class="role">Money</div>
         <h3>Portfolio Tracker</h3>
-        <p>Every fund, deposit and holding in one place with the returns worked out. Import your
-          own statements and read the whole picture without handing it to anybody.</p>
+        <p>Every fund, deposit and holding in one place with the returns worked out properly.
+          Import your own statements and read the whole picture without handing it to anybody.</p>
         <ul>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.7"
                    stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg>
-            Reads your own statement files</li>
+            Reads CAS, CAMS and MFCentral statements</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.7"
                    stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg>
-            Gains, allocation and history</li>
+            XIRR, allocation, net worth, ITR reports</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.7"
                    stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg>
             No broker login, ever</li>
         </ul>
         <div class="foot">
-          <span class="chip soon">In development</span>
-          <span class="go">Learn more
+          <span class="chip live">Direct download</span>
+          <span class="go">Explore
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                  stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
               <path d="M5 12h13"/><path d="m12 5 7 7-7 7"/></svg></span>
@@ -636,9 +624,11 @@
       </details>
       <details>
         <summary>How many apps are there, really?</summary>
-        <div class="ans">Three have public pages, one of them on Google Play today, and several
-          more are in development. We list an app here when it exists and works, which is why the
-          page grows slowly and why nothing on it is a mock-up of something unbuilt.</div>
+        <div class="ans">Three are finished and in daily use: TopTick is on Google Play, while NRE
+          Tracker and Portfolio Tracker are downloaded directly from their pages here until they
+          clear store review. Several more are in development. We list an app here when it exists
+          and works, which is why the page grows slowly and why nothing on it is a mock-up of
+          something unbuilt.</div>
       </details>
       <details>
         <summary>Who is behind Tekzova?</summary>
@@ -693,16 +683,12 @@
   <div class="container">
     <div class="cols">
       <div>
-        <a class="brand" href="index.html">
-          <svg class="g" viewBox="0 0 32 32" aria-hidden="true">
-            <rect x="1" y="1" width="30" height="30" rx="9" fill="var(--violet)"/>
-            <path d="M7.6 9.4h12.8" stroke="#fff" stroke-width="3.1" stroke-linecap="round"/>
-            <path d="M14 9.4v8" stroke="#fff" stroke-width="3.1" stroke-linecap="round"/>
-            <path d="m12.2 21.2 3.2 3.2 9-10" stroke="#fff" stroke-width="3.1"
-                  fill="none" stroke-linecap="round" stroke-linejoin="round" opacity=".68"/>
-          </svg>
-          <span>Tekzova<i>.</i></span>
-        </a>
+        <a class="brand brand--logo" href="index.html" aria-label="Tekzova Technologies — home">
+      <img class="lgo lgo--light" src="assets/logo-tekzova.svg"
+           alt="Tekzova Technologies" width="668" height="142">
+      <img class="lgo lgo--dark" src="assets/logo-tekzova-dark.svg"
+           alt="" aria-hidden="true" width="668" height="142">
+    </a>
         <p>Practical apps for everyday problems. Built offline, on purpose.</p>
       </div>
       <div>
@@ -728,6 +714,8 @@
         <ul>
           <li><a href="privacy/">Privacy</a></li>
           <li><a href="privacy/toptick.html">TopTick policy</a></li>
+          <li><a href="privacy/nre-tracker.html">NRE Tracker policy</a></li>
+          <li><a href="privacy/portfolio-tracker.html">Portfolio Tracker policy</a></li>
           <li><a href="mailto:info@tekzova.com">info@tekzova.com</a></li>
         </ul>
       </div>

@@ -3,97 +3,176 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>NRE Tracker — days, contracts and status | Tekzova</title>
-<meta name="description" content="NRE Tracker keeps your days outside the country, contracts and account records in one offline app. In development at Tekzova Technologies.">
+<title>NRE Tracker — sea service &amp; residential status | Tekzova</title>
+<meta name="description" content="NRE Tracker counts your India and abroad days per financial year, checks the 182-day rule and RNOR conditions, and keeps voyages, CDC sea service and reports on your phone. Free Android app, offline, no account.">
 <link rel="canonical" href="https://www.tekzova.com/apps/nre-tracker.html">
 <meta name="theme-color" content="#fdf8f3">
+<link rel="icon" href="../assets/icon-tekzova-tile.svg" type="image/svg+xml">
 <link rel="icon" href="../assets/favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
 <meta property="og:type" content="website">
-<meta property="og:title" content="NRE Tracker — days, contracts and status">
-<meta property="og:description" content="For people working abroad: day counts, contracts and account records in one offline Android app.">
+<meta property="og:title" content="NRE Tracker — sea service &amp; residential status">
+<meta property="og:description" content="Day counting for the financial year, the 182-day rule, RNOR conditions, voyages and CDC sea service — offline, on your own phone.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=Figtree:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@700;800&family=Figtree:wght@400;500;600;700&display=swap">
 <link rel="stylesheet" href="../assets/theme.css">
+
 <style>
-  :root{ --accent:#0fae7f; --accent-soft:#dcf7ee; }
+  /* NRE Tracker runs on the mint accent */
+  :root{ --accent:#0d9c72; --accent-soft:#dcf7ee; }
   @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){ --accent-soft:#0e3a2c; } }
   :root[data-theme="dark"]{ --accent-soft:#0e3a2c; }
+
   .b1{background:radial-gradient(circle,var(--mint),transparent 68%)}
   .b2{background:radial-gradient(circle,var(--sky),transparent 68%)}
+  .b3{background:radial-gradient(circle,var(--violet),transparent 68%)}
+
+  /* static phone rows for this page (no self-ticking animation) */
   .sli{display:flex;align-items:center;gap:9px;background:#1d1730;border:1px solid #2c2340;
-    border-radius:12px;padding:10px 11px;margin-bottom:6px;font-size:12px}
-  .sli .n{flex:1;font-weight:600}
-  .sli .sm{font-size:11px;color:#8d80aa;font-weight:600}
+    border-radius:12px;padding:9px 10px;margin-bottom:6px;font-size:12px}
+  .sli .n{flex:1;font-weight:600;min-width:0;overflow:hidden;text-overflow:ellipsis;
+    white-space:nowrap}
+  .sli .sm{font-size:10.5px;color:#8d80aa;font-weight:600;flex:0 0 auto}
+  .sli .q{font-size:10px;font-weight:700;padding:3px 7px;border-radius:7px;flex:0 0 auto;
+    background:rgba(15,174,127,.2);color:#5fe0b5}
   .sli.dash{border-style:dashed;color:#8d80aa;justify-content:center;font-size:11.5px}
+
+  /* the three dashboard counters, side by side */
+  .trip{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-bottom:7px}
+  .trip > *{min-width:0}
+  .trip .box{margin-bottom:0;padding:9px 8px;text-align:center}
+  .trip .kk{font-size:8.5px;letter-spacing:.09em}
+  .trip .vv{font-size:17px}
+  @media (max-width:400px){ .trip .vv{font-size:15px} .sli{font-size:11.5px} }
+
+  /* the two RNOR condition cards */
+  .conds{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem;margin-top:1.8rem}
+  @media (max-width:760px){ .conds{grid-template-columns:1fr} }
+  .conds > *{min-width:0}
+  .cond{background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);
+    padding:1.5rem 1.5rem;box-shadow:var(--shadow)}
+  .cond .lbl{font-size:.74rem;letter-spacing:.13em;text-transform:uppercase;font-weight:700;
+    color:var(--c,var(--accent));background:var(--cs,var(--accent-soft));
+    border-radius:var(--r-pill);padding:.3rem .8rem;display:inline-block}
+  .cond h3{font-family:var(--disp);font-weight:700;font-size:1.15rem;margin:1rem 0 .55rem;
+    letter-spacing:-.01em}
+  .cond p{font-size:.95rem;color:var(--ink-2);line-height:1.65}
+  .cond .res{margin-top:1.1rem;display:flex;align-items:center;gap:.55rem;font-weight:700;
+    font-size:.9rem;color:var(--mint)}
+  .cond .res svg{width:17px;height:17px}
+
+  /* install steps, numbered */
+  .inst{counter-reset:s;display:grid;gap:.75rem;margin-top:1.8rem}
+  .inst li{list-style:none;display:flex;gap:1rem;align-items:flex-start;background:var(--card);
+    border:1px solid var(--line);border-radius:var(--r);padding:1.1rem 1.3rem}
+  .inst li > *{min-width:0}
+  .inst li::before{counter-increment:s;content:counter(s);flex:0 0 auto;width:28px;height:28px;
+    border-radius:50%;background:var(--accent-soft);color:var(--accent);display:grid;
+    place-items:center;font-weight:700;font-size:.85rem;font-family:var(--disp)}
+  .inst p{font-size:.97rem;color:var(--ink-2);line-height:1.62}
+  .inst b{color:var(--ink)}
+
+  .dl{display:inline-flex;align-items:center;gap:.8rem;background:var(--accent);color:#fff;
+    border-radius:var(--r-pill);padding:.95rem 1.7rem;font-weight:700;font-size:1rem;
+    box-shadow:var(--shadow-lg);transition:transform .2s}
+  .dl:hover{transform:translateY(-2px)}
+  .dl svg{width:22px;height:22px;flex:0 0 auto}
+  .dl .t{display:flex;flex-direction:column;line-height:1.15;text-align:left}
+  .dl .t small{font-size:.7rem;font-weight:600;opacity:.82;letter-spacing:.04em}
+  @media (max-width:520px){ .dl{width:100%;justify-content:center} }
 </style>
 </head>
 <body>
 
 <header class="nav">
   <div class="container">
-    <a class="brand" href="../index.html">
-      <svg class="g" viewBox="0 0 32 32" aria-hidden="true">
-        <rect x="1" y="1" width="30" height="30" rx="9" fill="var(--violet)"/>
-        <path d="M7.6 9.4h12.8" stroke="#fff" stroke-width="3.1" stroke-linecap="round"/>
-        <path d="M14 9.4v8" stroke="#fff" stroke-width="3.1" stroke-linecap="round"/>
-        <path d="m12.2 21.2 3.2 3.2 9-10" stroke="#fff" stroke-width="3.1"
-              fill="none" stroke-linecap="round" stroke-linejoin="round" opacity=".68"/>
-      </svg>
-      <span>Tekzova<i>.</i></span>
+    <a class="brand brand--logo" href="../index.html" aria-label="Tekzova Technologies — home">
+      <img class="lgo lgo--light" src="../assets/logo-tekzova.svg"
+           alt="Tekzova Technologies" width="668" height="142">
+      <img class="lgo lgo--dark" src="../assets/logo-tekzova-dark.svg"
+           alt="" aria-hidden="true" width="668" height="142">
     </a>
     <nav class="nlinks">
       <a href="../index.html#toolkit">Toolkit</a>
-      <a href="toptick.html" class="hd">TopTick</a>
-      <a href="../index.html#ask" class="hd">Questions</a>
-      <a class="btn btn--sm" href="#notify">Tell me when it lands</a>
+      <a href="#rules" class="hd">The rules</a>
+      <a href="#records" class="hd">Records</a>
+      <a href="#install" class="hd">Install</a>
+      <a class="btn btn--sm" href="#get">Download</a>
     </nav>
   </div>
 </header>
 
 <main>
 
+<!-- ============================ HERO ============================ -->
 <section class="hero">
-  <div class="blobs" aria-hidden="true"><div class="blob b1"></div><div class="blob b2"></div></div>
+  <div class="blobs" aria-hidden="true">
+    <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+  </div>
   <div class="container">
     <div class="hgrid">
       <div>
-        <p class="tag up a1" style="--c:var(--mint);--cs:var(--mint-soft)">
-          <span class="dot"></span>NRE Tracker &middot; In development</p>
-        <h1 class="up a2">Your days abroad,<br><span class="hl">counted properly.</span></h1>
-        <p class="lede up a3" style="margin-top:1.3rem">If your tax status depends on how many days
-          you spent outside the country, counting them on a calendar in March is a bad plan. NRE
-          Tracker keeps the running total as you go, alongside the contracts and account records
-          that go with it.</p>
+        <div class="lock up a1" style="--l1:#0d9c72;--l2:#38d9a5">
+          <div class="mk mk--app mk--round">
+            <img src="../assets/icon-nre-tracker.png" alt="NRE Tracker app icon" width="320" height="320">
+          </div>
+          <div>
+            <h1 class="nm">NRE Tracker</h1>
+            <p class="sub">Sea Service &amp; Residential Status</p>
+          </div>
+        </div>
+        <h2 class="up a2" style="font-size:clamp(1.8rem,4vw,2.8rem);line-height:1.08">
+          Your days abroad,<br><span class="hl">counted as you go.</span></h2>
+        <p class="lede up a3" style="margin-top:1.3rem">If your residential status turns on how many
+          days you spent in India this financial year, reconstructing it from a discharge book in
+          March is a bad plan. NRE Tracker keeps the running total &mdash; and the voyages, CDC sea
+          service and reports that have to back it up.</p>
         <div class="btns up a3" style="margin-top:2rem">
-          <a class="btn" href="#notify">Tell me when it lands</a>
-          <a class="btn btn--ghost" href="toptick.html">See TopTick, available now</a>
+          <a class="dl" href="../downloads/NRE-Tracker-2.5.apk" download>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1"
+                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 3.5v12"/><path d="m7 11 5 4.8 5-4.8"/><path d="M4.5 20h15"/></svg>
+            <span class="t"><small>Download for Android</small><span>NRE Tracker 2.5</span></span>
+          </a>
+          <a class="btn btn--ghost" href="#rules">How the count works</a>
         </div>
         <p class="note up a4" style="margin-top:1.5rem">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
                stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg>
-          <span>Android &middot; offline &middot; free to use, no subscription</span>
+          <span>Free &middot; no account &middot; 2.4 MB APK &middot; installs directly, not through
+            the Play Store</span>
         </p>
       </div>
 
       <div class="stage up a4">
         <div class="slab floaty">
-          <div class="glass" style="padding:30px 13px 15px;height:auto;min-height:360px">
-            <div style="font-family:var(--disp);font-weight:700;font-size:13.5px;margin-bottom:11px">
-              Financial year 2026&ndash;27</div>
-            <div class="box">
-              <div class="kk">Days outside the country</div>
-              <div class="vv">198</div>
-              <div class="bar" style="--sc:#0fae7f"><i style="width:100%"></i></div>
-              <div style="font-size:11px;color:#5fe0b5;margin-top:8px">Threshold of 184 days cleared</div>
+          <div class="glass" style="padding:30px 13px 15px;height:auto;min-height:392px">
+            <div class="shd" style="--sc:#0d9c72">
+              <span class="em">⚓</span><b>FY 2026&ndash;27 &middot; Non-Resident</b>
             </div>
-            <div class="kk" style="margin:13px 0 7px">Contracts</div>
-            <div class="sli"><span class="n">MT St. Clemens</span><span class="sm">112 d</span></div>
-            <div class="sli"><span class="n">MT Discovery</span><span class="sm">86 d</span></div>
+            <div class="trip">
+              <div class="box"><div class="kk">India</div><div class="vv">142</div></div>
+              <div class="box"><div class="kk">Abroad</div><div class="vv">198</div></div>
+              <div class="box"><div class="kk">Days left</div><div class="vv">40</div></div>
+            </div>
+            <div class="box">
+              <div class="kk">India days limit</div>
+              <div class="vv">142 / 182</div>
+              <div class="bar" style="--sc:#0fae7f"><i style="width:78%"></i></div>
+              <div style="font-size:10.5px;color:#5fe0b5;margin-top:8px">
+                40 India days still available this FY</div>
+            </div>
+            <div class="kk" style="margin:13px 0 7px">Voyages this year</div>
+            <div class="sli"><span class="n">MT St. Clemens</span><span class="q">112 d</span></div>
+            <div class="sli"><span class="n">MT Discovery</span><span class="q">86 d</span></div>
+            <div class="sli"><span class="n">Sign-off &middot; 14 Feb</span>
+              <span class="sm">ONGOING</span></div>
             <div class="sli dash" style="margin-bottom:0">+ Add sign-on / sign-off</div>
           </div>
         </div>
+
         <div class="chipf cf1 floaty f1" style="--c:var(--mint);--cs:var(--mint-soft)">
           <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
             stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
@@ -103,23 +182,78 @@
         <div class="chipf cf2 floaty f2" style="--c:var(--sky);--cs:var(--sky-soft)">
           <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
             stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="4" y="2.5" width="16" height="19" rx="3"/><path d="M10 18.5h4"/></svg></span>
-          Stays on the phone
+            <path d="M4 5.5h16v13H4z"/><path d="M4 10h16"/><path d="M8 14.5h5"/></svg></span>
+          11 years of history
+        </div>
+        <div class="chipf cf3 floaty f3" style="--c:var(--coral);--cs:var(--coral-soft)">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 8h1a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-9a2 2 0 0 1 2-2h1"/>
+            <path d="M8 8V6a4 4 0 0 1 8 0v2"/></svg></span>
+          Nothing uploaded
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="sec warm">
+<!-- ============================ STATS ============================ -->
+<section class="sec--tight warm">
+  <div class="container">
+    <div class="band">
+      <div class="st rv" style="--c:var(--mint)"><div class="v">182</div><div class="k">India-day limit, tracked live</div></div>
+      <div class="st rv" style="--c:var(--sky)"><div class="v">11</div><div class="k">Years of status history</div></div>
+      <div class="st rv" style="--c:var(--violet)"><div class="v">2</div><div class="k">Report formats out</div></div>
+      <div class="st rv" style="--c:var(--coral)"><div class="v">0</div><div class="k">Bytes that leave the phone</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ THE RULES ============================ -->
+<section class="sec" id="rules">
   <div class="container">
     <div class="head">
-      <p class="tag" style="--c:var(--mint);--cs:var(--mint-soft)"><span class="dot"></span>The problem</p>
-      <h2 class="rv">The count matters, and nobody keeps it.</h2>
-      <p class="lede rv">Sign-on and sign-off dates end up scattered across a discharge book, a
-        WhatsApp thread and a folder of PDFs. Then the return is due, and it all has to be
-        reconstructed from memory. NRE Tracker is the notebook that should have been kept all
-        along.</p>
+      <p class="tag" style="--c:var(--mint);--cs:var(--mint-soft)"><span class="dot"></span>01 / The count</p>
+      <h2 class="rv">The rule is simple. Applying it for eleven years is not.</h2>
+      <p class="lede rv">Everyone knows the headline: fewer than 182 days in India in a financial
+        year. The trouble is the edges &mdash; which side of midnight a travel day falls on, where a
+        year boundary cuts a contract, and what the previous decade looked like. Those are the parts
+        the app does for you.</p>
+    </div>
+
+    <div class="tw rv">
+      <table>
+        <thead>
+          <tr><th>What the app applies</th><th class="mine">How it counts</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Financial year</td><td class="y">1 April to 31 March</td></tr>
+          <tr><td>Non-resident for the year</td><td class="y">Under 182 days present in India</td></tr>
+          <tr><td>The day you leave India</td><td class="y">Counted as an India day</td></tr>
+          <tr><td>The day you return to India</td><td class="y">Counted as an abroad day</td></tr>
+          <tr><td>A contract crossing 31 March</td><td class="y">Split across both financial years</td></tr>
+          <tr><td>An open contract</td><td class="y">Counted up to today, and re-counted tomorrow</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="note rv" style="margin-top:1.3rem">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
+           stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg>
+      <span>The travel-day convention above is the one applied to seafarers. It is the single
+        rule people get wrong most often by hand, and it is worth two days a trip.</span>
+    </p>
+  </div>
+</section>
+
+<!-- ============================ DASHBOARD ============================ -->
+<section class="sec warm" id="dashboard">
+  <div class="container">
+    <div class="head">
+      <p class="tag" style="--c:var(--violet);--cs:var(--violet-soft)"><span class="dot"></span>02 / The dashboard</p>
+      <h2 class="rv">Four numbers, and the one that actually decides.</h2>
+      <p class="lede rv">Open the app and the current financial year is already worked out. No
+        report to generate, no date range to pick.</p>
     </div>
 
     <div class="routes">
@@ -127,51 +261,335 @@
         <div class="num">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
                stroke-linecap="round" stroke-linejoin="round" style="width:26px;height:26px">
-            <rect x="3" y="4.5" width="18" height="16" rx="2.6"/><path d="M3 9.5h18"/>
-            <path d="M8 2.5v4M16 2.5v4"/></svg>
+            <circle cx="12" cy="12" r="9"/><path d="M12 7.2V12l3.2 2"/></svg>
         </div>
-        <h3>A running day count</h3>
-        <p>Enter each sign-on and sign-off once. The total for the financial year is always on the
-          first screen, along with how far you are from the threshold.</p>
-        <div class="best">Planned</div>
+        <h3>Days in India, days abroad</h3>
+        <p>The two running totals for the year to date, rebuilt from your voyage dates every time
+          you open the app &mdash; including the contract you are on right now.</p>
+        <div class="best">Recalculated daily</div>
+      </div>
+      <div class="rt rv" style="--c:var(--coral);--cs:var(--coral-soft)">
+        <div class="num">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
+               stroke-linecap="round" stroke-linejoin="round" style="width:26px;height:26px">
+            <path d="M12 3.5v9"/><circle cx="12" cy="17.5" r="1.1" fill="currentColor"/>
+            <circle cx="12" cy="12" r="9"/></svg>
+        </div>
+        <h3>Days left, before it is too late</h3>
+        <p>How many more days you can spend in India and still stay under the limit. When the
+          remaining days in the year can no longer get you there, it says so plainly rather than
+          showing a number that is already impossible.</p>
+        <div class="best">Warns, doesn't flatter</div>
       </div>
       <div class="rt rv" style="--c:var(--sky);--cs:var(--sky-soft)">
         <div class="num">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
                stroke-linecap="round" stroke-linejoin="round" style="width:26px;height:26px">
-            <path d="M4 5.5h16v13H4z"/><path d="M4 10h16"/><path d="M8 14.5h5"/></svg>
+            <path d="M3 19.5h18"/><path d="M6 16V9M11 16V5.5M16 16v-4.5"/></svg>
         </div>
-        <h3>Contract and voyage history</h3>
-        <p>Every vessel, every contract, every port date, kept in order and searchable &mdash; so
-          the question &ldquo;when were you last home?&rdquo; has an answer.</p>
-        <div class="best">Planned</div>
-      </div>
-      <div class="rt rv" style="--c:var(--violet);--cs:var(--violet-soft)">
-        <div class="num">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
-               stroke-linecap="round" stroke-linejoin="round" style="width:26px;height:26px">
-            <rect x="4" y="2.5" width="16" height="19" rx="3"/><path d="M10 18.5h4"/></svg>
-        </div>
-        <h3>On your phone, like everything else</h3>
-        <p>Financial records are exactly the sort of thing that should never be uploaded anywhere.
-          Stored on the device, backed up to a file you keep.</p>
-        <div class="best">Planned</div>
+        <h3>Overseas days still needed</h3>
+        <p>The other side of the same question, and the one that matters when you are planning a
+          sign-on: how much more sea time this year has to hold for the status to survive.</p>
+        <div class="best">Plan the next contract</div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="sec" id="notify">
+<!-- ============================ RNOR ============================ -->
+<section class="sec" id="rnor">
+  <div class="container">
+    <div class="head">
+      <p class="tag" style="--c:var(--sky);--cs:var(--sky-soft)"><span class="dot"></span>03 / RNOR</p>
+      <h2 class="rv">The year you come home is the one worth getting right.</h2>
+      <p class="lede rv">Resident but Not Ordinarily Resident is decided by the ten years behind
+        you, not the one you are in. Both conditions need a history nobody keeps &mdash; so the app
+        keeps it, and evaluates them for every year at once.</p>
+    </div>
+
+    <div class="conds">
+      <div class="cond rv" style="--c:var(--sky);--cs:var(--sky-soft)">
+        <span class="lbl">Condition A</span>
+        <h3>Non-resident in nine of the last ten years</h3>
+        <p>Each of the ten preceding financial years is re-counted from your own voyage records and
+          marked resident or non-resident. The app tells you how many of them qualify, and which
+          ones broke the run.</p>
+        <div class="res">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"
+               stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg>
+          Evaluated year by year, not assumed
+        </div>
+      </div>
+      <div class="cond rv" style="--c:var(--violet);--cs:var(--violet-soft)">
+        <span class="lbl">Condition B</span>
+        <h3>729 India days or fewer across the last seven</h3>
+        <p>A single running total across seven financial years &mdash; the sort of sum that is
+          almost impossible to do reliably on paper, and trivially easy to get wrong by one trip.</p>
+        <div class="res">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"
+               stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg>
+          Totalled from the same voyage data
+        </div>
+      </div>
+    </div>
+
+    <p class="note rv" style="margin-top:1.6rem">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
+           stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg>
+      <span>Behind both is an eleven-year table &mdash; one row per financial year, India days,
+        abroad days, and the status that came out of them. Scroll it and your whole record is on
+        one screen.</span>
+    </p>
+  </div>
+</section>
+
+<!-- ============================ RECORDS ============================ -->
+<section class="sec warm" id="records">
+  <div class="container">
+    <div class="head">
+      <p class="tag" style="--c:var(--amber);--cs:var(--amber-soft)"><span class="dot"></span>04 / The records</p>
+      <h2 class="rv">The day count is the output. These are the inputs.</h2>
+      <p class="lede rv">Two registers sit behind every number on the dashboard, and both are
+        useful on their own &mdash; one for the tax question, one for the next job application.</p>
+    </div>
+
+    <div class="grid2 top">
+      <div class="steps rv">
+        <div class="step" style="--c:var(--mint);--cs:var(--mint-soft)">
+          <div class="sn">1</div>
+          <div>
+            <h3>Voyages</h3>
+            <p>Vessel, sign-on date, sign-off date. That is the whole entry. A contract with no
+              sign-off yet is marked <strong>ongoing</strong> and counts up to today. Everything
+              else &mdash; the year totals, the limit, the RNOR history &mdash; is derived from
+              this one list.</p>
+          </div>
+        </div>
+        <div class="step" style="--c:var(--sky);--cs:var(--sky-soft)">
+          <div class="sn">2</div>
+          <div>
+            <h3>Sea service, the CDC record</h3>
+            <p>The same contracts kept the way a discharge book keeps them: vessel, rank, dates,
+              days served. Ranks run from Trainee Seaman and Deck Cadet through Fourth, Third,
+              Second and Chief Engineer, Electrical Officer, Master, Bosun, Fitter, Oiler, Pumpman
+              and the rest.</p>
+          </div>
+        </div>
+        <div class="step" style="--c:var(--violet);--cs:var(--violet-soft)">
+          <div class="sn">3</div>
+          <div>
+            <h3>Rank experience, added up</h3>
+            <p>Total sea service, and time served in each rank, summarised automatically. The
+              answer to &ldquo;how long have you sailed as Second Engineer?&rdquo; stops being an
+              evening with a calculator.</p>
+          </div>
+        </div>
+        <div class="step" style="--c:var(--coral);--cs:var(--coral-soft)">
+          <div class="sn">4</div>
+          <div>
+            <h3>Your profile, once</h3>
+            <p>Name, date of birth, nationality, passport number, CDC number, PAN and rank are
+              entered once and appear in the header of every report the app generates.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="rv">
+        <div class="slab">
+          <div class="glass" style="padding:30px 13px 15px;height:auto;min-height:392px">
+            <div class="shd" style="--sc:#2b8cff">
+              <span class="em">🎖️</span><b>Rank experience summary</b>
+            </div>
+            <div class="box">
+              <div class="kk">Total sea service</div>
+              <div class="vv">9 y 4 m</div>
+              <div class="bar" style="--sc:#2b8cff"><i style="width:88%"></i></div>
+            </div>
+            <div class="sli"><span class="n">Chief Engineer</span><span class="q">2 y 1 m</span></div>
+            <div class="sli"><span class="n">Second Engineer</span><span class="q">3 y 6 m</span></div>
+            <div class="sli"><span class="n">Third Engineer</span><span class="q">2 y 0 m</span></div>
+            <div class="sli"><span class="n">Fourth Engineer</span><span class="q">1 y 5 m</span></div>
+            <div class="sli"><span class="n">Engine Cadet</span><span class="q">0 y 4 m</span></div>
+            <div class="sli dash" style="margin-bottom:0">+ Add sea service (CDC record)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ IN AND OUT ============================ -->
+<section class="sec" id="reports">
+  <div class="container">
+    <div class="head">
+      <p class="tag" style="--c:var(--coral);--cs:var(--coral-soft)"><span class="dot"></span>05 / In and out</p>
+      <h2 class="rv">Bring in what you already have. Take out what you need.</h2>
+      <p class="lede rv">Nobody is retyping fifteen years of contracts on a phone keyboard. If it
+        is already in a spreadsheet, it goes in as a spreadsheet.</p>
+    </div>
+
+    <div class="routes">
+      <div class="rt rv" style="--c:var(--mint);--cs:var(--mint-soft)">
+        <div class="num">01</div>
+        <h3>Import from Excel</h3>
+        <p>Three routes in: everything at once from a single matrix sheet, or voyages only, or sea
+          service only. A built-in format guide lists the exact column headers expected, so you can
+          check the file before you upload it rather than after.</p>
+        <div class="best">All · Voyages · Sea service</div>
+      </div>
+      <div class="rt rv" style="--c:var(--violet);--cs:var(--violet-soft)">
+        <div class="num">02</div>
+        <h3>Reports out, in two formats</h3>
+        <p>Generate the record as an <strong>Excel workbook</strong> to work with further, or as a
+          <strong>PDF</strong> to send to whoever asked for it. Both carry your profile details in
+          the header. You name the file and choose where it saves.</p>
+        <div class="best">.xlsx · .pdf</div>
+      </div>
+      <div class="rt rv" style="--c:var(--sky);--cs:var(--sky-soft)">
+        <div class="num">03</div>
+        <h3>A backup you hold</h3>
+        <p>One tap writes a JSON backup of everything to your Downloads folder. Copy it wherever
+          you keep things. On a new phone, import it back and every voyage, record and profile
+          field returns.</p>
+        <div class="best">Export · Import · Restore</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ PRIVACY ============================ -->
+<section class="sec warm" id="safe">
+  <div class="container">
+    <div class="statement rv">
+      <p class="tag" style="--c:#fff;--cs:rgba(255,255,255,.18)"><span class="dot"></span>Where it lives</p>
+      <h2>Passport number, PAN, CDC, every contract you have sailed.</h2>
+      <p class="lede">That is a file most people would not email to a friend. So it is not sent
+        anywhere at all. NRE Tracker stores everything in the app&rsquo;s own storage on your phone
+        and reads it back from there. There is no account, no server, and nothing to breach.</p>
+      <div class="promises">
+        <div class="pr">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+               stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg>
+          <span><b>No sign-in</b>Nothing to create, nothing to forget, nothing to leak.</span>
+        </div>
+        <div class="pr">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+               stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg>
+          <span><b>Works at sea</b>Mid-ocean, in a basement, on a plane. There is no online mode to
+            fall back from.</span>
+        </div>
+        <div class="pr">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+               stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg>
+          <span><b>You hold the backup</b>A file on your storage, not a copy on ours.</span>
+        </div>
+        <div class="pr">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+               stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg>
+          <span><b>Delete means delete</b>One control clears everything, on the device, at once.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ INSTALL ============================ -->
+<section class="sec" id="install">
+  <div class="container grid2 top">
+    <div>
+      <p class="tag" style="--c:var(--mint);--cs:var(--mint-soft)"><span class="dot"></span>06 / Installing</p>
+      <h2 class="rv">It installs from a file, not a store.</h2>
+      <p class="lede rv" style="margin-top:1.15rem">NRE Tracker is not on Google Play yet. You
+        download the APK from this page and install it yourself, which takes about a minute. Android
+        will ask once whether it should allow installs from your browser &mdash; that prompt is
+        normal and you can switch the permission back off afterwards.</p>
+      <p class="lede rv" style="margin-top:1rem">Android 7.0 and newer. About 2.4 MB installed.</p>
+    </div>
+    <ol class="inst rv">
+      <li><p><b>Download the APK</b> using the button on this page. Your browser will warn you that
+        APK files can be harmful &mdash; that warning appears for every file of this type, including
+        this one. Tap download anyway.</p></li>
+      <li><p><b>Open the downloaded file</b> from the notification, or from Files &rsaquo;
+        Downloads.</p></li>
+      <li><p><b>Allow this one source.</b> Android asks whether your browser or file manager may
+        install apps. Turn it on, install, then turn it back off if you prefer.</p></li>
+      <li><p><b>Open the app and enter your profile</b> &mdash; or go straight to Import and bring
+        in a spreadsheet you already keep.</p></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============================ FAQ ============================ -->
+<section class="sec warm" id="ask">
+  <div class="container grid2 top">
+    <div>
+      <p class="tag" style="--c:var(--violet);--cs:var(--violet-soft)"><span class="dot"></span>07 / Questions</p>
+      <h2 class="rv">Before you install.</h2>
+    </div>
+    <div class="faq rv">
+      <details open>
+        <summary>Is this tax advice?</summary>
+        <div class="ans">No, and it does not pretend to be. NRE Tracker counts days and applies
+          published day-count thresholds to your own records. It does not file anything, does not
+          know your income, and cannot account for your particular circumstances. Treat its output
+          as a well-kept notebook to take to your accountant, not as a determination.</div>
+      </details>
+      <details>
+        <summary>How does it treat the day I fly?</summary>
+        <div class="ans">The day you leave India counts as an India day; the day you arrive back
+          counts as an abroad day. This is the convention applied to seafarers, and applying it
+          consistently is usually worth two days per trip against counting by hand.</div>
+      </details>
+      <details>
+        <summary>I have fifteen years of contracts in a spreadsheet. Do I retype them?</summary>
+        <div class="ans">No. Import them. The app reads an Excel file &mdash; all records at once
+          from a matrix sheet, or voyages and sea service separately &mdash; and shows you the exact
+          column headers it expects before you upload, so you can fix the sheet first.</div>
+      </details>
+      <details>
+        <summary>Does it need internet?</summary>
+        <div class="ans">Never, after you install it. Every count, report, import and backup happens
+          on the device. It works on a ship with no signal, which is rather the point.</div>
+      </details>
+      <details>
+        <summary>What happens when I change phones?</summary>
+        <div class="ans">Export the JSON backup on the old phone, copy the file across, import it on
+          the new one. Voyages, sea service records and your profile all come back.</div>
+      </details>
+      <details>
+        <summary>Why is it not on Google Play?</summary>
+        <div class="ans">It is working, in daily use, and not yet through store review. Until it is,
+          the APK on this page is the app &mdash; the same build, straight from us. When it reaches
+          Play, this page will carry the store link instead.</div>
+      </details>
+      <details>
+        <summary>Will it start costing money?</summary>
+        <div class="ans">Everything described on this page is free with no account and no time
+          limit. If advanced features are added later they will be a <strong>one-time
+          purchase</strong>, never a subscription.
+          <a href="../index.html#pricing">How pricing works</a>.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ CTA ============================ -->
+<section class="sec" id="get">
   <div class="container">
     <div class="cta">
-      <p class="tag ctr" style="--c:#fff;--cs:rgba(255,255,255,.18)"><span class="dot"></span>Not out yet</p>
-      <h2>Want it the day it ships?</h2>
-      <p class="lede ctr">Send us a line and we will tell you when NRE Tracker reaches Google Play.
-        No list, no newsletter &mdash; one message, once.</p>
+      <p class="tag ctr" style="--c:#fff;--cs:rgba(255,255,255,.18)"><span class="dot"></span>Free · No account · Offline</p>
+      <h2>Start counting from<br>today, not from March.</h2>
+      <p class="lede ctr">Enter the contracts you can remember, import the ones you can&rsquo;t, and
+        the financial year works itself out from there.</p>
       <div class="btns ctr" style="margin-top:2rem">
-        <a class="btn btn--ghost"
-           href="mailto:info@tekzova.com?subject=Tell%20me%20when%20NRE%20Tracker%20lands">Email us</a>
-        <a class="btn btn--ghost" href="toptick.html">Try TopTick meanwhile</a>
+        <a class="dl" href="../downloads/NRE-Tracker-2.5.apk" download
+           style="background:#fff;color:#0d9c72">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1"
+               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 3.5v12"/><path d="m7 11 5 4.8 5-4.8"/><path d="M4.5 20h15"/></svg>
+          <span class="t"><small>Download for Android</small><span>NRE Tracker 2.5</span></span>
+        </a>
+        <a class="btn btn--ghost" href="../privacy/nre-tracker.html">Read the privacy policy</a>
       </div>
     </div>
   </div>
@@ -183,16 +601,12 @@
   <div class="container">
     <div class="cols">
       <div>
-        <a class="brand" href="../index.html">
-          <svg class="g" viewBox="0 0 32 32" aria-hidden="true">
-            <rect x="1" y="1" width="30" height="30" rx="9" fill="var(--violet)"/>
-            <path d="M7.6 9.4h12.8" stroke="#fff" stroke-width="3.1" stroke-linecap="round"/>
-            <path d="M14 9.4v8" stroke="#fff" stroke-width="3.1" stroke-linecap="round"/>
-            <path d="m12.2 21.2 3.2 3.2 9-10" stroke="#fff" stroke-width="3.1"
-                  fill="none" stroke-linecap="round" stroke-linejoin="round" opacity=".68"/>
-          </svg>
-          <span>Tekzova<i>.</i></span>
-        </a>
+        <a class="brand brand--logo" href="../index.html" aria-label="Tekzova Technologies — home">
+      <img class="lgo lgo--light" src="../assets/logo-tekzova.svg"
+           alt="Tekzova Technologies" width="668" height="142">
+      <img class="lgo lgo--dark" src="../assets/logo-tekzova-dark.svg"
+           alt="" aria-hidden="true" width="668" height="142">
+    </a>
         <p>Practical apps for everyday problems. Built offline, on purpose.</p>
       </div>
       <div>
@@ -217,7 +631,7 @@
         <h4>Legal</h4>
         <ul>
           <li><a href="../privacy/">Privacy</a></li>
-          <li><a href="../privacy/toptick.html">TopTick policy</a></li>
+          <li><a href="../privacy/nre-tracker.html">NRE Tracker policy</a></li>
           <li><a href="mailto:info@tekzova.com">info@tekzova.com</a></li>
         </ul>
       </div>
