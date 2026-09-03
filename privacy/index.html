@@ -7,25 +7,23 @@
 <meta name="description" content="How Tekzova Technologies handles data: we don't. Our apps store everything on your device and upload nothing.">
 <link rel="canonical" href="https://www.tekzova.com/privacy/">
 <meta name="theme-color" content="#fdf8f3">
+<link rel="icon" href="../assets/icon-tekzova-tile.svg" type="image/svg+xml">
 <link rel="icon" href="../assets/favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=Figtree:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@700;800&family=Figtree:wght@400;500;600;700&display=swap">
 <link rel="stylesheet" href="../assets/theme.css">
 </head>
 <body>
 
 <header class="nav">
   <div class="container">
-    <a class="brand" href="../index.html">
-      <svg class="g" viewBox="0 0 32 32" aria-hidden="true">
-        <rect x="1" y="1" width="30" height="30" rx="9" fill="var(--violet)"/>
-        <path d="M7.6 9.4h12.8" stroke="#fff" stroke-width="3.1" stroke-linecap="round"/>
-        <path d="M14 9.4v8" stroke="#fff" stroke-width="3.1" stroke-linecap="round"/>
-        <path d="m12.2 21.2 3.2 3.2 9-10" stroke="#fff" stroke-width="3.1"
-              fill="none" stroke-linecap="round" stroke-linejoin="round" opacity=".68"/>
-      </svg>
-      <span>Tekzova<i>.</i></span>
+    <a class="brand brand--logo" href="../index.html" aria-label="Tekzova Technologies — home">
+      <img class="lgo lgo--light" src="../assets/logo-tekzova.svg"
+           alt="Tekzova Technologies" width="668" height="142">
+      <img class="lgo lgo--dark" src="../assets/logo-tekzova-dark.svg"
+           alt="" aria-hidden="true" width="668" height="142">
     </a>
     <nav class="nlinks">
       <a href="../index.html#toolkit">Toolkit</a>
@@ -50,16 +48,15 @@
         <strong>no internet permission at all</strong>, which means it is not able to send data
         anywhere even if it wanted to. You can confirm that yourself in Android&rsquo;s app settings
         in about thirty seconds &mdash; and you should, for every app on your phone.</p>
+      <p class="lede" style="margin-top:1rem">Each app has its own policy, written for what that app
+        actually does. All three say the same thing in the end: your records stay on your
+        phone.</p>
     </div>
 
-    <div class="apps" style="margin-top:3rem;grid-template-columns:1fr 1fr;max-width:900px">
+    <div class="apps" style="margin-top:3rem">
       <a class="ablock rv" href="toptick.html" style="--ac:#5b3ae8;--as:var(--violet-soft)">
-        <div class="icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
-               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <rect x="4" y="3.5" width="16" height="17" rx="2.8"/>
-            <path d="M9 2.5h6v3H9z" fill="currentColor" stroke="none"/>
-            <path d="m8.5 12 2.2 2.2 4.6-4.8"/><path d="M8.5 17.5h7"/></svg>
+        <div class="icon icon--app">
+          <img src="../assets/icon-toptick.png" alt="TopTick app icon" width="320" height="320">
         </div>
         <div class="role">Full policy</div>
         <h3>TopTick</h3>
@@ -73,24 +70,47 @@
         </div>
       </a>
 
-      <div class="ablock rv" style="--ac:#8c82a0;--as:var(--line-2);cursor:default">
-        <div class="icon" style="box-shadow:none">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
-               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/>
-            <path d="M14 3v5h5"/></svg>
+      <a class="ablock rv" href="nre-tracker.html" style="--ac:#0d9c72;--as:var(--mint-soft)">
+        <div class="icon icon--app icon--round">
+          <img src="../assets/icon-nre-tracker.png" alt="NRE Tracker app icon" width="320" height="320">
         </div>
-        <div class="role">Policies to follow</div>
-        <h3>Everything else in build</h3>
-        <p>NRE Tracker, Portfolio Tracker and the apps behind them are in development. Each gets its
-          own policy on this page before it reaches Google Play &mdash; and all of them are being
-          built to the same rule: your records stay on your phone.</p>
+        <div class="role">Full policy</div>
+        <h3>NRE Tracker</h3>
+        <p>Voyages, sea service and profile details stay in the app&rsquo;s own storage. No account,
+          no server, no network requests.</p>
         <div class="foot">
-          <span class="chip soon">In development</span>
-          <span class="go" style="color:var(--muted)">Not yet published</span>
+          <span class="chip live">Published</span>
+          <span class="go">Read it
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                 stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h13"/><path d="m12 5 7 7-7 7"/></svg></span>
         </div>
-      </div>
+      </a>
+
+      <a class="ablock rv" href="portfolio-tracker.html" style="--ac:#1a7ff0;--as:var(--sky-soft)">
+        <div class="icon icon--app">
+          <img src="../assets/icon-portfolio-tracker.png" alt="Portfolio Tracker app icon" width="320" height="320">
+        </div>
+        <div class="role">Full policy</div>
+        <h3>Portfolio Tracker</h3>
+        <p>No broker login, ever. Statements are parsed on the device; the only network request the
+          app can make asks for public prices.</p>
+        <div class="foot">
+          <span class="chip live">Published</span>
+          <span class="go">Read it
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                 stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h13"/><path d="m12 5 7 7-7 7"/></svg></span>
+        </div>
+      </a>
     </div>
+
+    <p class="note rv" style="margin-top:2rem">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
+           stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg>
+      <span>Further apps are in development. Each gets its own policy here before it is offered for
+        download.</span>
+    </p>
 
     <div style="max-width:72ch;margin-top:3.2rem">
       <h2 style="font-size:clamp(1.35rem,2.3vw,1.8rem)">If that ever changes</h2>
