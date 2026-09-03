@@ -419,6 +419,24 @@ th.mine{color:var(--accent)}
 .route .flagline{margin-top:1rem;font-family:"JetBrains Mono",monospace;font-size:.66rem;
   letter-spacing:.13em;text-transform:uppercase;color:var(--r-c,var(--accent))}
 
+/* ============================ pricing promise ============================ */
+.promise{display:grid;grid-template-columns:repeat(4,1fr);gap:1.15rem}
+@media (max-width:980px){ .promise{grid-template-columns:1fr 1fr} }
+@media (max-width:560px){ .promise{grid-template-columns:1fr} }
+.pcard{background:var(--card);border:1px solid var(--line);border-radius:var(--r);
+  padding:1.6rem 1.4rem 1.7rem;display:flex;flex-direction:column;gap:.55rem}
+.pcard .pic{width:44px;height:44px;box-sizing:border-box;padding:10px;border-radius:13px;
+  color:var(--good);background:var(--good-soft);margin-bottom:.45rem}
+.pcard h3{letter-spacing:-.015em}
+.pcard p{color:var(--ink-2);font-size:.95rem}
+.pcard .big{font-family:"Archivo",system-ui,sans-serif;font-weight:800;letter-spacing:-.03em;
+  font-size:clamp(1.6rem,2.6vw,2rem);line-height:1;color:var(--ink)}
+.pcard.lead{border-color:var(--accent-line);background:var(--accent-soft)}
+.pcard.lead .pic{color:var(--accent);background:color-mix(in srgb, var(--accent) 14%, transparent)}
+.pnote{margin-top:1.6rem;display:flex;align-items:flex-start;gap:.7rem;font-size:.95rem;
+  color:var(--ink-2);max-width:68ch}
+.pnote svg{width:19px;height:19px;flex:0 0 auto;color:var(--good);margin-top:.15rem}
+
 /* reveal on scroll (progressive enhancement) */
 .rv{opacity:0;transform:translateY(16px)}
 .rv.in{opacity:1;transform:none;
