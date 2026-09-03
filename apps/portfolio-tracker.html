@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Portfolio Tracker — funds and holdings, offline | Tekzova</title>
+<meta name="description" content="Portfolio Tracker reads your own statement files and shows every fund, deposit and holding in one place. Offline. In development at Tekzova Technologies.">
+<link rel="canonical" href="https://www.tekzova.com/apps/portfolio-tracker.html">
+<meta name="theme-color" content="#10141b">
+<link rel="icon" href="../assets/favicon.png" type="image/png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Portfolio Tracker — funds and holdings, offline">
+<meta property="og:description" content="Every mutual fund, deposit and holding in one place, with the returns worked out. No broker login.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=JetBrains+Mono:wght@400;500&family=Public+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="../assets/site.css">
+<style>
+  :root{ --accent:#7b4dd8; --accent-soft:#f0eafc; --accent-line:#d9c9f5; }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){ --accent-soft:#231338; --accent-line:#432a6b; }
+  }
+  :root[data-theme="dark"]{ --accent-soft:#231338; --accent-line:#432a6b; }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="container">
+    <a class="logo" href="../">
+      <svg class="glyph" viewBox="0 0 32 32" aria-hidden="true">
+        <rect x="1" y="1" width="30" height="30" rx="8" fill="var(--accent)"/>
+        <path d="M7.6 9.4h12.8" stroke="#fff" stroke-width="3.1" stroke-linecap="round"/>
+        <path d="M14 9.4v8" stroke="#fff" stroke-width="3.1" stroke-linecap="round"/>
+        <path d="m12.2 21.2 3.2 3.2 9-10" stroke="#fff" stroke-width="3.1"
+              fill="none" stroke-linecap="round" stroke-linejoin="round" opacity=".65"/>
+      </svg>
+      <span class="wm">Tekzova<b>.</b></span>
+    </a>
+    <nav class="links">
+      <a href="../#apps">Apps</a>
+      <a href="toptick.html" class="opt">TopTick</a>
+      <a href="../#questions" class="opt">Questions</a>
+      <a class="btn btn--sm" href="#notify">Tell me when it lands</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section class="hero">
+  <div class="container grid-2">
+    <div>
+      <p class="eyebrow up d1">Portfolio Tracker &middot; In development</p>
+      <h1 class="up d2">Everything you own,<br>on one screen.</h1>
+      <p class="lede up d3">Mutual funds in four apps, deposits in three banks, and a spreadsheet that
+        is always six months out of date. Portfolio Tracker reads the statements you already
+        receive and puts the whole picture in one place &mdash; without asking for a single
+        login.</p>
+      <div class="btns up d3">
+        <a class="btn" href="#notify">Tell me when it lands</a>
+        <a class="btn btn--ghost" href="toptick.html">See TopTick, available now</a>
+      </div>
+      <p class="note up d4" style="margin-top:1.2rem">Android · offline · free, like everything we make</p>
+    </div>
+
+    <div class="up d4" style="display:flex;justify-content:center">
+      <div class="phone">
+        <div class="screen">
+          <div style="font-weight:700;font-size:14px;margin-bottom:11px">Portfolio</div>
+          <div style="background:#1a2029;border:1px solid #28313d;border-radius:12px;padding:12px;margin-bottom:8px">
+            <div style="font-size:10px;color:#6d7a8d;letter-spacing:.1em">TOTAL VALUE</div>
+            <div style="font-family:'JetBrains Mono',monospace;font-size:24px;font-weight:600;margin-top:4px">&#8377; 18,42,660</div>
+            <div style="font-size:11px;color:#2ec47f;margin-top:3px">&#9650; &#8377; 2,03,410 &middot; 12.4% overall</div>
+          </div>
+          <div style="height:74px;background:#1a2029;border:1px solid #28313d;border-radius:12px;
+                      margin-bottom:8px;overflow:hidden">
+            <svg viewBox="0 0 200 74" preserveAspectRatio="none" style="width:100%;height:100%">
+              <path d="M0 58 L28 50 L56 54 L84 32 L112 38 L140 20 L168 26 L200 9"
+                    fill="none" stroke="#9b6ef0" stroke-width="2"/>
+              <path d="M0 58 L28 50 L56 54 L84 32 L112 38 L140 20 L168 26 L200 9 L200 74 L0 74Z"
+                    fill="#9b6ef0" opacity=".14"/>
+              <circle cx="200" cy="9" r="3" fill="#9b6ef0"/>
+            </svg>
+          </div>
+          <div style="font-size:10px;color:#6d7a8d;letter-spacing:.1em;margin:12px 0 7px">ALLOCATION</div>
+          <div style="background:#1a2029;border:1px solid #28313d;border-radius:11px;padding:10px 11px;margin-bottom:6px;
+                      display:flex;justify-content:space-between;font-size:12px">
+            <span>Equity funds</span>
+            <span style="font-family:'JetBrains Mono',monospace;color:#9b6ef0">62%</span></div>
+          <div style="background:#1a2029;border:1px solid #28313d;border-radius:11px;padding:10px 11px;margin-bottom:6px;
+                      display:flex;justify-content:space-between;font-size:12px">
+            <span>Debt &amp; deposits</span>
+            <span style="font-family:'JetBrains Mono',monospace;color:#9b6ef0">27%</span></div>
+          <div style="background:#1a2029;border:1px solid #28313d;border-radius:11px;padding:10px 11px;
+                      display:flex;justify-content:space-between;font-size:12px">
+            <span>Gold</span>
+            <span style="font-family:'JetBrains Mono',monospace;color:#9b6ef0">11%</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="head">
+      <div class="rail">01 / The problem</div>
+      <div>
+        <h2 class="rv">Six apps to answer one question.</h2>
+        <p class="lede rv" style="margin-top:1rem">Checking what you are actually worth should not mean logging into
+          four fund houses, two banks and a broker. The statements already land in your inbox
+          every month &mdash; Portfolio Tracker reads those and does the arithmetic.</p>
+      </div>
+    </div>
+
+    <div class="cards c3">
+      <div class="card rv">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/>
+          <path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></svg>
+        <h3>Reads your own statements</h3>
+        <p>Import the consolidated statement you already receive. No broker login, no account
+          linking, no read-only API access to anything.</p>
+        <div class="kicker">Planned</div>
+      </div>
+      <div class="card rv">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M3 19.5h18"/><path d="M4.5 15.5V11M9.5 15.5V6.5M14.5 15.5V9M19.5 15.5V4"/></svg>
+        <h3>Gains, allocation and history</h3>
+        <p>What each holding cost, what it is worth, and how the mix has drifted &mdash; worked
+          out for you rather than left as a column of numbers.</p>
+        <div class="kicker">Planned</div>
+      </div>
+      <div class="card rv">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="4" y="2.5" width="16" height="19" rx="3"/><path d="M10 18.5h4"/></svg>
+        <h3>Nobody else sees it</h3>
+        <p>What you own is nobody&rsquo;s business. Everything is parsed and stored on the device,
+          backed up to a file you keep yourself.</p>
+        <div class="kicker">Planned</div>
+      </div>
+    </div>
+
+    <div class="card rv" style="margin-top:1.6rem;border-style:dashed">
+      <h3>Still being shaped &mdash; and your input counts</h3>
+      <p>Portfolio Tracker is in development. The features above are what we are building towards,
+        not promises about a finished app. If you track your own investments and know exactly what
+        the existing tools get wrong, tell us &mdash; it will shape what gets built.</p>
+      <div class="btns" style="margin-top:.7rem">
+        <a class="btn btn--ghost btn--sm" href="mailto:info@tekzova.com?subject=Portfolio%20Tracker%20—%20what%20I%20need">
+          Tell us what you need</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section cta" id="notify">
+  <div class="container">
+    <p class="eyebrow center">In development</p>
+    <h2>Want to know when it lands?</h2>
+    <p class="lede">Send us a line and we will tell you when it reaches Google Play. No list, no
+      marketing &mdash; one message when it is ready.</p>
+    <div class="btns center" style="margin-top:.6rem">
+      <a class="btn" href="mailto:info@tekzova.com?subject=Portfolio%20Tracker%20—%20notify%20me">
+        Email us</a>
+      <a class="btn btn--ghost" href="toptick.html">Try TopTick meanwhile</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="cols">
+      <div>
+        <a class="logo" href="../">
+          <svg class="glyph" viewBox="0 0 32 32" aria-hidden="true">
+            <rect x="1" y="1" width="30" height="30" rx="8" fill="var(--accent)"/>
+            <path d="M7.6 9.4h12.8" stroke="#fff" stroke-width="3.1" stroke-linecap="round"/>
+            <path d="M14 9.4v8" stroke="#fff" stroke-width="3.1" stroke-linecap="round"/>
+            <path d="m12.2 21.2 3.2 3.2 9-10" stroke="#fff" stroke-width="3.1"
+                  fill="none" stroke-linecap="round" stroke-linejoin="round" opacity=".65"/>
+          </svg>
+          <span class="wm">Tekzova<b>.</b></span>
+        </a>
+        <p style="font-size:.94rem;max-width:34ch;margin-top:.9rem">
+          Android apps for the everyday jobs. Built offline, on purpose.</p>
+      </div>
+      <div>
+        <h4>Apps</h4>
+        <ul>
+          <li><a href="toptick.html">TopTick</a></li>
+          <li><a href="nre-tracker.html">NRE Tracker</a></li>
+          <li><a href="portfolio-tracker.html">Portfolio Tracker</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a href="../#approach">Our approach</a></li>
+          <li><a href="../#questions">Questions</a></li>
+          <li><a href="mailto:info@tekzova.com">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="../privacy/">Privacy</a></li>
+          <li><a href="mailto:info@tekzova.com">Support</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="base">
+      <span>&copy; 2026 Tekzova Technologies. All rights reserved.</span>
+      <span><a href="mailto:info@tekzova.com">info@tekzova.com</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/site.js" defer></script>
+</body>
+</html>
