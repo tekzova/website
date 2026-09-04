@@ -2,62 +2,130 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>TopTick Privacy Policy | Tekzova Technologies</title>
-<meta name="description" content="TopTick collects nothing. It has no internet permission and stores all data on your device. Privacy policy from Tekzova Technologies.">
+<meta name="description" content="TopTick collects nothing. It has no internet permission and stores all data on your device.">
 <link rel="canonical" href="https://www.tekzova.com/privacy/toptick.html">
-<meta name="theme-color" content="#fdf8f3">
+<meta name="theme-color" content="#16273f">
+<link rel="icon" href="../assets/icon-tekzova-tile.svg" type="image/svg+xml">
 <link rel="icon" href="../assets/favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="TopTick Privacy Policy | Tekzova Technologies">
+<meta property="og:description" content="TopTick collects nothing. It has no internet permission and stores all data on your device.">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=Figtree:wght@400;500;600;700&display=swap">
-<link rel="stylesheet" href="../assets/theme.css">
-<style>
-  :root{ --accent:#5b3ae8; --accent-soft:#ece7ff; }
-  @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){ --accent-soft:#241a4c; } }
-  :root[data-theme="dark"]{ --accent-soft:#241a4c; }
-  .doc{max-width:74ch}
-  .doc h2{font-size:clamp(1.3rem,2.1vw,1.6rem);margin-top:2.9rem;margin-bottom:.75rem}
-  .doc p{margin:1rem 0;color:var(--ink-2)}
-  .doc ul{color:var(--ink-2);padding-left:1.3rem;margin:.95rem 0}
-  .doc li{margin:.5rem 0}
-  .key{background:var(--mint-soft);border-radius:var(--r);padding:1.4rem 1.6rem;margin:2rem 0}
-  .key p{margin:0;color:var(--ink);font-weight:700;font-size:1.05rem}
-  .meta{font-size:.87rem;color:var(--muted);border-top:1px solid var(--line);
-    margin-top:3.2rem;padding-top:1.6rem;line-height:2}
-</style>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&family=Inter:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="../assets/bh.css">
 </head>
 <body>
 
-<header class="nav">
-  <div class="container">
-    <a class="brand" href="../index.html">
-      <svg class="g" viewBox="0 0 32 32" aria-hidden="true">
-        <rect x="1" y="1" width="30" height="30" rx="9" fill="var(--violet)"/>
-        <path d="M7.6 9.4h12.8" stroke="#fff" stroke-width="3.1" stroke-linecap="round"/>
-        <path d="M14 9.4v8" stroke="#fff" stroke-width="3.1" stroke-linecap="round"/>
-        <path d="m12.2 21.2 3.2 3.2 9-10" stroke="#fff" stroke-width="3.1"
-              fill="none" stroke-linecap="round" stroke-linejoin="round" opacity=".68"/>
-      </svg>
-      <span>Tekzova<i>.</i></span>
+<!-- ======================= TOP BAR ======================= -->
+<header class="bar">
+  <div class="wrap">
+    <a class="brand" href="../index.html" aria-label="Tekzova Technologies — home">
+      <img class="lgo lgo--light" src="../assets/logo-tekzova.svg"
+           alt="Tekzova Technologies" width="668" height="142">
+      <img class="lgo lgo--dark" src="../assets/logo-tekzova-dark.svg"
+           alt="" aria-hidden="true" width="668" height="142">
     </a>
-    <nav class="nlinks">
-      <a href="../index.html#toolkit">Toolkit</a>
-      <a href="../apps/toptick.html" class="hd">TopTick</a>
-      <a href="./" class="on">Privacy</a>
-      <a class="btn btn--sm" href="mailto:info@tekzova.com">Contact</a>
+    <nav class="desknav">
+      <a href="../index.html#apps">Apps</a>
+      <a href="../pricing.html">Pricing</a>
+      <a href="../index.html#offline">Your data</a>
+      <a href="../index.html#faq">FAQ</a>
+      <a href="../privacy/">Privacy</a>
     </nav>
+    <span class="spacer"></span>
+    <a class="bar-cta" href="../index.html#apps">Get an app</a>
+    <button class="burger" type="button" aria-label="Open menu"
+            aria-expanded="false" aria-controls="drawer">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </header>
 
-<main class="sec">
-  <div class="container">
-    <div class="doc">
-      <p class="tag" style="--c:var(--violet);--cs:var(--violet-soft)">
-        <span class="dot"></span>Tekzova Technologies</p>
-      <h1 style="font-size:clamp(2.2rem,5vw,3.2rem)">TopTick Privacy Policy</h1>
+<div class="scrim" id="scrim" hidden></div>
 
-      <div class="key">
+<!-- ======================= DRAWER ======================= -->
+<aside class="drawer" id="drawer" hidden aria-label="Site menu">
+  <div class="dhead">
+    <span style="font-family:var(--disp);font-weight:800;letter-spacing:-.02em">Menu</span>
+    <button class="dclose" type="button" aria-label="Close menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
+           stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+  </div>
+  <div class="dbody">
+    <div class="dgroup">
+      <h4>The apps</h4>
+      <a class="dlink" href="../apps/toptick.html">
+        <img src="../assets/icon-toptick.png" alt="" width="320" height="320">
+        <span class="t">TopTick<small>Checklists · free</small></span>
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
+             stroke-linecap="round" stroke-linejoin="round"><path d="m9 5 7 7-7 7"/></svg>
+      </a>
+      <a class="dlink" href="../apps/nre-tracker.html">
+        <img class="round" src="../assets/icon-nre-tracker.png" alt="" width="320" height="320">
+        <span class="t">NRE Tracker<small>Days &amp; sea service · free</small></span>
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
+             stroke-linecap="round" stroke-linejoin="round"><path d="m9 5 7 7-7 7"/></svg>
+      </a>
+      <a class="dlink" href="../apps/portfolio-tracker.html">
+        <img src="../assets/icon-portfolio-tracker.png" alt="" width="320" height="320">
+        <span class="t">Portfolio Tracker<small>Funds &amp; capital gains · free</small></span>
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
+             stroke-linecap="round" stroke-linejoin="round"><path d="m9 5 7 7-7 7"/></svg>
+      </a>
+    </div>
+
+    <div class="dgroup">
+      <h4>Company</h4>
+      <a class="dlink" href="../index.html#apps"><span class="t">All apps</span>
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
+             stroke-linecap="round" stroke-linejoin="round"><path d="m9 5 7 7-7 7"/></svg></a>
+      <a class="dlink" href="../pricing.html"><span class="t">Pricing</span>
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
+             stroke-linecap="round" stroke-linejoin="round"><path d="m9 5 7 7-7 7"/></svg></a>
+      <a class="dlink" href="../index.html#offline"><span class="t">Where your data lives</span>
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
+             stroke-linecap="round" stroke-linejoin="round"><path d="m9 5 7 7-7 7"/></svg></a>
+      <a class="dlink" href="../index.html#faq"><span class="t">Questions</span>
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
+             stroke-linecap="round" stroke-linejoin="round"><path d="m9 5 7 7-7 7"/></svg></a>
+    </div>
+
+    <div class="dgroup">
+      <h4>Legal</h4>
+      <a class="dlink" href="../privacy/"><span class="t">Privacy</span>
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
+             stroke-linecap="round" stroke-linejoin="round"><path d="m9 5 7 7-7 7"/></svg></a>
+      <a class="dlink" href="mailto:info@tekzova.com"><span class="t">info@tekzova.com</span>
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
+             stroke-linecap="round" stroke-linejoin="round"><path d="m9 5 7 7-7 7"/></svg></a>
+    </div>
+  </div>
+  <div class="dfoot">
+    <a class="btn" href="../index.html#apps">See the three apps</a>
+    <a class="btn btn--ghost" href="../pricing.html">What it costs</a>
+  </div>
+</aside>
+
+<main>
+
+<section class="hero">
+  <div class="wrap">
+    <span class="eyebrow eyebrow--light">Privacy policy</span>
+    <h1 style="font-size:clamp(1.9rem,7.4vw,3rem)">TopTick collects nothing.</h1>
+    <p class="lede">No internet permission, no account, no analytics. Everything stays on your phone.</p>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+<div class="doc">
+      <div class="callout">
         <p>TopTick does not collect, transmit, store or share any personal data. It has no internet
           permission and is technically incapable of sending anything anywhere.</p>
       </div>
@@ -117,18 +185,58 @@
       </div>
     </div>
   </div>
+</section>
+
 </main>
 
+<!-- ======================= FOOTER ======================= -->
 <footer class="foot">
-  <div class="container">
-    <div class="base" style="border-top:0;padding-top:0">
-      <span>&copy; 2026 Tekzova Technologies. All rights reserved.</span>
-      <span><a href="../index.html">tekzova.com</a> &nbsp;&middot;&nbsp;
-            <a href="mailto:info@tekzova.com">info@tekzova.com</a></span>
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <a class="brand" href="../index.html" aria-label="Tekzova Technologies — home">
+          <img class="lgo lgo--light" src="../assets/logo-tekzova.svg"
+               alt="Tekzova Technologies" width="668" height="142">
+          <img class="lgo lgo--dark" src="../assets/logo-tekzova-dark.svg"
+               alt="" aria-hidden="true" width="668" height="142">
+        </a>
+        <p class="blurb">Practical apps for everyday problems. Built offline, on purpose.</p>
+      </div>
+      <div>
+        <h4>Apps</h4>
+        <ul>
+          <li><a href="../apps/toptick.html">TopTick</a></li>
+          <li><a href="../apps/nre-tracker.html">NRE Tracker</a></li>
+          <li><a href="../apps/portfolio-tracker.html">Portfolio Tracker</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a href="../index.html#apps">All apps</a></li>
+          <li><a href="../pricing.html">Pricing</a></li>
+          <li><a href="../index.html#offline">Your data</a></li>
+          <li><a href="../index.html#faq">Questions</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="../privacy/">Privacy</a></li>
+          <li><a href="../privacy/toptick.html">TopTick policy</a></li>
+          <li><a href="../privacy/nre-tracker.html">NRE Tracker policy</a></li>
+          <li><a href="../privacy/portfolio-tracker.html">Portfolio Tracker policy</a></li>
+          <li><a href="mailto:info@tekzova.com">info@tekzova.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="base">
+      <span>© 2026 Tekzova Technologies. All rights reserved.</span>
+      <span>tekzova.com · info@tekzova.com</span>
     </div>
   </div>
 </footer>
 
-<script src="../assets/theme.js"></script>
+<script src="../assets/bh.js"></script>
 </body>
 </html>

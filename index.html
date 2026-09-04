@@ -2,25 +2,25 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Tekzova Technologies — powering your daily digital toolkit</title>
-<meta name="description" content="Practical Android apps for everyday problems. Nothing is uploaded, no accounts, no ads. Free to use, with optional one-time upgrades and a 30-day refund.">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Tekzova Technologies — three free Android apps that keep your data on your phone</title>
+<meta name="description" content="Checklists, sea-service day counting and portfolio tracking. Free, offline, no account, no ads. Pick an app and install it in under a minute.">
 <link rel="canonical" href="https://www.tekzova.com/">
-<meta name="theme-color" content="#fdf8f3">
+<meta name="theme-color" content="#16273f">
+<link rel="icon" href="assets/icon-tekzova-tile.svg" type="image/svg+xml">
 <link rel="icon" href="assets/favicon.png" type="image/png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.tekzova.com/">
-<meta property="og:title" content="Tekzova Technologies — practical apps for everyday problems">
-<meta property="og:description" content="A growing toolkit of Android apps. Nothing uploaded, no sign-ups, no ads. Free to use, with optional one-time upgrades.">
-<meta property="og:image" content="https://www.tekzova.com/assets/og-image.png">
+<meta property="og:title" content="Tekzova Technologies — practical Android apps, free and offline">
+<meta property="og:description" content="Three apps. Nothing uploaded, no accounts, no ads. Free to use, one-time upgrades only.">
 <meta name="twitter:card" content="summary_large_image">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=Figtree:wght@400;500;600;700&display=swap">
-<link rel="stylesheet" href="assets/theme.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&family=Inter:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="assets/bh.css">
 
 <script type="application/ld+json">
 {
@@ -30,680 +30,505 @@
   "url":"https://www.tekzova.com/",
   "email":"info@tekzova.com",
   "slogan":"Powering your daily digital toolkit",
-  "contactPoint":{"@type":"ContactPoint","contactType":"customer support","email":"info@tekzova.com","availableLanguage":"English"},
-  "description":"Tekzova Technologies builds practical Android apps for everyday problems. Nothing is uploaded, there are no accounts and no ads, and the everyday features are free."
+  "description":"Tekzova Technologies builds practical Android apps that work offline and keep every byte on your own phone. No accounts, no ads, free to use."
 }
 </script>
 </head>
 <body>
 
-<!-- ============================ NAV ============================ -->
-<header class="nav">
-  <div class="container">
-    <a class="brand" href="index.html">
-      <svg class="g" viewBox="0 0 32 32" aria-hidden="true">
-        <rect x="1" y="1" width="30" height="30" rx="9" fill="var(--violet)"/>
-        <path d="M7.6 9.4h12.8" stroke="#fff" stroke-width="3.1" stroke-linecap="round"/>
-        <path d="M14 9.4v8" stroke="#fff" stroke-width="3.1" stroke-linecap="round"/>
-        <path d="m12.2 21.2 3.2 3.2 9-10" stroke="#fff" stroke-width="3.1"
-              fill="none" stroke-linecap="round" stroke-linejoin="round" opacity=".68"/>
-      </svg>
-      <span>Tekzova<i>.</i></span>
+<!-- ======================= TOP BAR ======================= -->
+<header class="bar">
+  <div class="wrap">
+    <a class="brand" href="index.html" aria-label="Tekzova Technologies — home">
+      <img class="lgo lgo--light" src="assets/logo-tekzova.svg"
+           alt="Tekzova Technologies" width="668" height="142">
+      <img class="lgo lgo--dark" src="assets/logo-tekzova-dark.svg"
+           alt="" aria-hidden="true" width="668" height="142">
     </a>
-    <nav class="nlinks">
-      <a href="#toolkit">Toolkit</a>
-      <a href="#safe" class="hd">Your data</a>
-      <a href="#feel" class="hd">How they feel</a>
-      <a href="#pricing" class="hd">Pricing</a>
-      <a href="#ask" class="hd">Questions</a>
-      <a class="btn btn--sm" href="#toolkit">Browse apps</a>
+    <nav class="desknav">
+      <a href="#apps">Apps</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="#offline">Your data</a>
+      <a href="#faq">FAQ</a>
+      <a href="privacy/">Privacy</a>
     </nav>
+    <span class="spacer"></span>
+    <a class="bar-cta" href="#apps">Get an app</a>
+    <button class="burger" type="button" aria-label="Open menu"
+            aria-expanded="false" aria-controls="drawer">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </header>
 
+<div class="scrim" id="scrim" hidden></div>
+
+<!-- ======================= DRAWER ======================= -->
+<aside class="drawer" id="drawer" hidden aria-label="Site menu">
+  <div class="dhead">
+    <span style="font-family:var(--disp);font-weight:800;letter-spacing:-.02em">Menu</span>
+    <button class="dclose" type="button" aria-label="Close menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
+           stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+  </div>
+  <div class="dbody">
+    <div class="dgroup">
+      <h4>The apps</h4>
+      <a class="dlink" href="apps/toptick.html">
+        <img src="assets/icon-toptick.png" alt="" width="320" height="320">
+        <span class="t">TopTick<small>Checklists · free</small></span>
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
+             stroke-linecap="round" stroke-linejoin="round"><path d="m9 5 7 7-7 7"/></svg>
+      </a>
+      <a class="dlink" href="apps/nre-tracker.html">
+        <img class="round" src="assets/icon-nre-tracker.png" alt="" width="320" height="320">
+        <span class="t">NRE Tracker<small>Days &amp; sea service · free</small></span>
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
+             stroke-linecap="round" stroke-linejoin="round"><path d="m9 5 7 7-7 7"/></svg>
+      </a>
+      <a class="dlink" href="apps/portfolio-tracker.html">
+        <img src="assets/icon-portfolio-tracker.png" alt="" width="320" height="320">
+        <span class="t">Portfolio Tracker<small>Funds &amp; capital gains · free</small></span>
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
+             stroke-linecap="round" stroke-linejoin="round"><path d="m9 5 7 7-7 7"/></svg>
+      </a>
+    </div>
+
+    <div class="dgroup">
+      <h4>Company</h4>
+      <a class="dlink" href="index.html#apps"><span class="t">All apps</span>
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
+             stroke-linecap="round" stroke-linejoin="round"><path d="m9 5 7 7-7 7"/></svg></a>
+      <a class="dlink" href="pricing.html"><span class="t">Pricing</span>
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
+             stroke-linecap="round" stroke-linejoin="round"><path d="m9 5 7 7-7 7"/></svg></a>
+      <a class="dlink" href="index.html#offline"><span class="t">Where your data lives</span>
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
+             stroke-linecap="round" stroke-linejoin="round"><path d="m9 5 7 7-7 7"/></svg></a>
+      <a class="dlink" href="index.html#faq"><span class="t">Questions</span>
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
+             stroke-linecap="round" stroke-linejoin="round"><path d="m9 5 7 7-7 7"/></svg></a>
+    </div>
+
+    <div class="dgroup">
+      <h4>Legal</h4>
+      <a class="dlink" href="privacy/"><span class="t">Privacy</span>
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
+             stroke-linecap="round" stroke-linejoin="round"><path d="m9 5 7 7-7 7"/></svg></a>
+      <a class="dlink" href="mailto:info@tekzova.com"><span class="t">info@tekzova.com</span>
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
+             stroke-linecap="round" stroke-linejoin="round"><path d="m9 5 7 7-7 7"/></svg></a>
+    </div>
+  </div>
+  <div class="dfoot">
+    <a class="btn" href="#apps">See the three apps</a>
+    <a class="btn btn--ghost" href="pricing.html">What it costs</a>
+  </div>
+</aside>
+
 <main>
 
-<!-- ============================ HERO ============================ -->
+<!-- ======================= HERO ======================= -->
 <section class="hero">
-  <div class="blobs" aria-hidden="true">
-    <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
-  </div>
-  <div class="container">
-    <div class="hgrid">
+  <div class="wrap">
+    <div class="herogrid">
       <div>
-        <p class="tag up a1"><span class="dot"></span>Tekzova Technologies</p>
-        <h1 class="up a2">Powering your<br><span class="hl">daily digital</span> toolkit.</h1>
-        <p class="lede up a3" style="margin-top:1.4rem">A growing family of Android apps for the
-          ordinary jobs of a week &mdash; the shopping, the paperwork, the money. Each one works
-          offline, asks nothing about you, and keeps every byte on your own phone.</p>
-        <div class="btns up a3" style="margin-top:2rem">
-          <a class="btn" href="#toolkit">
-            See the toolkit
-            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                 stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <span class="eyebrow eyebrow--light">Tekzova Technologies</span>
+        <h1>Three apps.<br>Zero rupees.<br>Nothing uploaded.</h1>
+        <p class="lede">Android apps for the ordinary jobs of a week — the shopping, the
+          paperwork, the money. Each one works with no signal and keeps every byte on your
+          phone.</p>
+        <div class="btns">
+          <a class="btn" href="#apps">
+            See the apps
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"
+                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M5 12h13"/><path d="m12 5 7 7-7 7"/></svg>
           </a>
-          <a class="btn btn--ghost" href="#safe">Why nothing is uploaded</a>
+          <a class="btn btn--outlineLight" href="#offline">Why offline</a>
         </div>
-        <p class="note up a4" style="margin-top:1.5rem">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
+        <p class="fine">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8"
                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="m5 13 4 4L19 7"/></svg>
-          <span>Free to use &middot; no account &middot; works with no signal</span>
+          <span>Free · no account · no ads · Android 7.0 and up</span>
         </p>
       </div>
-
-      <!-- the stage: one device cycling through three apps, plus floating facts.
-           The point of the motion is to show a toolkit rather than one app. -->
-      <div class="stage up a4">
-        <div class="slab floaty">
-          <div class="glass">
-            <div class="rot">
-
-              <!-- TopTick: rows tick themselves -->
-              <div class="scr" style="--sc:#6d3bf5">
-                <div class="shd"><span class="em">🛒</span><b>Grocery shopping &ndash; 29 Aug</b></div>
-                <div class="box">
-                  <div class="kk">Progress</div>
-                  <div class="vv">4 / 6 done</div>
-                  <div class="bar"><i style="width:67%"></i></div>
-                </div>
-                <div class="li"><span class="bx"><svg viewBox="0 0 24 24" stroke-linecap="round"
-                  stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg></span>
-                  <span class="n"><em>Ground beef</em></span><span class="q">2 lb</span></div>
-                <div class="li"><span class="bx"><svg viewBox="0 0 24 24" stroke-linecap="round"
-                  stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg></span>
-                  <span class="n"><em>Whole milk</em></span><span class="q">1 gal</span></div>
-                <div class="li"><span class="bx"><svg viewBox="0 0 24 24" stroke-linecap="round"
-                  stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg></span>
-                  <span class="n"><em>Eggs</em></span><span class="q">2 dozen</span></div>
-                <div class="li"><span class="bx"><svg viewBox="0 0 24 24" stroke-linecap="round"
-                  stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg></span>
-                  <span class="n"><em>Paper towels</em></span><span class="q">1 pack</span></div>
-                <div class="li" style="opacity:.55"><span class="bx" style="animation:none"></span>
-                  <span class="n">Rotisserie chicken</span><span class="q">+ ct</span></div>
-              </div>
-
-              <!-- Portfolio Tracker -->
-              <div class="scr" style="--sc:#2b8cff">
-                <div class="shd"><span class="em">📈</span><b>Portfolio</b></div>
-                <div class="box">
-                  <div class="kk">Total value</div>
-                  <div class="vv">18,42,660</div>
-                  <div class="bar"><i style="width:88%"></i></div>
-                </div>
-                <div class="box spark" style="padding:0;overflow:hidden">
-                  <svg viewBox="0 0 220 50" preserveAspectRatio="none"
-                       style="width:100%;height:100%;display:block" aria-hidden="true">
-                    <path d="M0 40 L30 33 L60 36 L90 21 L120 25 L150 13 L180 17 L220 5"
-                          fill="none" stroke="#2b8cff" stroke-width="2.2"/>
-                    <path d="M0 40 L30 33 L60 36 L90 21 L120 25 L150 13 L180 17 L220 5 L220 50 L0 50Z"
-                          fill="#2b8cff" opacity=".16"/>
-                  </svg>
-                </div>
-                <div class="li"><span class="n">Equity funds</span><span class="sm">62%</span></div>
-                <div class="li"><span class="n">Debt &amp; deposits</span><span class="sm">28%</span></div>
-                <div class="li"><span class="n">Gold</span><span class="sm">10%</span></div>
-              </div>
-
-              <!-- NRE Tracker -->
-              <div class="scr" style="--sc:#0fae7f">
-                <div class="shd"><span class="em">🧭</span><b>Financial year 2026&ndash;27</b></div>
-                <div class="box">
-                  <div class="kk">Days outside the country</div>
-                  <div class="vv">198 / 184</div>
-                  <div class="bar"><i style="width:100%"></i></div>
-                </div>
-                <div class="li"><span class="n">Sign-on &mdash; 14 Feb</span><span class="sm">112 d</span></div>
-                <div class="li"><span class="n">Sign-off &mdash; 06 Jun</span><span class="sm">86 d</span></div>
-                <div class="li" style="opacity:.6"><span class="n">+ Add a contract</span></div>
-              </div>
-
-            </div>
-          </div>
-        </div>
-
-        <div class="chipf cf1 floaty f1" style="--c:var(--mint);--cs:var(--mint-soft)">
-          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-            stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M18 8h1a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-9a2 2 0 0 1 2-2h1"/>
-            <path d="M8 8V6a4 4 0 0 1 8 0v2"/></svg></span>
-          Nothing uploaded
-        </div>
-        <div class="chipf cf2 floaty f2" style="--c:var(--coral);--cs:var(--coral-soft)">
-          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-            stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M12 3.5v17M3.5 12h17"/></svg></span>
-          More apps in build
-        </div>
-        <div class="chipf cf3 floaty f3" style="--c:var(--sky);--cs:var(--sky-soft)">
-          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-            stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M12 3.5a8.5 8.5 0 1 1-8.4 7.2"/><path d="M3.4 3.6v5.2h5.2"/></svg></span>
-          Works with no signal
-        </div>
+      <div class="heroart" aria-hidden="true">
+        <img class="ic" src="assets/icon-toptick.png" alt="" width="320" height="320">
+        <img class="ic round" src="assets/icon-nre-tracker.png" alt="" width="320" height="320">
+        <img class="ic" src="assets/icon-portfolio-tracker.png" alt="" width="320" height="320">
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============================ MARQUEE ============================ -->
-<section class="sec--tight warm" aria-label="What people use the toolkit for">
-  <div class="marq" aria-hidden="true">
-    <div class="track">
-      <span class="mchip">🛒 <b>Grocery run</b></span>
-      <span class="mchip">✈️ <b>Packing for a trip</b></span>
-      <span class="mchip">💰 <b>Monthly bills</b></span>
-      <span class="mchip">🚗 <b>Vehicle service</b></span>
-      <span class="mchip">📈 <b>Fund holdings</b></span>
-      <span class="mchip">🧭 <b>Days abroad</b></span>
-      <span class="mchip">🧹 <b>House cleaning</b></span>
-      <span class="mchip">🎉 <b>Party planning</b></span>
-      <span class="mchip">📚 <b>Exam prep</b></span>
-      <span class="mchip">⚓ <b>Joining a ship</b></span>
-      <span class="mchip">🌅 <b>Daily goals</b></span>
-      <span class="mchip">🩺 <b>Doctor visit</b></span>
-      <span class="mchip">🛒 <b>Grocery run</b></span>
-      <span class="mchip">✈️ <b>Packing for a trip</b></span>
-      <span class="mchip">💰 <b>Monthly bills</b></span>
-      <span class="mchip">🚗 <b>Vehicle service</b></span>
-      <span class="mchip">📈 <b>Fund holdings</b></span>
-      <span class="mchip">🧭 <b>Days abroad</b></span>
-      <span class="mchip">🧹 <b>House cleaning</b></span>
-      <span class="mchip">🎉 <b>Party planning</b></span>
-      <span class="mchip">📚 <b>Exam prep</b></span>
-      <span class="mchip">⚓ <b>Joining a ship</b></span>
-      <span class="mchip">🌅 <b>Daily goals</b></span>
-      <span class="mchip">🩺 <b>Doctor visit</b></span>
-    </div>
-  </div>
-  <div class="container" style="margin-top:1.6rem">
-    <div class="band">
-      <div class="st rv" style="--c:var(--violet)"><div class="v">3+</div><div class="k">Apps out, more in build</div></div>
-      <div class="st rv" style="--c:var(--mint)"><div class="v">0</div><div class="k">Bytes uploaded</div></div>
-      <div class="st rv" style="--c:var(--coral)"><div class="v">0</div><div class="k">Accounts to create</div></div>
-      <div class="st rv" style="--c:var(--sky)"><div class="v">0</div><div class="k">Subscriptions, ever</div></div>
+<!-- ======================= TRUST STRIP ======================= -->
+<section class="sec--sm">
+  <div class="wrap">
+    <div class="strip rv">
+      <div class="cell"><div class="n">₹0</div><div class="k">To use, forever</div></div>
+      <div class="cell"><div class="n">0</div><div class="k">Bytes uploaded</div></div>
+      <div class="cell"><div class="n">0</div><div class="k">Accounts to create</div></div>
+      <div class="cell"><div class="n">0</div><div class="k">Subscriptions, ever</div></div>
     </div>
   </div>
 </section>
 
-<!-- ============================ TOOLKIT ============================ -->
-<section class="sec" id="toolkit">
-  <div class="container">
-    <div class="head">
-      <p class="tag" style="--c:var(--violet);--cs:var(--violet-soft)"><span class="dot"></span>The toolkit</p>
-      <h2 class="rv">Out now, and building.</h2>
-      <p class="lede rv">Each app came from a job we kept doing badly on paper. Three have names
-        and pages; several more are on the bench. Every one of them follows the same rules.</p>
+<!-- ======================= PLAN CARDS ======================= -->
+<section class="sec wash" id="apps">
+  <div class="wrap">
+    <div class="head center">
+      <span class="eyebrow">Pick your app</span>
+      <h2>All three are free. Pick the job you need doing.</h2>
+      <p class="lede">Same four rules in every one: nothing uploaded, no account, no ads, and
+        the everyday features free.</p>
     </div>
 
-    <div class="apps">
+    <div class="plans">
 
-      <a class="ablock rv" href="apps/toptick.html"
-         style="--ac:#6d3bf5;--as:var(--violet-soft)">
-        <div class="icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
-               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <rect x="4" y="3.5" width="16" height="17" rx="2.8"/>
-            <path d="M9 2.5h6v3H9z" fill="currentColor" stroke="none"/>
-            <path d="m8.5 12 2.2 2.2 4.6-4.8"/><path d="M8.5 17.5h7"/></svg>
-        </div>
-        <div class="role">Checklists</div>
-        <h3>TopTick</h3>
-        <p>Sixteen ready-made lists with the right units already chosen, reminders that turn up,
-          and sharing that updates both phones instead of duplicating.</p>
-        <ul>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.7"
-                   stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg>
-            998 suggested items, ready to tap</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.7"
-                   stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg>
-            US or metric &mdash; items and units both</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.7"
-                   stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg>
-            No internet permission at all</li>
-        </ul>
-        <div class="foot">
-          <span class="chip live">Available now</span>
-          <span class="go">Explore
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                 stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M5 12h13"/><path d="m12 5 7 7-7 7"/></svg></span>
-        </div>
-      </a>
-
-      <a class="ablock rv" href="apps/nre-tracker.html"
-         style="--ac:#0fae7f;--as:var(--mint-soft)">
-        <div class="icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
-               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <rect x="3" y="4.5" width="18" height="16" rx="2.8"/><path d="M3 9.5h18"/>
-            <path d="M8 2.5v4M16 2.5v4"/></svg>
-        </div>
-        <div class="role">Days &amp; records</div>
-        <h3>NRE Tracker</h3>
-        <p>If your tax status depends on days spent outside the country, counting them on a
-          calendar in March is a bad plan. This keeps the running total as you go.</p>
-        <ul>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.7"
-                   stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg>
-            A day count that is always current</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.7"
-                   stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg>
-            Contracts and dates in one place</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.7"
-                   stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg>
-            Financial records that stay on the phone</li>
-        </ul>
-        <div class="foot">
-          <span class="chip soon">In development</span>
-          <span class="go">Learn more
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                 stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M5 12h13"/><path d="m12 5 7 7-7 7"/></svg></span>
-        </div>
-      </a>
-
-      <a class="ablock rv" href="apps/portfolio-tracker.html"
-         style="--ac:#2b8cff;--as:var(--sky-soft)">
-        <div class="icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
-               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M3 19.5h18"/>
-            <path d="M4.5 15.5V11M9.5 15.5V6.5M14.5 15.5V9M19.5 15.5V4"/></svg>
-        </div>
-        <div class="role">Money</div>
-        <h3>Portfolio Tracker</h3>
-        <p>Every fund, deposit and holding in one place with the returns worked out. Import your
-          own statements and read the whole picture without handing it to anybody.</p>
-        <ul>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.7"
-                   stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg>
-            Reads your own statement files</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.7"
-                   stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg>
-            Gains, allocation and history</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.7"
-                   stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg>
-            No broker login, ever</li>
-        </ul>
-        <div class="foot">
-          <span class="chip soon">In development</span>
-          <span class="go">Learn more
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                 stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M5 12h13"/><path d="m12 5 7 7-7 7"/></svg></span>
-        </div>
-      </a>
-
-    </div>
-
-    <div class="bench rv">
-      <div class="dots" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
-      <div class="bt">
-        <h3>More on the bench</h3>
-        <p>Several further apps are in development, each built to the same four rules &mdash; no
-          account, nothing uploaded, no ads, and the everyday features free. They get a page here
-          the moment they are real, not before.</p>
-      </div>
-      <a class="btn btn--ghost"
-         href="mailto:info@tekzova.com?subject=Tell%20me%20when%20the%20next%20app%20lands">Hear when they land</a>
-    </div>
-  </div>
-</section>
-
-<!-- ============================ YOUR DATA ============================ -->
-<section class="sec warm" id="safe">
-  <div class="container">
-    <div class="statement">
-      <div class="grid2">
-        <div>
-          <p class="tag" style="--c:#7be3c0;--cs:rgba(15,174,127,.16)"><span class="dot"></span>Your data</p>
-          <h2 class="rv">Nothing is uploaded.<br>That is the feature.</h2>
-          <p class="lede rv" style="margin-top:1.2rem">Most apps in this category are a friendly
-            front end for somebody else&rsquo;s database. Ours are not. Your lists, dates and
-            holdings are written to your own phone and read back from it &mdash; so there is no
-            copy anywhere to be leaked, sold, or lost in an outage.</p>
-          <p class="lede rv" style="margin-top:1rem">You still share when you want to: hand a list
-            to someone through WhatsApp or email, and their ticks come back into your copy. The
-            difference is that <strong style="color:#fff">you choose the moment</strong>, and
-            nothing moves on its own in the background.</p>
-
-          <div class="promises">
-            <div class="pr rv">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
-                   stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg>
-              <div><b>No automatic sync</b><span>Nothing leaves the phone unless you send it</span></div>
-            </div>
-            <div class="pr rv">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
-                   stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg>
-              <div><b>No account</b><span>Nothing is tied to an email address</span></div>
-            </div>
-            <div class="pr rv">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
-                   stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg>
-              <div><b>Your backup is your file</b><span>Kept where you choose, readable by you</span></div>
-            </div>
-            <div class="pr rv">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
-                   stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg>
-              <div><b>Works if we vanish</b><span>No service to go dark, no login to expire</span></div>
-            </div>
+      <!-- TopTick -->
+      <article class="plan plan--top rv" style="--c:#5b3ae8">
+        <span class="ribbon">On Google Play</span>
+        <div class="pic">
+          <img src="assets/icon-toptick.png" alt="TopTick app icon" width="320" height="320">
+          <div>
+            <div class="role">Checklists</div>
+            <h3>TopTick</h3>
           </div>
         </div>
+        <p class="sell">Sixteen ready-made lists with the right units already chosen — and
+          sharing that updates both phones.</p>
+        <div class="price"><span class="amt">₹0</span><span class="per">free, no account</span></div>
+        <p class="price-note">About 4 MB · Android 7.0+</p>
+        <ul class="ticks">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                   stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg>
+            <span><b>998 items</b> ready to tap, in 16 lists</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                   stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg>
+            <span>US or metric — items <em>and</em> units</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                   stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg>
+            <span>Reminders that survive a reboot</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                   stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg>
+            <span><b>No internet permission at all</b></span></li>
+        </ul>
+        <div class="go">
+          <a class="btn" href="https://play.google.com/store/apps/details?id=com.tekzova.toptick">
+            Get it on Google Play</a>
+          <p class="small"><a href="apps/toptick.html">See everything it does →</a></p>
+        </div>
+      </article>
 
-        <div class="rv">
-          <div class="tw" style="background:rgba(255,255,255,.045);border-color:rgba(255,255,255,.12)">
-            <table>
-              <thead>
-                <tr>
-                  <th scope="col" style="color:#fff">&nbsp;</th>
-                  <th scope="col" style="color:#b49bff">A Tekzova app</th>
-                  <th scope="col" style="color:#b9aad2">The usual app</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr><td style="color:#e7e0f5">Uploaded automatically</td><td class="y">Nothing</td><td class="n">Everything you type</td></tr>
-                <tr><td style="color:#e7e0f5">Where your data lives</td><td class="y">Your phone</td><td class="n">Their servers</td></tr>
-                <tr><td style="color:#e7e0f5">Sharing</td><td class="y">When you choose</td><td class="n">Continuous, by default</td></tr>
-                <tr><td style="color:#e7e0f5">Who holds the backup</td><td class="y">You do</td><td class="n">Their account</td></tr>
-                <tr><td style="color:#e7e0f5">Works with no signal</td><td class="y">Always</td><td class="n">Sometimes</td></tr>
-                <tr><td style="color:#e7e0f5">Ads and trackers</td><td class="y">None</td><td class="n">Usually both</td></tr>
-              </tbody>
-            </table>
+      <!-- NRE Tracker -->
+      <article class="plan rv" style="--c:#0d9c72">
+        <div class="pic">
+          <img class="round" src="assets/icon-nre-tracker.png" alt="NRE Tracker app icon"
+               width="320" height="320">
+          <div>
+            <div class="role">Days &amp; records</div>
+            <h3>NRE Tracker</h3>
           </div>
-          <p class="note rv" style="margin-top:1.2rem;color:#b9aad2">
+        </div>
+        <p class="sell">Your India and abroad days counted as you go, with the voyages and CDC
+          sea service that back them up.</p>
+        <div class="price"><span class="amt">₹0</span><span class="per">free, no account</span></div>
+        <p class="price-note">2.4 MB APK · Android 7.0+</p>
+        <ul class="ticks">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                   stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg>
+            <span>Day count against the <b>182-day limit</b>, live</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                   stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg>
+            <span>RNOR conditions across 11 years</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                   stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg>
+            <span>Voyages, CDC records, rank summary</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                   stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg>
+            <span>Excel in · Excel and PDF out</span></li>
+        </ul>
+        <div class="go">
+          <a class="btn" href="downloads/NRE-Tracker-2.5.apk" download>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
-                 stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg>
-            <span>With TopTick you can check this yourself: open <strong style="color:#fff">Settings
-              &rsaquo; Apps &rsaquo; TopTick &rsaquo; Permissions</strong>. There is no internet
-              permission to revoke, because none was requested.</span>
-          </p>
+                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 3.5v12"/><path d="m7 11 5 4.8 5-4.8"/><path d="M4.5 20h15"/></svg>
+            Download the APK</a>
+          <p class="small"><a href="apps/nre-tracker.html">See everything it does →</a></p>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
+      </article>
 
-<!-- ============================ HOW THEY FEEL ============================ -->
-<section class="sec" id="feel">
-  <div class="container">
-    <div class="head">
-      <p class="tag" style="--c:var(--coral);--cs:var(--coral-soft)"><span class="dot"></span>How they feel to use</p>
-      <h2 class="rv">The fewest taps to something useful.</h2>
-      <p class="lede rv">That is the rule every app here is built against.
-        <strong>TopTick shows it best</strong>, so it is the example below &mdash; three ways to
-        build a list, where most checklist apps hand you an empty box and a keyboard.</p>
+      <!-- Portfolio Tracker -->
+      <article class="plan rv" style="--c:#1a7ff0">
+        <div class="pic">
+          <img src="assets/icon-portfolio-tracker.png" alt="Portfolio Tracker app icon"
+               width="320" height="320">
+          <div>
+            <div class="role">Money</div>
+            <h3>Portfolio Tracker</h3>
+          </div>
+        </div>
+        <p class="sell">Feed it the statements you already download. It works out the returns,
+          the allocation and the tax reports.</p>
+        <div class="price"><span class="amt">₹0</span><span class="per">free, no account</span></div>
+        <p class="price-note">3.2 MB APK · Android 7.0+</p>
+        <ul class="ticks">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                   stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg>
+            <span>Reads CAS, CAMS and MFCentral files</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                   stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg>
+            <span>XIRR, allocation, net worth</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                   stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg>
+            <span>Capital gains, ITR and Schedule 112A</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                   stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg>
+            <span><b>No broker login, ever</b></span></li>
+        </ul>
+        <div class="go">
+          <a class="btn" href="downloads/Portfolio-Tracker-M28.apk" download>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
+                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 3.5v12"/><path d="m7 11 5 4.8 5-4.8"/><path d="M4.5 20h15"/></svg>
+            Download the APK</a>
+          <p class="small"><a href="apps/portfolio-tracker.html">See everything it does →</a></p>
+        </div>
+      </article>
     </div>
 
-    <div class="routes">
-      <div class="rt rv" style="--c:var(--violet);--cs:var(--violet-soft)">
-        <div class="num">01</div>
-        <h3>Tap from the suggestions</h3>
-        <p>Sixteen activities, 998 items, already grouped. Open Grocery and tap produce, dairy,
-          frozen, household. A full shop in about forty seconds without typing a word.</p>
-        <div class="best">No typing</div>
-      </div>
-      <div class="rt rv" style="--c:var(--coral);--cs:var(--coral-soft)">
-        <div class="num">02</div>
-        <h3>Paste a sentence &mdash; it becomes tickable</h3>
-        <p>Someone texts &ldquo;bread, eggs, coffee, dish soap, bananas&rdquo;. Copy it, tap once,
-          and you have five separate items with their own tick boxes. Commas, bullets, numbered
-          lines and line breaks are all understood.</p>
-        <div class="best">Nobody else does this</div>
-      </div>
-      <div class="rt rv" style="--c:var(--mint);--cs:var(--mint-soft)">
-        <div class="num">03</div>
-        <h3>Start blank, or import a shared one</h3>
-        <p>Type your own when the job is unusual. Or take a list someone sent you, import it, and
-          it arrives complete &mdash; items, quantities, units and the activity&rsquo;s own icon.</p>
-        <div class="best">Blank or shared</div>
-      </div>
-    </div>
-
-    <div class="demo rv">
-      <div class="bubble">
-        <span class="who">Sam &middot; 09:14</span>
-        can you grab bread, eggs, coffee, dish soap, bananas on the way home
-      </div>
-      <div class="ar" aria-hidden="true">
-        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-             stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M4 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-      </div>
-      <div class="outlist">
-        <div class="ro on"><span class="bb"><svg viewBox="0 0 24 24" stroke-linecap="round"
-          stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg></span>Bread</div>
-        <div class="ro on"><span class="bb"><svg viewBox="0 0 24 24" stroke-linecap="round"
-          stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg></span>Eggs</div>
-        <div class="ro"><span class="bb"></span>Coffee</div>
-        <div class="ro"><span class="bb"></span>Dish soap</div>
-        <div class="ro"><span class="bb"></span>Bananas</div>
-      </div>
-    </div>
-    <p class="note rv" style="margin-top:1.4rem">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
+    <p class="note rv" style="justify-content:center;max-width:60ch;margin-inline:auto">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8"
            stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg>
-      <span>NRE Tracker and Portfolio Tracker apply the same rule to their own jobs &mdash; a
-        sign-off date entered once, a statement imported once &mdash; and so will everything we
-        build after them.</span>
+      <span>Two of the three install from a file rather than the Play Store. It takes about a
+        minute — each app page walks you through it.</span>
     </p>
   </div>
 </section>
 
-<!-- ============================ GETTING STARTED ============================ -->
-<section class="sec warm">
-  <div class="container grid2 top">
-    <div>
-      <p class="tag" style="--c:var(--sky);--cs:var(--sky-soft)"><span class="dot"></span>Getting started</p>
-      <h2 class="rv">Nothing to set up.</h2>
-      <p class="lede rv" style="margin-top:1.05rem">No onboarding to sit through, no workspace to
-        name, no plan to choose. From tapping install to using the app is under a minute.</p>
-      <div class="btns" style="margin-top:2rem">
-        <a class="play" href="https://play.google.com/store/apps/details?id=com.tekzova.toptick">
-          <svg width="22" height="24" viewBox="0 0 24 26" aria-hidden="true">
-            <path d="M2 1.6v22.8c0 .7.4 1.1 1 1.3L15 13 3 .3c-.6.2-1 .6-1 1.3Z" fill="currentColor" opacity=".95"/>
-            <path d="m18.7 9.4-3.1-1.8L12.6 13l3 5.4 3.1-1.8c1.2-.7 1.2-2.5 0-3.2Z" fill="currentColor" opacity=".75"/>
-            <path d="M3 .3 15.6 7.6 18.7 9.4 3 .3Z" fill="currentColor" opacity=".6"/>
-          </svg>
-          <span class="t"><small>Get TopTick on</small><span>Google Play</span></span>
-        </a>
+<!-- ======================= WHY OFFLINE ======================= -->
+<section class="sec" id="offline">
+  <div class="wrap">
+    <div class="head center">
+      <span class="eyebrow">Where your data lives</span>
+      <h2>On your phone. That is the whole architecture.</h2>
+      <p class="lede">Not encrypted-in-transit, not stored-securely, not anonymised. Never sent.</p>
+    </div>
+
+    <div class="cards">
+      <div class="card rv">
+        <div class="ic" style="--c:var(--teal);--cs:var(--teal-wash)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+               stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 8h1a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-9a2 2 0 0 1 2-2h1"/>
+            <path d="M8 8V6a4 4 0 0 1 8 0v2"/></svg>
+        </div>
+        <h3>Nothing to breach</h3>
+        <p>No server holds your lists, your contracts or your holdings — because there is no
+          server. There is nothing of yours for anyone to lose.</p>
+      </div>
+      <div class="card rv">
+        <div class="ic" style="--c:var(--blue);--cs:var(--blue-wash)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+               stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 3.5a8.5 8.5 0 1 1-8.4 7.2"/><path d="M3.4 3.6v5.2h5.2"/></svg>
+        </div>
+        <h3>Works with no signal</h3>
+        <p>Mid-ocean, in a basement, on a plane. There is no online mode to fall back from, so
+          there is nothing to fall back to.</p>
+      </div>
+      <div class="card rv">
+        <div class="ic" style="--c:var(--amber);--cs:var(--amber-wash)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+               stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 3.5h9l4 4v13H6z"/><path d="M14 3.5v4.5h4.5"/><path d="M9 13h6M9 16.5h4"/></svg>
+        </div>
+        <h3>You hold the backup</h3>
+        <p>Every app writes a file you keep, wherever you like. A new phone is a thirty-second
+          restore, not an evening of retyping.</p>
       </div>
     </div>
 
-    <div class="steps rv">
-      <div class="step" style="--c:var(--violet);--cs:var(--violet-soft)">
-        <div class="sn">1</div>
-        <div>
-          <h3>Pick the app for the job</h3>
-          <p>Each one aimed at something specific, with more arriving. If none of them fits what
-            you need yet, none of them will waste your time pretending to.</p>
+    <div class="tablewrap rv" style="margin-top:32px">
+      <table>
+        <caption class="visually-hidden" style="position:absolute;left:-9999px">
+          How Tekzova apps compare with the usual approach</caption>
+        <thead>
+          <tr><th scope="col">&nbsp;</th><th scope="col" class="us">Tekzova apps</th>
+              <th scope="col">The usual app</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Your data</td><td class="yes">On your phone</td><td class="no">On their server</td></tr>
+          <tr><td>Account needed</td><td class="yes">None</td><td class="no">Email and password</td></tr>
+          <tr><td>Works offline</td><td class="yes">Always</td><td class="no">Sometimes</td></tr>
+          <tr><td>Ads and trackers</td><td class="yes">None</td><td class="no">Usually both</td></tr>
+          <tr><td>Backup</td><td class="yes">A file you own</td><td class="no">Their cloud</td></tr>
+          <tr><td>If the company vanishes</td><td class="yes">It keeps working</td><td class="no">It stops</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= PRICING ======================= -->
+<section class="sec wash" id="pricing">
+  <div class="wrap">
+    <div class="head center">
+      <span class="eyebrow">Pricing</span>
+      <h2>Free today. One-time later, if ever.</h2>
+      <p class="lede">Two things we will not do: charge a subscription, or sell what is on your
+        phone.</p>
+    </div>
+
+    <div class="tiers">
+      <div class="tier tier--now rv">
+        <span class="badge" style="--c:var(--teal);--cs:var(--teal-wash)">Available now</span>
+        <h3>Free</h3>
+        <div class="amt">₹0</div>
+        <p class="sub">Everything described on this site, in all three apps, with no time limit
+          and no account.</p>
+        <ul class="ticks">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                   stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg>
+            <span>Every feature currently built</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                   stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg>
+            <span>All three apps</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                   stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg>
+            <span>Backups, reports and exports included</span></li>
+        </ul>
+        <div class="go" style="margin-top:auto;padding-top:22px">
+          <a class="btn" href="#apps">Pick an app</a>
         </div>
       </div>
-      <div class="step" style="--c:var(--coral);--cs:var(--coral-soft)">
-        <div class="sn">2</div>
-        <div>
-          <h3>Install from Google Play</h3>
-          <p>A few megabytes. No permissions requested up front, because there is nothing we need
-            from your phone to get started.</p>
+
+      <div class="tier tier--soon rv">
+        <span class="badge" style="--c:var(--amber);--cs:var(--amber-wash)">Planned · nothing to buy yet</span>
+        <h3>Pro</h3>
+        <div class="amt">One-time</div>
+        <p class="sub">If advanced features are ever added, they will be a single payment —
+          never a subscription. You will try them before paying, and a full refund is available
+          for 30 days.</p>
+        <ul class="ticks">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                   stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg>
+            <span>Buy once, keep it</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                   stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg>
+            <span>Try before you pay</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                   stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg>
+            <span>Nothing free today ever moves behind it</span></li>
+        </ul>
+        <div class="go" style="margin-top:auto;padding-top:22px">
+          <a class="btn btn--ghost" href="pricing.html">How pricing works</a>
         </div>
       </div>
-      <div class="step" style="--c:var(--mint);--cs:var(--mint-soft)">
-        <div class="sn">3</div>
-        <div>
-          <h3>Open it and start</h3>
-          <p>No account, no email, no tour. TopTick asks your first name once, tells you exactly
-            why it is asking, and you can skip it.</p>
+
+      <div class="tier rv">
+        <span class="badge" style="--c:var(--coral);--cs:var(--coral-wash)">The promise</span>
+        <h3>What we will never do</h3>
+        <div class="amt">Never</div>
+        <p class="sub">This half of a pricing page usually goes unsaid. Here it is in writing.</p>
+        <ul class="ticks">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"
+                   stroke-linecap="round" style="color:var(--coral)"><path d="M6 6l12 12M18 6L6 18"/></svg>
+            <span>No monthly or yearly fee</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"
+                   stroke-linecap="round" style="color:var(--coral)"><path d="M6 6l12 12M18 6L6 18"/></svg>
+            <span>No ads, anywhere</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"
+                   stroke-linecap="round" style="color:var(--coral)"><path d="M6 6l12 12M18 6L6 18"/></svg>
+            <span>No selling, sharing or analysing your data</span></li>
+        </ul>
+        <div class="go" style="margin-top:auto;padding-top:22px">
+          <a class="btn btn--ghost" href="privacy/">Read the policies</a>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============================ PRICING ============================ -->
-<section class="sec" id="pricing">
-  <div class="container">
-    <div class="head">
-      <p class="tag" style="--c:var(--amber);--cs:var(--amber-soft)"><span class="dot"></span>What it costs</p>
-      <h2 class="rv">Free where it matters. One payment where it doesn&rsquo;t.</h2>
-      <p class="lede rv">The everyday features are free and stay free &mdash; no trial clock, no
-        account, no card. Some advanced features are a one-time purchase, and you can use them
-        before you decide.</p>
+<!-- ======================= FAQ ======================= -->
+<section class="sec" id="faq">
+  <div class="wrap">
+    <div class="head center">
+      <span class="eyebrow">Questions</span>
+      <h2>Before you install.</h2>
     </div>
-
-    <div class="prices">
-      <div class="pc rv" style="--c:var(--mint)">
-        <div class="big">Free</div>
-        <h3>The everyday features</h3>
-        <p>The features you actually opened the app for. Free with no time limit and no sign-up,
-          in every app we make, for as long as you use it.</p>
-      </div>
-      <div class="pc feat rv">
-        <div class="big">Once</div>
-        <h3>Advanced features</h3>
-        <p>A single payment and they are yours. Never a subscription, never a monthly charge, and
-          never a price that rises after you have bought.</p>
-      </div>
-      <div class="pc rv" style="--c:var(--sky)">
-        <div class="big">Try first</div>
-        <h3>Before you pay</h3>
-        <p>Use the advanced features in full and see whether they earn the money. No card details
-          up front, and nothing that starts charging when a trial quietly ends.</p>
-      </div>
-      <div class="pc rv" style="--c:var(--coral)">
-        <div class="big">30 days</div>
-        <h3>To change your mind</h3>
-        <p>Bought it and it was not what you wanted? Email us within a month and we refund the
-          whole amount. No form, no reason required.</p>
-      </div>
-    </div>
-
-    <p class="note rv" style="margin-top:1.7rem">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
-           stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg>
-      <span><strong>Every app we have shipped is entirely free today.</strong> When advanced
-        features arrive in any of them, this is how they will be sold &mdash; and the free
-        features will still be free.</span>
-    </p>
-  </div>
-</section>
-
-<!-- ============================ QUESTIONS ============================ -->
-<section class="sec warm" id="ask">
-  <div class="container grid2 top">
-    <div>
-      <p class="tag" style="--c:var(--violet);--cs:var(--violet-soft)"><span class="dot"></span>Questions</p>
-      <h2 class="rv">Fair things to ask.</h2>
-      <p class="lede rv" style="margin-top:1.05rem">Especially the two about money. Everybody
-        should ask those.</p>
-    </div>
-
-    <div class="faq rv">
+    <div class="faq rv" style="max-width:820px;margin-inline:auto">
       <details open>
-        <summary>If there are no ads, how do you make money?</summary>
-        <div class="ans">From people who choose to buy an advanced feature, once. That is the whole
-          business &mdash; no ads, no subscriptions, and above all no data business. TopTick cannot
-          sell your data even in principle, because it has no internet permission to send it with.
-          We would rather be paid openly by a few people than quietly by an advertiser at the
-          expense of all of them.</div>
+        <summary>Is it really free?</summary>
+        <div class="ans">Yes. No account, no trial period, no feature held back. If paid
+          features are added later they will be a one-time purchase and nothing that is free
+          today will move behind them.</div>
       </details>
       <details>
-        <summary>What is free, and what costs money?</summary>
-        <div class="ans">Everything you need to actually use an app is free, with no time limit, no
-          account and no card details. Some advanced features are a <strong>one-time
-          purchase</strong> &mdash; never a subscription. You can try those in full before
-          deciding, and if you buy and change your mind, email us within 30 days for a full
-          refund. Buy once, keep it.</div>
+        <summary>Why do two apps install from a file instead of Google Play?</summary>
+        <div class="ans">They are finished and in daily use but have not been through store
+          review yet. The APK on each app page is the same build, straight from us. When they
+          reach Play, those pages will carry the store link instead.</div>
       </details>
       <details>
-        <summary>Can two people work on the same list?</summary>
-        <div class="ans">Yes. Share it, they tick items in their own copy, send it back, and your
-          list updates rather than duplicating &mdash; their ticks, with the time each was done.
-          Because nothing is held online, your list is never sitting in a database waiting to be
-          leaked, and it keeps working in a shop with no signal.</div>
+        <summary>What does "nothing uploaded" actually mean?</summary>
+        <div class="ans">Your records are written to the app's own storage on your device and
+          read back from there. TopTick goes further and requests no internet permission at all
+          — check it yourself under Settings › Apps › TopTick. Portfolio Tracker can fetch
+          published fund prices if you ask it to, and nothing about your holdings goes with that
+          request.</div>
       </details>
       <details>
-        <summary>Do I need to create an account?</summary>
-        <div class="ans">No. There is no sign-up screen in any Tekzova app. You install it and it
-          works. Nothing is tied to an email address, so nothing follows you around.</div>
+        <summary>What happens when I change phones?</summary>
+        <div class="ans">Each app writes a backup file you keep. Copy it across, import it, and
+          everything comes back. Because we hold nothing, there is nothing for us to lose.</div>
       </details>
       <details>
-        <summary>What happens to my data if I change phones?</summary>
-        <div class="ans">Each app writes a backup file you keep yourself &mdash; on Drive, a
-          computer, anywhere. Restoring it on the new phone brings everything back. Because we
-          hold nothing, there is nothing for us to lose or leak.</div>
-      </details>
-      <details>
-        <summary>How many apps are there, really?</summary>
-        <div class="ans">Three have public pages, one of them on Google Play today, and several
-          more are in development. We list an app here when it exists and works, which is why the
-          page grows slowly and why nothing on it is a mock-up of something unbuilt.</div>
-      </details>
-      <details>
-        <summary>Who is behind Tekzova?</summary>
-        <div class="ans">A small independent team. The apps come out of real working life &mdash;
-          checklists that had to work at sea with no signal, day-counts that decided a tax return,
-          investments tracked across a decade of it. That is why they are practical rather than
-          pretty.</div>
+        <summary>Which Android versions?</summary>
+        <div class="ans">7.0 and newer, which covers effectively every phone still in use. The
+          apps are between 2 and 4 MB.</div>
       </details>
       <details>
         <summary>How do I report a bug or ask for a feature?</summary>
         <div class="ans">Email <a href="mailto:info@tekzova.com">info@tekzova.com</a>. It reaches
-          the people who wrote the app, and requests do get built &mdash; several features in
-          TopTick started as a message from someone using it.</div>
+          the people who wrote the app, and requests do get built.</div>
       </details>
     </div>
   </div>
 </section>
 
-<!-- ============================ CTA ============================ -->
-<section class="sec" id="get">
-  <div class="container">
-    <div class="cta">
-      <p class="tag ctr" style="--c:#fff;--cs:rgba(255,255,255,.18)"><span class="dot"></span>Start anywhere in the toolkit</p>
-      <h2>Your phone does the work.<br>Nothing else needs to know.</h2>
-      <p class="lede ctr">TopTick is out now and free on Google Play, with nothing held back
-        &mdash; the quickest way to see how all of these apps behave. The rest of the toolkit
-        follows the same rules, and lands here as it ships.</p>
-      <div class="btns ctr" style="margin-top:2rem">
-        <a class="play" href="https://play.google.com/store/apps/details?id=com.tekzova.toptick">
-          <svg width="22" height="24" viewBox="0 0 24 26" aria-hidden="true">
-            <path d="M2 1.6v22.8c0 .7.4 1.1 1 1.3L15 13 3 .3c-.6.2-1 .6-1 1.3Z" fill="currentColor" opacity=".95"/>
-            <path d="m18.7 9.4-3.1-1.8L12.6 13l3 5.4 3.1-1.8c1.2-.7 1.2-2.5 0-3.2Z" fill="currentColor" opacity=".75"/>
-            <path d="M3 .3 15.6 7.6 18.7 9.4 3 .3Z" fill="currentColor" opacity=".6"/>
-          </svg>
-          <span class="t"><small>Get it on</small><span>Google Play</span></span>
-        </a>
-        <a class="btn btn--ghost" href="#toolkit">Browse the whole toolkit</a>
+<!-- ======================= CTA ======================= -->
+<section class="sec--sm">
+  <div class="wrap">
+    <div class="cta rv">
+      <span class="eyebrow eyebrow--light">Free · No account · No ads</span>
+      <h2>Install one. It takes a minute.</h2>
+      <p class="lede">Start with whichever job is annoying you most this week.</p>
+      <div class="btns">
+        <a class="btn btn--onDark" href="#apps">See the three apps</a>
+        <a class="btn btn--outlineLight" href="privacy/">Read the privacy policies</a>
       </div>
-      <p class="note" style="margin-top:1.4rem">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
-             stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg>
-        <span>TopTick: free &middot; no account &middot; Android 7.0 and above &middot; about 4 MB</span>
-      </p>
     </div>
   </div>
 </section>
 
 </main>
 
-<!-- ============================ FOOTER ============================ -->
+<!-- ======================= FOOTER ======================= -->
 <footer class="foot">
-  <div class="container">
+  <div class="wrap">
     <div class="cols">
       <div>
-        <a class="brand" href="index.html">
-          <svg class="g" viewBox="0 0 32 32" aria-hidden="true">
-            <rect x="1" y="1" width="30" height="30" rx="9" fill="var(--violet)"/>
-            <path d="M7.6 9.4h12.8" stroke="#fff" stroke-width="3.1" stroke-linecap="round"/>
-            <path d="M14 9.4v8" stroke="#fff" stroke-width="3.1" stroke-linecap="round"/>
-            <path d="m12.2 21.2 3.2 3.2 9-10" stroke="#fff" stroke-width="3.1"
-                  fill="none" stroke-linecap="round" stroke-linejoin="round" opacity=".68"/>
-          </svg>
-          <span>Tekzova<i>.</i></span>
+        <a class="brand" href="index.html" aria-label="Tekzova Technologies — home">
+          <img class="lgo lgo--light" src="assets/logo-tekzova.svg"
+               alt="Tekzova Technologies" width="668" height="142">
+          <img class="lgo lgo--dark" src="assets/logo-tekzova-dark.svg"
+               alt="" aria-hidden="true" width="668" height="142">
         </a>
-        <p>Practical apps for everyday problems. Built offline, on purpose.</p>
+        <p class="blurb">Practical apps for everyday problems. Built offline, on purpose.</p>
       </div>
       <div>
         <h4>Apps</h4>
@@ -711,16 +536,15 @@
           <li><a href="apps/toptick.html">TopTick</a></li>
           <li><a href="apps/nre-tracker.html">NRE Tracker</a></li>
           <li><a href="apps/portfolio-tracker.html">Portfolio Tracker</a></li>
-          <li><a href="mailto:info@tekzova.com?subject=Tell%20me%20when%20the%20next%20app%20lands">More in build</a></li>
         </ul>
       </div>
       <div>
         <h4>Company</h4>
         <ul>
-          <li><a href="#toolkit">Toolkit</a></li>
-          <li><a href="#safe">Your data</a></li>
-          <li><a href="#pricing">Pricing</a></li>
-          <li><a href="#ask">Questions</a></li>
+          <li><a href="#apps">All apps</a></li>
+          <li><a href="pricing.html">Pricing</a></li>
+          <li><a href="#offline">Your data</a></li>
+          <li><a href="#faq">Questions</a></li>
         </ul>
       </div>
       <div>
@@ -728,18 +552,19 @@
         <ul>
           <li><a href="privacy/">Privacy</a></li>
           <li><a href="privacy/toptick.html">TopTick policy</a></li>
+          <li><a href="privacy/nre-tracker.html">NRE Tracker policy</a></li>
+          <li><a href="privacy/portfolio-tracker.html">Portfolio Tracker policy</a></li>
           <li><a href="mailto:info@tekzova.com">info@tekzova.com</a></li>
         </ul>
       </div>
     </div>
     <div class="base">
-      <span>&copy; 2026 Tekzova Technologies. All rights reserved.</span>
-      <span><a href="index.html">tekzova.com</a> &nbsp;&middot;&nbsp;
-            <a href="mailto:info@tekzova.com">info@tekzova.com</a></span>
+      <span>© 2026 Tekzova Technologies. All rights reserved.</span>
+      <span>tekzova.com · info@tekzova.com</span>
     </div>
   </div>
 </footer>
 
-<script src="assets/theme.js"></script>
+<script src="assets/bh.js"></script>
 </body>
 </html>

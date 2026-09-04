@@ -2,185 +2,387 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Portfolio Tracker — holdings, offline | Tekzova</title>
-<meta name="description" content="Portfolio Tracker reads your own statement files and shows every fund, deposit and holding with the returns worked out. Offline, no broker login. In development at Tekzova Technologies.">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Portfolio Tracker — funds, assets and capital gains | Tekzova</title>
+<meta name="description" content="Reads your own CAS and capital-gain statements, works out XIRR, allocation and net worth, and prints ITR and Schedule 112A reports — entirely on your phone. No broker login.">
 <link rel="canonical" href="https://www.tekzova.com/apps/portfolio-tracker.html">
-<meta name="theme-color" content="#fdf8f3">
+<meta name="theme-color" content="#16273f">
+<link rel="icon" href="../assets/icon-tekzova-tile.svg" type="image/svg+xml">
 <link rel="icon" href="../assets/favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Portfolio Tracker — holdings, offline">
-<meta property="og:description" content="Every fund, deposit and holding in one place, read from your own statements. No broker login, nothing uploaded.">
+<meta property="og:title" content="Portfolio Tracker — funds, assets and capital gains | Tekzova">
+<meta property="og:description" content="Reads your own CAS and capital-gain statements, works out XIRR, allocation and net worth, and prints ITR and Schedule 112A reports — entirely on your phone. No broker login.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=Figtree:wght@400;500;600;700&display=swap">
-<link rel="stylesheet" href="../assets/theme.css">
-<style>
-  :root{ --accent:#2b8cff; --accent-soft:#e2efff; }
-  @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){ --accent-soft:#152c4d; } }
-  :root[data-theme="dark"]{ --accent-soft:#152c4d; }
-  .b1{background:radial-gradient(circle,var(--sky),transparent 68%)}
-  .b2{background:radial-gradient(circle,#8a2be0,transparent 68%)}
-  .sli{display:flex;align-items:center;gap:9px;background:#1d1730;border:1px solid #2c2340;
-    border-radius:12px;padding:10px 11px;margin-bottom:6px;font-size:12px}
-  .sli .n{flex:1;font-weight:600}
-  .sli .sm{font-size:11px;color:#8d80aa;font-weight:600}
-  .sli .up{color:#5fe0b5;font-size:11px;font-weight:600;opacity:1;transform:none;animation:none}
-</style>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&family=Inter:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="../assets/bh.css">
 </head>
 <body>
 
-<header class="nav">
-  <div class="container">
-    <a class="brand" href="../index.html">
-      <svg class="g" viewBox="0 0 32 32" aria-hidden="true">
-        <rect x="1" y="1" width="30" height="30" rx="9" fill="var(--violet)"/>
-        <path d="M7.6 9.4h12.8" stroke="#fff" stroke-width="3.1" stroke-linecap="round"/>
-        <path d="M14 9.4v8" stroke="#fff" stroke-width="3.1" stroke-linecap="round"/>
-        <path d="m12.2 21.2 3.2 3.2 9-10" stroke="#fff" stroke-width="3.1"
-              fill="none" stroke-linecap="round" stroke-linejoin="round" opacity=".68"/>
-      </svg>
-      <span>Tekzova<i>.</i></span>
+<!-- ======================= TOP BAR ======================= -->
+<header class="bar">
+  <div class="wrap">
+    <a class="brand" href="../index.html" aria-label="Tekzova Technologies — home">
+      <img class="lgo lgo--light" src="../assets/logo-tekzova.svg"
+           alt="Tekzova Technologies" width="668" height="142">
+      <img class="lgo lgo--dark" src="../assets/logo-tekzova-dark.svg"
+           alt="" aria-hidden="true" width="668" height="142">
     </a>
-    <nav class="nlinks">
-      <a href="../index.html#toolkit">Toolkit</a>
-      <a href="toptick.html" class="hd">TopTick</a>
-      <a href="../index.html#ask" class="hd">Questions</a>
-      <a class="btn btn--sm" href="#notify">Tell me when it lands</a>
+    <nav class="desknav">
+      <a href="../index.html#apps">Apps</a>
+      <a href="../pricing.html">Pricing</a>
+      <a href="../index.html#offline">Your data</a>
+      <a href="../index.html#faq">FAQ</a>
+      <a href="../privacy/">Privacy</a>
     </nav>
+    <span class="spacer"></span>
+    <a class="bar-cta" href="../index.html#apps">Get an app</a>
+    <button class="burger" type="button" aria-label="Open menu"
+            aria-expanded="false" aria-controls="drawer">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </header>
+
+<div class="scrim" id="scrim" hidden></div>
+
+<!-- ======================= DRAWER ======================= -->
+<aside class="drawer" id="drawer" hidden aria-label="Site menu">
+  <div class="dhead">
+    <span style="font-family:var(--disp);font-weight:800;letter-spacing:-.02em">Menu</span>
+    <button class="dclose" type="button" aria-label="Close menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
+           stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+  </div>
+  <div class="dbody">
+    <div class="dgroup">
+      <h4>The apps</h4>
+      <a class="dlink" href="../apps/toptick.html">
+        <img src="../assets/icon-toptick.png" alt="" width="320" height="320">
+        <span class="t">TopTick<small>Checklists · free</small></span>
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
+             stroke-linecap="round" stroke-linejoin="round"><path d="m9 5 7 7-7 7"/></svg>
+      </a>
+      <a class="dlink" href="../apps/nre-tracker.html">
+        <img class="round" src="../assets/icon-nre-tracker.png" alt="" width="320" height="320">
+        <span class="t">NRE Tracker<small>Days &amp; sea service · free</small></span>
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
+             stroke-linecap="round" stroke-linejoin="round"><path d="m9 5 7 7-7 7"/></svg>
+      </a>
+      <a class="dlink" href="../apps/portfolio-tracker.html">
+        <img src="../assets/icon-portfolio-tracker.png" alt="" width="320" height="320">
+        <span class="t">Portfolio Tracker<small>Funds &amp; capital gains · free</small></span>
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
+             stroke-linecap="round" stroke-linejoin="round"><path d="m9 5 7 7-7 7"/></svg>
+      </a>
+    </div>
+
+    <div class="dgroup">
+      <h4>Company</h4>
+      <a class="dlink" href="../index.html#apps"><span class="t">All apps</span>
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
+             stroke-linecap="round" stroke-linejoin="round"><path d="m9 5 7 7-7 7"/></svg></a>
+      <a class="dlink" href="../pricing.html"><span class="t">Pricing</span>
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
+             stroke-linecap="round" stroke-linejoin="round"><path d="m9 5 7 7-7 7"/></svg></a>
+      <a class="dlink" href="../index.html#offline"><span class="t">Where your data lives</span>
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
+             stroke-linecap="round" stroke-linejoin="round"><path d="m9 5 7 7-7 7"/></svg></a>
+      <a class="dlink" href="../index.html#faq"><span class="t">Questions</span>
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
+             stroke-linecap="round" stroke-linejoin="round"><path d="m9 5 7 7-7 7"/></svg></a>
+    </div>
+
+    <div class="dgroup">
+      <h4>Legal</h4>
+      <a class="dlink" href="../privacy/"><span class="t">Privacy</span>
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
+             stroke-linecap="round" stroke-linejoin="round"><path d="m9 5 7 7-7 7"/></svg></a>
+      <a class="dlink" href="mailto:info@tekzova.com"><span class="t">info@tekzova.com</span>
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
+             stroke-linecap="round" stroke-linejoin="round"><path d="m9 5 7 7-7 7"/></svg></a>
+    </div>
+  </div>
+  <div class="dfoot">
+    <a class="btn" href="../index.html#apps">See the three apps</a>
+    <a class="btn btn--ghost" href="../pricing.html">What it costs</a>
+  </div>
+</aside>
 
 <main>
 
 <section class="hero">
-  <div class="blobs" aria-hidden="true"><div class="blob b1"></div><div class="blob b2"></div></div>
-  <div class="container">
-    <div class="hgrid">
+  <div class="wrap">
+    <div class="lockup">
+      <img class="" src="../assets/icon-portfolio-tracker.png" alt="Portfolio Tracker app icon" width="320" height="320">
       <div>
-        <p class="tag up a1" style="--c:var(--sky);--cs:var(--sky-soft)">
-          <span class="dot"></span>Portfolio Tracker &middot; In development</p>
-        <h1 class="up a2">Everything you own,<br><span class="hl">on one screen.</span></h1>
-        <p class="lede up a3" style="margin-top:1.3rem">Funds in one app, deposits in a passbook,
-          shares in a broker portal, gold in a drawer. Portfolio Tracker reads the statements you
-          already receive and puts the whole picture in one place &mdash; without asking for a
-          single login.</p>
-        <div class="btns up a3" style="margin-top:2rem">
-          <a class="btn" href="#notify">Tell me when it lands</a>
-          <a class="btn btn--ghost" href="toptick.html">See TopTick, available now</a>
-        </div>
-        <p class="note up a4" style="margin-top:1.5rem">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
-               stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg>
-          <span>Android &middot; offline &middot; free to use, no subscription</span>
-        </p>
+        <p class="nm">Portfolio Tracker</p>
+        <p class="sub">Funds, assets and capital gains</p>
       </div>
-
-      <div class="stage up a4">
-        <div class="slab floaty">
-          <div class="glass" style="padding:30px 13px 15px;height:auto;min-height:360px">
-            <div style="font-family:var(--disp);font-weight:700;font-size:13.5px;margin-bottom:11px">
-              Portfolio</div>
-            <div class="box">
-              <div class="kk">Total value</div>
-              <div class="vv">18,42,660</div>
-              <div style="font-size:11px;color:#5fe0b5;margin-top:5px">&#9650; 12.4% overall</div>
-            </div>
-            <div class="box" style="padding:0;overflow:hidden;height:62px">
-              <svg viewBox="0 0 220 62" preserveAspectRatio="none"
-                   style="width:100%;height:100%;display:block" aria-hidden="true">
-                <path d="M0 50 L30 41 L60 45 L90 26 L120 31 L150 16 L180 21 L220 6"
-                      fill="none" stroke="#2b8cff" stroke-width="2.4"/>
-                <path d="M0 50 L30 41 L60 45 L90 26 L120 31 L150 16 L180 21 L220 6 L220 62 L0 62Z"
-                      fill="#2b8cff" opacity=".16"/>
-              </svg>
-            </div>
-            <div class="kk" style="margin:13px 0 7px">Allocation</div>
-            <div class="sli"><span class="n">Equity funds</span><span class="sm">62%</span></div>
-            <div class="sli"><span class="n">Debt &amp; deposits</span><span class="sm">28%</span></div>
-            <div class="sli" style="margin-bottom:0"><span class="n">Gold</span><span class="sm">10%</span></div>
-          </div>
+    </div>
+    <h1 style="margin-top:26px;font-size:clamp(1.75rem,7.2vw,3rem)">Your whole portfolio.<br>No broker login.</h1>
+    <p class="lede">Every tracking app wants your credentials. This one wants a file. Feed it the statements you already download — it works out the returns, the allocation, the net worth and the tax reports.</p>
+    <div class="btns">
+      <a class="btn" href="../downloads/Portfolio-Tracker-M28.apk" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.5v12"/><path d="m7 11 5 4.8 5-4.8"/><path d="M4.5 20h15"/></svg> Download the APK</a>
+      <a class="btn btn--outlineLight" href="#import">Which files it reads</a>
+    </div>
+    <p class="fine">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8"
+           stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="m5 13 4 4L19 7"/></svg>
+      <span>Free &middot; no account &middot; 3.2 MB &middot; installs from a file, not the Play Store</span>
+    </p>
+  </div>
+</section>
+<section class="sec--sm">
+  <div class="wrap">
+    <div class="strip rv">
+      <div class="cell"><div class="n">4</div><div class="k">Statement formats read</div></div>
+      <div class="cell"><div class="n">9</div><div class="k">Kinds of asset tracked</div></div>
+      <div class="cell"><div class="n">7</div><div class="k">Reports it prints</div></div>
+      <div class="cell"><div class="n">0</div><div class="k">Passwords you hand over</div></div>
+    </div>
+  </div>
+</section>
+<section class="sec" id="import">
+  <div class="wrap">
+    <div class="head center">
+      <span class="eyebrow">Getting your data in</span>
+      <h2>It reads the statements you already get.</h2>
+      <p class="lede">Request a consolidated statement for your own folios — free, a couple of minutes. No credentials, no API access, no third party in between.</p>
+    </div>
+      <div class="rows rv">
+        <div class="row">
+          <span class="rc" style="--c:var(--blue);--cs:var(--blue-wash)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3.5h9l4 4v13H6z"/><path d="M14 3.5v4.5h4.5"/></svg></span>
+          <span class="rt"><b>Consolidated CAS</b><span>CAMS and KFintech together, password-protected included</span></span>
+          <span class="tag">PDF</span>
         </div>
-        <div class="chipf cf1 floaty f1" style="--c:var(--sky);--cs:var(--sky-soft)">
-          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-            stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/>
-            <path d="M14 3v5h5"/></svg></span>
-          Reads your statements
+        <div class="row">
+          <span class="rc" style="--c:var(--blue);--cs:var(--blue-wash)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3.5h9l4 4v13H6z"/><path d="M14 3.5v4.5h4.5"/></svg></span>
+          <span class="rt"><b>CAMS account statement</b><span>The detailed transaction statement</span></span>
+          <span class="tag">PDF</span>
         </div>
-        <div class="chipf cf2 floaty f2" style="--c:var(--mint);--cs:var(--mint-soft)">
-          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-            stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M18 8h1a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-9a2 2 0 0 1 2-2h1"/>
-            <path d="M8 8V6a4 4 0 0 1 8 0v2"/></svg></span>
-          No broker login
+        <div class="row">
+          <span class="rc" style="--c:var(--teal);--cs:var(--teal-wash)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="4" width="17" height="16" rx="2.4"/><path d="M3.5 9h17M9 9v11"/></svg></span>
+          <span class="rt"><b>MFCentral detailed CAS</b><span>The spreadsheet export</span></span>
+          <span class="tag">XLSX</span>
         </div>
+        <div class="row">
+          <span class="rc" style="--c:var(--teal);--cs:var(--teal-wash)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="4" width="17" height="16" rx="2.4"/><path d="M3.5 9h17M9 9v11"/></svg></span>
+          <span class="rt"><b>MFCentral capital gains</b><span>Realised gains, recognised automatically</span></span>
+          <span class="tag">XLSX</span>
+        </div>
+        <div class="row">
+          <span class="rc" style="--c:var(--amber);--cs:var(--amber-wash)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19.5h14"/><path d="M8 16V9.5M12 16V5M16 16v-4"/></svg></span>
+          <span class="rt"><b>Stock holdings</b><span>Your broker&rsquo;s own spreadsheet export</span></span>
+          <span class="tag">XLSX</span>
+        </div>
+      </div>
+    <p class="note rv" style="justify-content:center"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg><span>Password-protected PDFs are opened on the device. Overlapping statements are reconciled, not double-counted — and an import log shows exactly what will be added before you commit.</span></p>
+  </div>
+</section>
+<section class="sec wash">
+  <div class="wrap">
+    <div class="head center">
+      <span class="eyebrow">What it works out</span>
+      <h2>Returns done properly, not &ldquo;current minus invested&rdquo;.</h2>
+      <p class="lede">Money went in on forty different dates. A single percentage is not an answer.</p>
+    </div>
+    <div class="cards">
+      <div class="card rv">
+        <div class="ic" style="--c:var(--blue);--cs:var(--blue-wash)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19h16"/><path d="M5 15.5 10 9l3.5 3.5L19 5"/></svg></div>
+        <h3>XIRR, three ways</h3>
+        <p><b>Current</b> for what you hold, <b>lifetime</b> including everything sold, and <b>combined</b> across the portfolio. Scheme XIRR counts every folio, including redeemed ones — where most calculations quietly go wrong.</p>
+      </div>
+      <div class="card rv">
+        <div class="ic" style="--c:var(--teal);--cs:var(--teal-wash)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 3.5v8.5l6 4"/></svg></div>
+        <h3>Realised and unrealised, apart</h3>
+        <p>Booked gains and paper gains are different questions with different tax consequences. Five distinct lines, not one blended number.</p>
+      </div>
+      <div class="card rv">
+        <div class="ic" style="--c:var(--amber);--cs:var(--amber-wash)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5a8.5 8.5 0 1 0 8.5 8.5H12Z"/><path d="M14.5 2.6A8.5 8.5 0 0 1 21.4 9.5H14.5Z"/></svg></div>
+        <h3>Allocation, three cuts</h3>
+        <p>By asset class, by AMC, and scheme by scheme — so &ldquo;am I diversified or do I own the same twelve companies five times?&rdquo; has a chart rather than a feeling.</p>
+      </div>
+      <div class="card rv">
+        <div class="ic" style="--c:var(--coral);--cs:var(--coral-wash)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 18 8 11l4 3.5 8-9.5"/><path d="M15.5 5h5v5"/></svg></div>
+        <h3>Growth, against a benchmark</h3>
+        <p>Your value over time drawn at NAV rather than at cost, with NIFTY on the same axes. The honest version of &ldquo;am I beating the index?&rdquo;</p>
+      </div>
+      <div class="card rv">
+        <div class="ic" style="--c:var(--blue);--cs:var(--blue-wash)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 15.5-6.2M21 12a9 9 0 0 1-15.5 6.2"/><path d="M18 3v3.5h-3.5M6 21v-3.5h3.5"/></svg></div>
+        <h3>Today&rsquo;s change, dated</h3>
+        <p>Latest NAVs when you ask for them, and the dashboard always shows which date the valuation is as of — so a stale number is visibly stale.</p>
+      </div>
+      <div class="card rv">
+        <div class="ic" style="--c:var(--teal);--cs:var(--teal-wash)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="15" rx="2.6"/><path d="M3.5 10h17"/><path d="M8 2.6v4.4M16 2.6v4.4"/></svg></div>
+        <h3>SIPs, detected not typed</h3>
+        <p>The app spots the recurring pattern in your own transactions and proposes the SIP. Registered versus active, monthly or quarterly.</p>
       </div>
     </div>
   </div>
 </section>
-
-<section class="sec warm">
-  <div class="container">
-    <div class="head">
-      <p class="tag" style="--c:var(--sky);--cs:var(--sky-soft)"><span class="dot"></span>The problem</p>
-      <h2 class="rv">Your money is scattered across six apps.</h2>
-      <p class="lede rv">Every one of them shows a slice and calls it a portfolio, and every one
-        wants a login to do it. The only way to see the whole thing has been a spreadsheet you
-        stopped updating months ago.</p>
+<section class="sec" id="assets">
+  <div class="wrap">
+    <div class="head center">
+      <span class="eyebrow">Beyond funds</span>
+      <h2>Net worth means all of it, not the interesting part.</h2>
     </div>
-
-    <div class="routes">
-      <div class="rt rv" style="--c:var(--sky);--cs:var(--sky-soft)">
-        <div class="num">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
-               stroke-linecap="round" stroke-linejoin="round" style="width:26px;height:26px">
-            <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/>
-            <path d="M14 3v5h5"/></svg>
+      <div class="rows rv">
+        <div class="row">
+          <span class="rc" style="--c:var(--blue);--cs:var(--blue-wash)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19h16"/><path d="M5 15.5 10 9l3.5 3.5L19 5"/></svg></span>
+          <span class="rt"><b>Mutual funds</b><span>Imported from your CAS, folio by folio</span></span>
+          
         </div>
-        <h3>Reads the files you already get</h3>
-        <p>Import the capital gains and holding statements your fund houses and broker already
-          email you. No credentials, no screen-scraping, no permission to your accounts.</p>
-        <div class="best">Planned</div>
-      </div>
-      <div class="rt rv" style="--c:var(--violet);--cs:var(--violet-soft)">
-        <div class="num">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
-               stroke-linecap="round" stroke-linejoin="round" style="width:26px;height:26px">
-            <path d="M3 19.5h18"/><path d="M4.5 15.5V11M9.5 15.5V6.5M14.5 15.5V9M19.5 15.5V4"/></svg>
+        <div class="row">
+          <span class="rc" style="--c:var(--teal);--cs:var(--teal-wash)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19.5h14"/><path d="M8 16V9.5M12 16V5M16 16v-4"/></svg></span>
+          <span class="rt"><b>Stocks</b><span>From your broker&rsquo;s spreadsheet export</span></span>
+          
         </div>
-        <h3>Gains, allocation and history</h3>
-        <p>What each holding actually returned, how the whole thing is split, and what it looked
-          like a year ago &mdash; worked out once and kept.</p>
-        <div class="best">Planned</div>
-      </div>
-      <div class="rt rv" style="--c:var(--mint);--cs:var(--mint-soft)">
-        <div class="num">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
-               stroke-linecap="round" stroke-linejoin="round" style="width:26px;height:26px">
-            <rect x="4" y="2.5" width="16" height="19" rx="3"/><path d="M10 18.5h4"/></svg>
+        <div class="row">
+          <span class="rc" style="--c:var(--amber);--cs:var(--amber-wash)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><path d="M12 8v8M9 12h6"/></svg></span>
+          <span class="rt"><b>Gold &amp; silver</b><span>Valued from live ETF rates when you refresh</span></span>
+          
         </div>
-        <h3>Nothing uploaded, nothing shared</h3>
-        <p>A complete picture of your finances is the last thing that should sit on someone
-          else&rsquo;s server. It stays on the phone, backed up to a file you keep.</p>
-        <div class="best">Planned</div>
+        <div class="row">
+          <span class="rc" style="--c:var(--amber);--cs:var(--amber-wash)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3.5h9l4 4v13H6z"/><path d="M14 3.5v4.5h4.5"/></svg></span>
+          <span class="rt"><b>Sovereign gold bonds</b><span>Tracked with their own maturity dates</span></span>
+          
+        </div>
+        <div class="row">
+          <span class="rc" style="--c:var(--blue);--cs:var(--blue-wash)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="6" width="17" height="12" rx="2.4"/><path d="M3.5 10h17"/></svg></span>
+          <span class="rt"><b>Fixed deposits</b><span>Rate, term and compounding, with value to date</span></span>
+          
+        </div>
+        <div class="row">
+          <span class="rc" style="--c:var(--coral);--cs:var(--coral-wash)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.4"/><path d="M5.5 20a6.5 6.5 0 0 1 13 0"/></svg></span>
+          <span class="rt"><b>Sukanya Samriddhi</b><span>Grown at the official slab rates for each year</span></span>
+          
+        </div>
+        <div class="row">
+          <span class="rc" style="--c:var(--teal);--cs:var(--teal-wash)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="6" width="17" height="12" rx="2.4"/><path d="M7 14h4"/></svg></span>
+          <span class="rt"><b>Bank balances &amp; cash</b><span>The money no dashboard ever remembers</span></span>
+          
+        </div>
+        <div class="row">
+          <span class="rc" style="--c:var(--blue);--cs:var(--blue-wash)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v16M4 12h16"/></svg></span>
+          <span class="rt"><b>Anything else</b><span>A custom asset with your own label and value</span></span>
+          
+        </div>
       </div>
+    <p class="note rv" style="justify-content:center"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg><span>Every asset class is a module you can switch off. Turn off what you do not own and the app gets simpler rather than nagging you to fill it in.</span></p>
+  </div>
+</section>
+<section class="sec wash" id="reports">
+  <div class="wrap">
+    <div class="head center">
+      <span class="eyebrow">Reports</span>
+      <h2>In July, this is the whole point.</h2>
+      <p class="lede">Return season is when a tracker earns its keep or wastes your weekend.</p>
+    </div>
+    <div class="tablewrap rv">
+      <table>
+        <caption style="position:absolute;left:-9999px">The reports Portfolio Tracker can generate</caption>
+        <thead><tr><th scope="col">Report</th><th scope="col" class="us">What it gives you</th></tr></thead>
+        <tbody>
+          <tr><td>Portfolio summary</td><td class="yes">Every holding, invested, current, gain, XIRR</td></tr>
+          <tr><td>Capital gains &mdash; summary</td><td class="yes">Realised gains for the year, short and long term</td></tr>
+          <tr><td>Capital gains &mdash; ITR format</td><td class="yes">Laid out the way the return asks for it</td></tr>
+          <tr><td>Schedule 112A</td><td class="yes">Scrip-wise long-term equity gains, ready to attach</td></tr>
+          <tr><td>Transactions, date-wise</td><td class="yes">Every purchase and redemption in the period</td></tr>
+          <tr><td>Holdings detail</td><td class="yes">Units, average cost, current price, value now</td></tr>
+          <tr><td>Net worth</td><td class="yes">All asset classes together, on one page</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note rv" style="justify-content:center"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg><span>Each one prints, saves as PDF, or exports as CSV. Reports always print on white, dark mode or not.</span></p>
+  </div>
+</section>
+<section class="sec" id="family">
+  <div class="wrap">
+    <div class="head center">
+      <span class="eyebrow">Family, planning and safety</span>
+      <h2>It is a household&rsquo;s money, not one person&rsquo;s.</h2>
+    </div>
+    <div class="steps">
+      <div class="step rv"><div><h3>One app, several investors</h3><p>A separate profile per person, each with its own folios and reports — then a combined family view for the household total. Statements under more than one name are assigned at import.</p></div></div>
+      <div class="step rv"><div><h3>The retirement question, with real numbers</h3><p>The FIRE planner takes what you hold, what you invest each month (it can use your detected SIP total) and the return you assume. A projection, and it says so.</p></div></div>
+      <div class="step rv"><div><h3>Locked, if you want</h3><p>Turn on a password and the whole database is encrypted on the device. Fully offline mode stops even the price lookup.</p></div></div>
+      <div class="step rv"><div><h3>Edit anything, afterwards</h3><p>Imported the wrong file? Every transaction can be opened and corrected by hand. Nothing is locked because a parser said so.</p></div></div>
     </div>
   </div>
 </section>
 
-<section class="sec" id="notify">
-  <div class="container">
-    <div class="cta">
-      <p class="tag ctr" style="--c:#fff;--cs:rgba(255,255,255,.18)"><span class="dot"></span>Not out yet</p>
-      <h2>Want it the day it ships?</h2>
-      <p class="lede ctr">Send us a line and we will tell you when Portfolio Tracker reaches Google
-        Play. No list, no newsletter &mdash; one message, once.</p>
-      <div class="btns ctr" style="margin-top:2rem">
-        <a class="btn btn--ghost"
-           href="mailto:info@tekzova.com?subject=Tell%20me%20when%20Portfolio%20Tracker%20lands">Email us</a>
-        <a class="btn btn--ghost" href="toptick.html">Try TopTick meanwhile</a>
+<section class="sec" id="install">
+  <div class="wrap">
+    <div class="head center">
+      <span class="eyebrow">Installing</span>
+      <h2>It installs from a file, not a store.</h2>
+      <p class="lede">Not on Google Play yet. Download the APK and install it yourself — about a
+        minute. Android asks once whether your browser may install apps; that prompt is normal,
+        and you can switch it back off afterwards.</p>
+    </div>
+    <div class="steps">
+      <div class="step rv">
+        <div><h3>Download the APK</h3><p>Your browser warns that APK files can be harmful — it
+          says that about every file of this type. Tap download anyway.</p></div>
+      </div>
+      <div class="step rv">
+        <div><h3>Open the file</h3><p>From the notification, or from Files › Downloads.</p></div>
+      </div>
+      <div class="step rv">
+        <div><h3>Allow this one source</h3><p>Turn the permission on, install, then turn it back
+          off if you prefer.</p></div>
+      </div>
+      <div class="step rv">
+        <div><h3>Open it and start</h3><p>Ask for a consolidated statement for your folios, save the PDF to the phone, and open Import. The portfolio builds itself.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="sec" id="faq">
+  <div class="wrap">
+    <div class="head center">
+      <span class="eyebrow">Questions</span>
+      <h2>Before you install.</h2>
+    </div>
+    <div class="faq rv" style="max-width:820px;margin-inline:auto">
+      <details open>
+        <summary>Do I have to give it my broker or fund login?</summary>
+        <div class="ans">No, and there is nowhere to type one. It works from statement files you download yourself. If it never has your credentials, they cannot be lost with it.</div>
+      </details>
+      <details>
+        <summary>My CAS PDF is password-protected. Is that a problem?</summary>
+        <div class="ans">No. Enter the password when you import and the file is opened on the device. Neither the password nor the file goes anywhere else.</div>
+      </details>
+      <details>
+        <summary>If it is offline, how do prices update?</summary>
+        <div class="ans">Only when you tap Refresh NAV, and only to fetch published net asset values — nothing about your holdings is sent to get them. Fully offline mode removes even that.</div>
+      </details>
+      <details>
+        <summary>Is this tax advice?</summary>
+        <div class="ans">No. The reports arrange your own data into familiar formats, including ITR-style capital gains and Schedule 112A. Checking them is between you and your accountant.</div>
+      </details>
+      <details>
+        <summary>Can my wife&rsquo;s folios live in the same app?</summary>
+        <div class="ans">Yes. Separate profiles, separate reports, and a combined family view. At import the app asks which profile a folio belongs to rather than guessing.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="sec--sm">
+  <div class="wrap">
+    <div class="cta rv">
+      <span class="eyebrow eyebrow--light">Free · No account · Offline</span>
+      <h2>See the whole thing, without handing it over.</h2>
+      <p class="lede">Install it, import one statement, and the portfolio is on your own screen in about five minutes.</p>
+      <div class="btns">
+        <a class="btn btn--onDark" href="../downloads/Portfolio-Tracker-M28.apk" download>Download the APK</a>
+        <a class="btn btn--outlineLight" href="../privacy/portfolio-tracker.html">Read the privacy policy</a>
       </div>
     </div>
   </div>
@@ -188,38 +390,34 @@
 
 </main>
 
+<!-- ======================= FOOTER ======================= -->
 <footer class="foot">
-  <div class="container">
+  <div class="wrap">
     <div class="cols">
       <div>
-        <a class="brand" href="../index.html">
-          <svg class="g" viewBox="0 0 32 32" aria-hidden="true">
-            <rect x="1" y="1" width="30" height="30" rx="9" fill="var(--violet)"/>
-            <path d="M7.6 9.4h12.8" stroke="#fff" stroke-width="3.1" stroke-linecap="round"/>
-            <path d="M14 9.4v8" stroke="#fff" stroke-width="3.1" stroke-linecap="round"/>
-            <path d="m12.2 21.2 3.2 3.2 9-10" stroke="#fff" stroke-width="3.1"
-                  fill="none" stroke-linecap="round" stroke-linejoin="round" opacity=".68"/>
-          </svg>
-          <span>Tekzova<i>.</i></span>
+        <a class="brand" href="../index.html" aria-label="Tekzova Technologies — home">
+          <img class="lgo lgo--light" src="../assets/logo-tekzova.svg"
+               alt="Tekzova Technologies" width="668" height="142">
+          <img class="lgo lgo--dark" src="../assets/logo-tekzova-dark.svg"
+               alt="" aria-hidden="true" width="668" height="142">
         </a>
-        <p>Practical apps for everyday problems. Built offline, on purpose.</p>
+        <p class="blurb">Practical apps for everyday problems. Built offline, on purpose.</p>
       </div>
       <div>
         <h4>Apps</h4>
         <ul>
-          <li><a href="toptick.html">TopTick</a></li>
-          <li><a href="nre-tracker.html">NRE Tracker</a></li>
-          <li><a href="portfolio-tracker.html">Portfolio Tracker</a></li>
-          <li><a href="mailto:info@tekzova.com?subject=Tell%20me%20when%20the%20next%20app%20lands">More in build</a></li>
+          <li><a href="../apps/toptick.html">TopTick</a></li>
+          <li><a href="../apps/nre-tracker.html">NRE Tracker</a></li>
+          <li><a href="../apps/portfolio-tracker.html">Portfolio Tracker</a></li>
         </ul>
       </div>
       <div>
         <h4>Company</h4>
         <ul>
-          <li><a href="../index.html#toolkit">Toolkit</a></li>
-          <li><a href="../index.html#safe">Your data</a></li>
-          <li><a href="../index.html#pricing">Pricing</a></li>
-          <li><a href="../index.html#ask">Questions</a></li>
+          <li><a href="../index.html#apps">All apps</a></li>
+          <li><a href="../pricing.html">Pricing</a></li>
+          <li><a href="../index.html#offline">Your data</a></li>
+          <li><a href="../index.html#faq">Questions</a></li>
         </ul>
       </div>
       <div>
@@ -227,18 +425,19 @@
         <ul>
           <li><a href="../privacy/">Privacy</a></li>
           <li><a href="../privacy/toptick.html">TopTick policy</a></li>
+          <li><a href="../privacy/nre-tracker.html">NRE Tracker policy</a></li>
+          <li><a href="../privacy/portfolio-tracker.html">Portfolio Tracker policy</a></li>
           <li><a href="mailto:info@tekzova.com">info@tekzova.com</a></li>
         </ul>
       </div>
     </div>
     <div class="base">
-      <span>&copy; 2026 Tekzova Technologies. All rights reserved.</span>
-      <span><a href="../index.html">tekzova.com</a> &nbsp;&middot;&nbsp;
-            <a href="mailto:info@tekzova.com">info@tekzova.com</a></span>
+      <span>© 2026 Tekzova Technologies. All rights reserved.</span>
+      <span>tekzova.com · info@tekzova.com</span>
     </div>
   </div>
 </footer>
 
-<script src="../assets/theme.js"></script>
+<script src="../assets/bh.js"></script>
 </body>
 </html>

@@ -2,698 +2,296 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>TopTick — Easy Smart Checklist | Tekzova</title>
-<meta name="description" content="A checklist app with no internet permission at all. 16 ready-made lists, US or metric units, reminders, and sharing that updates both phones. Free on Google Play, no account, no ads.">
+<meta name="description" content="A checklist app with no internet permission at all. 16 ready-made lists, US or metric units, reminders, and sharing that updates both phones. Free on Google Play.">
 <link rel="canonical" href="https://www.tekzova.com/apps/toptick.html">
-<meta name="theme-color" content="#fdf8f3">
+<meta name="theme-color" content="#16273f">
+<link rel="icon" href="../assets/icon-tekzova-tile.svg" type="image/svg+xml">
 <link rel="icon" href="../assets/favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
 <meta property="og:type" content="website">
-<meta property="og:title" content="TopTick — Easy Smart Checklist">
-<meta property="og:description" content="A checklist app that cannot go online, because it never asked permission to. Sixteen ready-made lists, US or metric, and sharing that works.">
+<meta property="og:title" content="TopTick — Easy Smart Checklist | Tekzova">
+<meta property="og:description" content="A checklist app with no internet permission at all. 16 ready-made lists, US or metric units, reminders, and sharing that updates both phones. Free on Google Play.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=Figtree:wght@400;500;600;700&display=swap">
-<link rel="stylesheet" href="../assets/theme.css">
-
-<style>
-  /* TopTick keeps the house violet, warmed slightly toward indigo */
-  :root{ --accent:#5b3ae8; --accent-soft:#ece7ff; }
-  @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){ --accent-soft:#241a4c; } }
-  :root[data-theme="dark"]{ --accent-soft:#241a4c; }
-
-  /* the permission sheet — the one claim a reader can verify themselves */
-  .perm{background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);
-    overflow:hidden;box-shadow:var(--shadow-lg)}
-  .perm .ph{padding:1.1rem 1.4rem;border-bottom:1px solid var(--line-2);
-    font-size:.76rem;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);
-    font-weight:700;display:flex;justify-content:space-between;gap:1rem}
-  .prow{display:flex;align-items:center;gap:1rem;padding:.95rem 1.4rem;
-    border-bottom:1px solid var(--line-2);font-size:.98rem}
-  .prow:last-child{border-bottom:0}
-  .prow .nm{flex:1}
-  .prow svg{width:19px;height:19px;flex:0 0 auto;color:var(--muted)}
-  .pst{font-size:.76rem;font-weight:700;padding:.28rem .75rem;border-radius:var(--r-pill);
-    white-space:nowrap}
-  .pst--no{background:var(--mint-soft);color:var(--mint)}
-  .pst--yes{background:var(--accent-soft);color:var(--accent)}
-  .prow.hi{background:var(--mint-soft)}
-  .prow.hi .nm{font-weight:700}
-  .prow.hi svg{color:var(--mint)}
-
-  /* the two regional phones */
-  .duo{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.6rem,4vw,3rem);
-    justify-items:center;align-items:start}
-  @media (max-width:760px){ .duo{grid-template-columns:1fr;gap:2.8rem} }
-  .duo .cap{text-align:center;margin-top:1.3rem}
-  .duo .cap .fl{font-size:.76rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
-    color:var(--c,var(--accent));background:var(--cs,var(--accent-soft));
-    border-radius:var(--r-pill);padding:.35rem .95rem;display:inline-block}
-  .duo .cap p{margin-top:.8rem;font-size:.94rem;color:var(--ink-2);max-width:32ch;
-    margin-inline:auto}
-  .sw{display:inline-flex;background:var(--card);border:1px solid var(--line);
-    border-radius:var(--r-pill);padding:.3rem;gap:.25rem;box-shadow:var(--shadow)}
-  .sw span{font-size:.92rem;font-weight:700;padding:.55rem 1.25rem;border-radius:var(--r-pill);
-    color:var(--muted)}
-  .sw span.on{background:var(--accent);color:#fff}
-
-  /* static (non-animating) phone rows for this page */
-  .ph-hd{display:flex;align-items:center;gap:9px;padding-bottom:11px;
-    border-bottom:1px solid #2c2340;margin-bottom:11px}
-  .ph-hd b{font-family:var(--disp);font-weight:700;font-size:13px}
-  .ph-hd i{color:#8d80aa;font-style:normal}
-  .sli{display:flex;align-items:flex-start;gap:9px;background:#1d1730;
-    border:1px solid #2c2340;border-radius:12px;padding:9px 10px;margin-bottom:6px;font-size:12px}
-  .sli.on{background:#241c3c}
-  .sli .b{width:18px;height:18px;border-radius:6px;border:2px solid #4b3d68;flex:0 0 auto}
-  .sli.on .b{background:var(--mint);border-color:var(--mint);display:grid;place-items:center}
-  .sli.on .b svg{width:10px;height:10px;stroke:#fff;stroke-width:3.4;fill:none}
-  .sli .n{flex:1;font-weight:600;min-width:0}
-  .sli.on .n{text-decoration:line-through;color:#9c90b8}
-  .sli .tm{display:block;font-size:9.5px;color:var(--mint);margin-top:2px;
-    font-weight:500;text-decoration:none}
-  .sli .q{font-size:10px;font-weight:700;padding:3px 7px;border-radius:7px;flex:0 0 auto;
-    background:rgba(91,58,232,.22);color:#b6a2ff}
-  .sli .q.off{background:none;border:1px dashed #3f3358;color:#7c6f99}
-
-  .chat{background:#0a1418;border-radius:var(--r-lg);padding:1.3rem;box-shadow:var(--shadow-lg)}
-  .wb{background:#0c6b58;color:#eaf5f1;border-radius:16px 4px 16px 16px;padding:.95rem 1.05rem;
-    font-size:.88rem;line-height:1.8;white-space:pre-wrap;word-break:break-word;
-    font-family:var(--body)}
-  .wb b{color:#fff}
-  .wb .t{color:#8fdcc6}
-  .wb .f{color:#93b0a8;font-size:.79rem}
-  .chat .st2{text-align:right;color:#8696a0;font-size:.74rem;margin-top:.5rem}
-  .merged{margin-top:1.1rem;background:var(--accent-soft);border-radius:var(--r);
-    padding:1rem 1.15rem;font-size:.95rem;color:var(--ink-2)}
-  .merged b{color:var(--accent)}
-</style>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&family=Inter:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="../assets/bh.css">
 </head>
 <body>
 
-<header class="nav">
-  <div class="container">
-    <a class="brand" href="../index.html">
-      <svg class="g" viewBox="0 0 32 32" aria-hidden="true">
-        <rect x="1" y="1" width="30" height="30" rx="9" fill="var(--violet)"/>
-        <path d="M7.6 9.4h12.8" stroke="#fff" stroke-width="3.1" stroke-linecap="round"/>
-        <path d="M14 9.4v8" stroke="#fff" stroke-width="3.1" stroke-linecap="round"/>
-        <path d="m12.2 21.2 3.2 3.2 9-10" stroke="#fff" stroke-width="3.1"
-              fill="none" stroke-linecap="round" stroke-linejoin="round" opacity=".68"/>
-      </svg>
-      <span>Tekzova<i>.</i></span>
+<!-- ======================= TOP BAR ======================= -->
+<header class="bar">
+  <div class="wrap">
+    <a class="brand" href="../index.html" aria-label="Tekzova Technologies — home">
+      <img class="lgo lgo--light" src="../assets/logo-tekzova.svg"
+           alt="Tekzova Technologies" width="668" height="142">
+      <img class="lgo lgo--dark" src="../assets/logo-tekzova-dark.svg"
+           alt="" aria-hidden="true" width="668" height="142">
     </a>
-    <nav class="nlinks">
-      <a href="../index.html#toolkit">Toolkit</a>
-      <a href="#making" class="hd">Making a list</a>
-      <a href="#units" class="hd">Units</a>
-      <a href="../privacy/toptick.html" class="hd">Privacy</a>
-      <a class="btn btn--sm" href="#get">Get TopTick</a>
+    <nav class="desknav">
+      <a href="../index.html#apps">Apps</a>
+      <a href="../pricing.html">Pricing</a>
+      <a href="../index.html#offline">Your data</a>
+      <a href="../index.html#faq">FAQ</a>
+      <a href="../privacy/">Privacy</a>
     </nav>
+    <span class="spacer"></span>
+    <a class="bar-cta" href="../index.html#apps">Get an app</a>
+    <button class="burger" type="button" aria-label="Open menu"
+            aria-expanded="false" aria-controls="drawer">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </header>
 
+<div class="scrim" id="scrim" hidden></div>
+
+<!-- ======================= DRAWER ======================= -->
+<aside class="drawer" id="drawer" hidden aria-label="Site menu">
+  <div class="dhead">
+    <span style="font-family:var(--disp);font-weight:800;letter-spacing:-.02em">Menu</span>
+    <button class="dclose" type="button" aria-label="Close menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
+           stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+  </div>
+  <div class="dbody">
+    <div class="dgroup">
+      <h4>The apps</h4>
+      <a class="dlink" href="../apps/toptick.html">
+        <img src="../assets/icon-toptick.png" alt="" width="320" height="320">
+        <span class="t">TopTick<small>Checklists · free</small></span>
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
+             stroke-linecap="round" stroke-linejoin="round"><path d="m9 5 7 7-7 7"/></svg>
+      </a>
+      <a class="dlink" href="../apps/nre-tracker.html">
+        <img class="round" src="../assets/icon-nre-tracker.png" alt="" width="320" height="320">
+        <span class="t">NRE Tracker<small>Days &amp; sea service · free</small></span>
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
+             stroke-linecap="round" stroke-linejoin="round"><path d="m9 5 7 7-7 7"/></svg>
+      </a>
+      <a class="dlink" href="../apps/portfolio-tracker.html">
+        <img src="../assets/icon-portfolio-tracker.png" alt="" width="320" height="320">
+        <span class="t">Portfolio Tracker<small>Funds &amp; capital gains · free</small></span>
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
+             stroke-linecap="round" stroke-linejoin="round"><path d="m9 5 7 7-7 7"/></svg>
+      </a>
+    </div>
+
+    <div class="dgroup">
+      <h4>Company</h4>
+      <a class="dlink" href="../index.html#apps"><span class="t">All apps</span>
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
+             stroke-linecap="round" stroke-linejoin="round"><path d="m9 5 7 7-7 7"/></svg></a>
+      <a class="dlink" href="../pricing.html"><span class="t">Pricing</span>
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
+             stroke-linecap="round" stroke-linejoin="round"><path d="m9 5 7 7-7 7"/></svg></a>
+      <a class="dlink" href="../index.html#offline"><span class="t">Where your data lives</span>
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
+             stroke-linecap="round" stroke-linejoin="round"><path d="m9 5 7 7-7 7"/></svg></a>
+      <a class="dlink" href="../index.html#faq"><span class="t">Questions</span>
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
+             stroke-linecap="round" stroke-linejoin="round"><path d="m9 5 7 7-7 7"/></svg></a>
+    </div>
+
+    <div class="dgroup">
+      <h4>Legal</h4>
+      <a class="dlink" href="../privacy/"><span class="t">Privacy</span>
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
+             stroke-linecap="round" stroke-linejoin="round"><path d="m9 5 7 7-7 7"/></svg></a>
+      <a class="dlink" href="mailto:info@tekzova.com"><span class="t">info@tekzova.com</span>
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
+             stroke-linecap="round" stroke-linejoin="round"><path d="m9 5 7 7-7 7"/></svg></a>
+    </div>
+  </div>
+  <div class="dfoot">
+    <a class="btn" href="../index.html#apps">See the three apps</a>
+    <a class="btn btn--ghost" href="../pricing.html">What it costs</a>
+  </div>
+</aside>
+
 <main>
 
-<!-- ============================ HERO ============================ -->
 <section class="hero">
-  <div class="blobs" aria-hidden="true">
-    <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
-  </div>
-  <div class="container">
-    <div class="hgrid">
+  <div class="wrap">
+    <div class="lockup">
+      <img class="" src="../assets/icon-toptick.png" alt="TopTick app icon" width="320" height="320">
       <div>
-        <div class="lock up a1" style="--l1:#5b3ae8;--l2:#8b6bff">
-          <div class="mk">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"
-                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <rect x="3.5" y="3" width="17" height="18" rx="3.4"
-                    fill="rgba(255,255,255,.16)" stroke="none"/>
-              <path d="M9 2.2h6v3.2H9z" fill="#fff" stroke="none"/>
-              <path d="m7.6 11.6 2.3 2.3 4.8-5"/>
-              <path d="M7.8 17.2h8.4" opacity=".65"/>
-            </svg>
-          </div>
-          <div>
-            <h1 class="nm">TopTick</h1>
-            <p class="sub">Easy Smart Checklist</p>
-          </div>
-        </div>
-        <h2 class="up a2" style="font-size:clamp(1.8rem,4vw,2.8rem);line-height:1.08">
-          Everything ticked.<br><span class="hl">Nothing tracked.</span></h2>
-        <p class="lede up a3" style="margin-top:1.3rem">A checklist app that
-          <strong>cannot go online</strong> &mdash; because it never asked Android for permission
-          to. Sixteen ready-made lists, US or metric units, reminders that turn up, and sharing
-          that genuinely works between two phones.</p>
-        <div class="btns up a3" style="margin-top:2rem">
-          <a class="play" href="https://play.google.com/store/apps/details?id=com.tekzova.toptick">
-            <svg width="22" height="24" viewBox="0 0 24 26" aria-hidden="true">
-              <path d="M2 1.6v22.8c0 .7.4 1.1 1 1.3L15 13 3 .3c-.6.2-1 .6-1 1.3Z" fill="currentColor" opacity=".95"/>
-              <path d="m18.7 9.4-3.1-1.8L12.6 13l3 5.4 3.1-1.8c1.2-.7 1.2-2.5 0-3.2Z" fill="currentColor" opacity=".75"/>
-              <path d="M3 .3 15.6 7.6 18.7 9.4 3 .3Z" fill="currentColor" opacity=".6"/>
-            </svg>
-            <span class="t"><small>Get it on</small><span>Google Play</span></span>
-          </a>
-          <a class="btn btn--ghost" href="#permissions">Check the permissions first</a>
-        </div>
-        <p class="note up a4" style="margin-top:1.5rem">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
-               stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg>
-          <span>Free &middot; no account &middot; Android 7.0 and above &middot; about 4 MB</span>
-        </p>
+        <p class="nm">TopTick</p>
+        <p class="sub">Easy Smart Checklist</p>
       </div>
-
-      <div class="stage up a4">
-        <div class="slab floaty">
-          <div class="glass" style="padding:30px 13px 15px">
-            <div class="ph-hd"><i>&#8592;</i><b>Grocery shopping &ndash; 29 Aug</b></div>
-            <div class="box">
-              <div class="kk">Progress</div>
-              <div class="vv">3 / 5 done</div>
-              <div class="bar" style="--sc:#5b3ae8"><i style="width:60%"></i></div>
-            </div>
-            <div class="sli on"><span class="b"><svg viewBox="0 0 24 24" stroke-linecap="round"
-              stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg></span>
-              <span class="n">Ground beef<span class="tm">&#10003; 14:32</span></span>
-              <span class="q">2 lb</span></div>
-            <div class="sli on"><span class="b"><svg viewBox="0 0 24 24" stroke-linecap="round"
-              stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg></span>
-              <span class="n">Whole milk<span class="tm">&#10003; 14:36 &middot; Sam</span></span>
-              <span class="q">1 gal</span></div>
-            <div class="sli on"><span class="b"><svg viewBox="0 0 24 24" stroke-linecap="round"
-              stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg></span>
-              <span class="n">Eggs<span class="tm">&#10003; 14:41 &middot; Sam</span></span>
-              <span class="q">2 dozen</span></div>
-            <div class="sli"><span class="b"></span><span class="n">Rotisserie chicken</span>
-              <span class="q off">+ ct</span></div>
-            <div class="sli"><span class="b"></span><span class="n">Paper towels</span>
-              <span class="q off">+ pack</span></div>
-          </div>
-        </div>
-
-        <div class="chipf cf1 floaty f1" style="--c:var(--mint);--cs:var(--mint-soft)">
-          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-            stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M18 8h1a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-9a2 2 0 0 1 2-2h1"/>
-            <path d="M8 8V6a4 4 0 0 1 8 0v2"/></svg></span>
-          No internet permission
-        </div>
-        <div class="chipf cf2 floaty f2" style="--c:var(--coral);--cs:var(--coral-soft)">
-          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-            stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M6 9a6 6 0 1 1 12 0c0 5 2 6 2 6H4s2-1 2-6Z"/><path d="M10 20h4"/></svg></span>
-          Reminders survive a reboot
-        </div>
-        <div class="chipf cf3 floaty f3" style="--c:var(--sky);--cs:var(--sky-soft)">
-          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-            stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M4 7h16M6 7l1.5 12h9L18 7"/><path d="M9 4h6v3H9z"/></svg></span>
-          lb · gal · kg · L
-        </div>
-      </div>
+    </div>
+    <h1 style="margin-top:26px;font-size:clamp(1.75rem,7.2vw,3rem)">Everything ticked.<br>Nothing tracked.</h1>
+    <p class="lede">A checklist app that <strong>cannot go online</strong> — it never asked Android for permission to. Sixteen ready-made lists, US or metric units, and sharing that updates both phones.</p>
+    <div class="btns">
+      <a class="btn" href="https://play.google.com/store/apps/details?id=com.tekzova.toptick">Get it on Google Play</a>
+      <a class="btn btn--outlineLight" href="#permissions">Check the permissions</a>
+    </div>
+    <p class="fine">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8"
+           stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="m5 13 4 4L19 7"/></svg>
+      <span>Free &middot; no account &middot; about 4 MB &middot; Android 7.0 and up</span>
+    </p>
+  </div>
+</section>
+<section class="sec--sm">
+  <div class="wrap">
+    <div class="strip rv">
+      <div class="cell"><div class="n">0</div><div class="k">Internet permissions</div></div>
+      <div class="cell"><div class="n">16</div><div class="k">Ready-made lists</div></div>
+      <div class="cell"><div class="n">998</div><div class="k">Suggested items</div></div>
+      <div class="cell"><div class="n">100%</div><div class="k">Stays on your phone</div></div>
     </div>
   </div>
 </section>
-
-<!-- ============================ STATS ============================ -->
-<section class="sec--tight warm">
-  <div class="container">
-    <div class="band">
-      <div class="st rv" style="--c:var(--mint)"><div class="v">0</div><div class="k">Internet permissions</div></div>
-      <div class="st rv" style="--c:var(--violet)"><div class="v">16</div><div class="k">Ready-made lists</div></div>
-      <div class="st rv" style="--c:var(--coral)"><div class="v">998</div><div class="k">Suggested items</div></div>
-      <div class="st rv" style="--c:var(--sky)"><div class="v">100%</div><div class="k">Stays on your phone</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- ============================ PERMISSIONS ============================ -->
 <section class="sec" id="permissions">
-  <div class="container grid2">
-    <div>
-      <p class="tag" style="--c:var(--mint);--cs:var(--mint-soft)"><span class="dot"></span>The part you can verify</p>
-      <h2 class="rv">Don&rsquo;t take our word for it. Read the permission list.</h2>
-      <p class="lede rv" style="margin-top:1.15rem">Most checklist apps ask for internet access and
-        then promise to behave. TopTick never asks. Open <strong>Settings &rsaquo; Apps &rsaquo;
-        TopTick</strong> on your own phone and look: there is no internet permission to revoke,
-        because there is none to grant.</p>
-      <p class="lede rv" style="margin-top:1rem">No account. No sign-in. No analytics, no crash
-        reporting, no advertising ID. Your lists are written to your phone&rsquo;s own storage and
-        read back from it. That is the whole architecture.</p>
+  <div class="wrap">
+    <div class="head center">
+      <span class="eyebrow">The part you can verify</span>
+      <h2>Don&rsquo;t take our word for it. Read the permission list.</h2>
+      <p class="lede">Most checklist apps ask for internet access and then promise to behave. TopTick never asks.</p>
     </div>
-    <div class="rv">
-      <div class="perm">
-        <div class="ph"><span>App permissions</span><span>TopTick</span></div>
-        <div class="prow hi">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
-               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <circle cx="12" cy="12" r="9"/><path d="M3.5 12h17"/>
-            <path d="M12 3a15 15 0 0 1 0 18a15 15 0 0 1 0-18Z"/></svg>
-          <span class="nm">Internet / network access</span>
-          <span class="pst pst--no">Not requested</span>
+      <div class="rows rv">
+        <div class="row">
+          <span class="rc" style="--c:var(--teal);--cs:var(--teal-wash)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3.5 12h17"/><path d="M12 3a15 15 0 0 1 0 18a15 15 0 0 1 0-18Z"/></svg></span>
+          <span class="rt"><b>Internet / network access</b><span>There is none to grant</span></span>
+          <span class="tag">Not requested</span>
         </div>
-        <div class="prow">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
-               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M6 9a6 6 0 1 1 12 0c0 5 2 6 2 6H4s2-1 2-6Z"/><path d="M10 20h4"/></svg>
-          <span class="nm">Notifications</span>
-          <span class="pst pst--yes">For your reminders</span>
+        <div class="row">
+          <span class="rc" style="--c:var(--blue);--cs:var(--blue-wash)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9a6 6 0 1 1 12 0c0 5 2 6 2 6H4s2-1 2-6Z"/><path d="M10 20h4"/></svg></span>
+          <span class="rt"><b>Notifications</b><span>Only your own reminders</span></span>
+          <span class="tag">Granted</span>
         </div>
-        <div class="prow">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
-               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <circle cx="12" cy="12" r="9"/><path d="M12 7.4V12l3 1.8"/></svg>
-          <span class="nm">Alarms &amp; reminders</span>
-          <span class="pst pst--yes">To fire on time</span>
+        <div class="row">
+          <span class="rc" style="--c:var(--blue);--cs:var(--blue-wash)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7.4V12l3 1.8"/></svg></span>
+          <span class="rt"><b>Alarms &amp; reminders</b><span>So they fire on time</span></span>
+          <span class="tag">Granted</span>
         </div>
-        <div class="prow">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
-               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M12 3.5v8"/><path d="M7 6.4a8 8 0 1 0 10 0"/></svg>
-          <span class="nm">Run at startup</span>
-          <span class="pst pst--yes">Rebuild reminders</span>
+        <div class="row">
+          <span class="rc" style="--c:var(--blue);--cs:var(--blue-wash)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5v8"/><path d="M7 6.4a8 8 0 1 0 10 0"/></svg></span>
+          <span class="rt"><b>Run at startup</b><span>Rebuilds reminders after a reboot</span></span>
+          <span class="tag">Granted</span>
         </div>
-        <div class="prow">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
-               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M20 11.5a8.5 8.5 0 1 1-8.5-8.5"/><circle cx="12" cy="11" r="2.6"/></svg>
-          <span class="nm">Location, camera, microphone, contacts</span>
-          <span class="pst pst--no">Not requested</span>
+        <div class="row">
+          <span class="rc" style="--c:var(--teal);--cs:var(--teal-wash)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 11.5a8.5 8.5 0 1 1-8.5-8.5"/><circle cx="12" cy="11" r="2.6"/></svg></span>
+          <span class="rt"><b>Location, camera, mic, contacts</b><span>None of them</span></span>
+          <span class="tag">Not requested</span>
         </div>
       </div>
-      <p class="note rv" style="margin-top:1.2rem">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
-             stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg>
-        <span>Thirty seconds on your own phone will confirm every line of this.</span>
-      </p>
-    </div>
+    <p class="note rv" style="justify-content:center"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg><span>Thirty seconds under Settings &rsaquo; Apps &rsaquo; TopTick confirms every line of this on your own phone.</span></p>
   </div>
 </section>
-
-<!-- ============================ FEATURES ============================ -->
-<section class="sec warm">
-  <div class="container">
-    <div class="head">
-      <p class="tag" style="--c:var(--violet);--cs:var(--violet-soft)"><span class="dot"></span>01 / Features</p>
-      <h2 class="rv">A proper checklist, not a notes app with tick boxes.</h2>
-      <p class="lede rv">Built by people who kept getting home and realising.</p>
+<section class="sec wash">
+  <div class="wrap">
+    <div class="head center">
+      <span class="eyebrow">Features</span>
+      <h2>A proper checklist, not a notes app with tick boxes.</h2>
     </div>
-
-    <div class="routes">
-      <div class="rt rv" style="--c:var(--violet);--cs:var(--violet-soft)">
-        <div class="num">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
-               stroke-linecap="round" stroke-linejoin="round" style="width:26px;height:26px">
-            <rect x="4" y="3" width="16" height="18" rx="2.6"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>
-        </div>
+    <div class="cards">
+      <div class="card rv">
+        <div class="ic" style="--c:var(--blue);--cs:var(--blue-wash)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2.6"/><path d="M8 8h8M8 12h8M8 16h5"/></svg></div>
         <h3>Sixteen lists, already written</h3>
-        <p>Grocery, travel packing, ship joining kit, exam prep, vehicle service, daily goals and
-          more &mdash; 998 suggested items in tidy groups. Tap what you want, type what is missing,
-          done in under a minute.</p>
-        <div class="best">Tap, don't type</div>
+        <p>Grocery, packing, ship joining kit, exam prep, vehicle service, daily goals. 998 items in tidy groups — tap what you want, done in under a minute.</p>
       </div>
-      <div class="rt rv" style="--c:var(--coral);--cs:var(--coral-soft)">
-        <div class="num">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
-               stroke-linecap="round" stroke-linejoin="round" style="width:26px;height:26px">
-            <path d="M4 7h16M6 7l1.5 12h9L18 7"/><path d="M9 4h6v3H9z"/></svg>
-        </div>
+      <div class="card rv">
+        <div class="ic" style="--c:var(--coral);--cs:var(--coral-wash)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M6 7l1.5 12h9L18 7"/><path d="M9 4h6v3H9z"/></svg></div>
         <h3>Quantities that make sense</h3>
-        <p>Ground beef arrives in <strong>lb</strong>, milk by the <strong>gallon</strong>, eggs by
-          the <strong>dozen</strong>. Tap the pill, set the number with a stepper, and the unit is
-          already right.</p>
-        <div class="best">lb · oz · gal · ct</div>
+        <p>Beef in <b>lb</b>, milk by the <b>gallon</b>, eggs by the <b>dozen</b>. Tap the pill, set the number, the unit is already right.</p>
       </div>
-      <div class="rt rv" style="--c:var(--sky);--cs:var(--sky-soft)">
-        <div class="num">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
-               stroke-linecap="round" stroke-linejoin="round" style="width:26px;height:26px">
-            <circle cx="12" cy="12" r="9"/><path d="M3 12h18"/>
-            <path d="M12 3a15 15 0 0 1 0 18a15 15 0 0 1 0-18Z"/></svg>
-        </div>
+      <div class="card rv">
+        <div class="ic" style="--c:var(--teal);--cs:var(--teal-wash)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a15 15 0 0 1 0 18a15 15 0 0 1 0-18Z"/></svg></div>
         <h3>US or metric, your call</h3>
-        <p>One switch in Settings. On US you get pounds, gallons and a supermarket run &mdash;
-          produce, deli, frozen. On metric you get kilos, litres and the everyday list. Six lists
-          swap their local items to match.</p>
-        <div class="best">Six lists change with it</div>
+        <p>One switch in Settings. Six lists swap their local items to match — pounds and gallons, or kilos and litres.</p>
       </div>
-      <div class="rt rv" style="--c:var(--amber);--cs:var(--amber-soft)">
-        <div class="num">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
-               stroke-linecap="round" stroke-linejoin="round" style="width:26px;height:26px">
-            <path d="M6 9a6 6 0 1 1 12 0c0 5 2 6 2 6H4s2-1 2-6Z"/><path d="M10 20h4"/></svg>
-        </div>
+      <div class="card rv">
+        <div class="ic" style="--c:var(--amber);--cs:var(--amber-wash)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9a6 6 0 1 1 12 0c0 5 2 6 2 6H4s2-1 2-6Z"/><path d="M10 20h4"/></svg></div>
         <h3>Reminders that turn up</h3>
-        <p>Once, daily, weekly or monthly. They survive switching the phone off and on &mdash; the
-          alarm is rebuilt on restart, which is exactly where most reminder apps quietly fail.</p>
-        <div class="best">Survives a reboot</div>
+        <p>Once, daily, weekly or monthly — and they survive a reboot, which is exactly where most reminder apps quietly fail.</p>
       </div>
-      <div class="rt rv" style="--c:var(--mint);--cs:var(--mint-soft)">
-        <div class="num">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
-               stroke-linecap="round" stroke-linejoin="round" style="width:26px;height:26px">
-            <path d="M3 12a9 9 0 0 1 15.5-6.2M21 12a9 9 0 0 1-15.5 6.2"/>
-            <path d="M18 3v3.5h-3.5M6 21v-3.5h3.5"/></svg>
-        </div>
-        <h3>Lists that start themselves again</h3>
-        <p>Set a list to repeat and each new day, week or month it clears itself &mdash; filing the
-          finished one in History. Daily goals become a record of which days you actually ran.</p>
-        <div class="best">Daily · Weekly · Monthly</div>
+      <div class="card rv">
+        <div class="ic" style="--c:var(--blue);--cs:var(--blue-wash)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 15.5-6.2M21 12a9 9 0 0 1-15.5 6.2"/><path d="M18 3v3.5h-3.5M6 21v-3.5h3.5"/></svg></div>
+        <h3>Lists that restart themselves</h3>
+        <p>Set one to repeat and each day, week or month it clears — filing the finished one in History. Daily goals become a record.</p>
       </div>
-      <div class="rt rv" style="--c:#8a2be0;--cs:#f2e6ff">
-        <div class="num">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
-               stroke-linecap="round" stroke-linejoin="round" style="width:26px;height:26px">
-            <rect x="4" y="10" width="16" height="11" rx="2.4"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
-        </div>
+      <div class="card rv">
+        <div class="ic" style="--c:var(--teal);--cs:var(--teal-wash)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="2.4"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg></div>
         <h3>Yours to keep and to lock</h3>
-        <p>A PIN at startup if you want one. Dark and light themes. One-tap backup to a file you
-          own, so a new phone is a thirty-second restore rather than an evening of retyping.</p>
-        <div class="best">Backup · Restore · PIN</div>
+        <p>A PIN at startup if you want one. Dark and light themes. One-tap backup to a file you own.</p>
       </div>
     </div>
   </div>
 </section>
-
-<!-- ============================ MAKING A LIST ============================ -->
 <section class="sec" id="making">
-  <div class="container">
-    <div class="head">
-      <p class="tag" style="--c:var(--coral);--cs:var(--coral-soft)"><span class="dot"></span>02 / Making one</p>
-      <h2 class="rv">Three ways to build a list. Most apps give you one.</h2>
-      <p class="lede rv">Typing forty items with two thumbs is why shopping lists end up on the
-        back of an envelope. So TopTick gives you three routes in, and you will use all of them.</p>
+  <div class="wrap">
+    <div class="head center">
+      <span class="eyebrow">Making a list</span>
+      <h2>Three ways in. Most apps give you one.</h2>
+      <p class="lede">Typing forty items with two thumbs is why shopping lists end up on the back of an envelope.</p>
     </div>
-
-    <div class="routes">
-      <div class="rt rv" style="--c:var(--violet);--cs:var(--violet-soft)">
-        <div class="num">01</div>
-        <h3>Tap what you need</h3>
-        <p>Open an activity and the items are already there in labelled groups &mdash; produce,
-          dairy, frozen, household. Tap the ones you want. A full grocery run takes about forty
-          seconds and no typing at all.</p>
-        <div class="best">No typing</div>
-      </div>
-      <div class="rt rv" style="--c:var(--coral);--cs:var(--coral-soft)">
-        <div class="num">02</div>
-        <h3>Paste a sentence, get a checklist</h3>
-        <p>Someone texts you &ldquo;bread, eggs, coffee, dish soap, bananas&rdquo;. Copy the
-          message, open TopTick, tap once. Five separate, tickable items &mdash; not a wall of text
-          you have to read in the aisle. Commas, bullets, numbered lines and line breaks are all
-          understood.</p>
-        <div class="best">Nobody else does this</div>
-      </div>
-      <div class="rt rv" style="--c:var(--mint);--cs:var(--mint-soft)">
-        <div class="num">03</div>
-        <h3>Start blank, or import someone else&rsquo;s</h3>
-        <p>Type your own from nothing when the job is unusual. Or take a list somebody shared with
-          you, import it, and it becomes a real checklist on your phone &mdash; quantities, units,
-          icon and all.</p>
-        <div class="best">Blank or shared</div>
-      </div>
-    </div>
-
-    <div class="demo rv">
-      <div class="bubble">
-        <span class="who">Sam &middot; 09:14</span>
-        can you grab bread, eggs, coffee, dish soap, bananas on the way home
-      </div>
-      <div class="ar" aria-hidden="true">
-        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-             stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M4 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-      </div>
-      <div class="outlist">
-        <div class="ro on"><span class="bb"><svg viewBox="0 0 24 24" stroke-linecap="round"
-          stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg></span>Bread</div>
-        <div class="ro on"><span class="bb"><svg viewBox="0 0 24 24" stroke-linecap="round"
-          stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg></span>Eggs</div>
-        <div class="ro"><span class="bb"></span>Coffee</div>
-        <div class="ro"><span class="bb"></span>Dish soap</div>
-        <div class="ro"><span class="bb"></span>Bananas</div>
-      </div>
-    </div>
-    <p class="note rv" style="margin-top:1.4rem">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
-           stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg>
-      <span>One tap. Five tickable items. No retyping, and nothing lost between the message and
-        the aisle.</span>
-    </p>
-  </div>
-</section>
-
-<!-- ============================ UNITS ============================ -->
-<section class="sec warm" id="units">
-  <div class="container">
-    <div class="head">
-      <p class="tag" style="--c:var(--sky);--cs:var(--sky-soft)"><span class="dot"></span>03 / Units</p>
-      <h2 class="rv">A pound of ground beef, or a kilo of rice.</h2>
-      <p class="lede rv">One switch in Settings changes both the units <em>and</em> the
-        suggestions. It is the same app either way &mdash; it just stops pretending everyone shops
-        the same way.</p>
-    </div>
-
-    <div class="duo rv">
-      <div>
-        <div class="slab">
-          <div class="glass" style="padding:30px 13px 15px;height:auto;min-height:300px">
-            <div class="ph-hd"><i>&#8592;</i><b>Grocery shopping &ndash; 29 Aug</b></div>
-            <div class="box">
-              <div class="kk">Progress</div>
-              <div class="vv">2 / 4 done</div>
-              <div class="bar" style="--sc:#5b3ae8"><i style="width:50%"></i></div>
-            </div>
-            <div class="sli on"><span class="b"><svg viewBox="0 0 24 24" stroke-linecap="round"
-              stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg></span>
-              <span class="n">Rice</span><span class="q">5 kg</span></div>
-            <div class="sli on"><span class="b"><svg viewBox="0 0 24 24" stroke-linecap="round"
-              stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg></span>
-              <span class="n">Milk</span><span class="q">2 L</span></div>
-            <div class="sli"><span class="b"></span><span class="n">Toor dal</span>
-              <span class="q off">+ kg</span></div>
-            <div class="sli" style="margin-bottom:0"><span class="b"></span>
-              <span class="n">Curd</span><span class="q off">+ kg</span></div>
-          </div>
-        </div>
-        <div class="cap">
-          <span class="fl" style="--c:var(--mint);--cs:var(--mint-soft)">Metric</span>
-          <p>Kilos, litres, grams. The grocery list is the everyday one &mdash; staples, dals,
-            masala, fresh vegetables by the bunch.</p>
-        </div>
-      </div>
-
-      <div>
-        <div class="slab">
-          <div class="glass" style="padding:30px 13px 15px;height:auto;min-height:300px">
-            <div class="ph-hd"><i>&#8592;</i><b>Grocery shopping &ndash; 29 Aug</b></div>
-            <div class="box">
-              <div class="kk">Progress</div>
-              <div class="vv">2 / 4 done</div>
-              <div class="bar" style="--sc:#5b3ae8"><i style="width:50%"></i></div>
-            </div>
-            <div class="sli on"><span class="b"><svg viewBox="0 0 24 24" stroke-linecap="round"
-              stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg></span>
-              <span class="n">Ground beef</span><span class="q">2 lb</span></div>
-            <div class="sli on"><span class="b"><svg viewBox="0 0 24 24" stroke-linecap="round"
-              stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg></span>
-              <span class="n">Whole milk</span><span class="q">1 gal</span></div>
-            <div class="sli"><span class="b"></span><span class="n">Rotisserie chicken</span>
-              <span class="q off">+ ct</span></div>
-            <div class="sli" style="margin-bottom:0"><span class="b"></span>
-              <span class="n">Paper towels</span><span class="q off">+ pack</span></div>
-          </div>
-        </div>
-        <div class="cap">
-          <span class="fl" style="--c:var(--coral);--cs:var(--coral-soft)">US</span>
-          <p>Pounds, gallons, ounces, count. The grocery list becomes a supermarket run &mdash;
-            produce, deli, frozen, meat and seafood.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="rv" style="display:flex;justify-content:center;margin-top:clamp(2rem,4vw,3rem)">
-      <div class="sw" role="img" aria-label="Settings toggle: Metric or US, currently US">
-        <span>Metric · kg, L</span><span class="on">US · lb, gal</span>
-      </div>
-    </div>
-    <p class="note rv" style="margin-top:1.2rem;margin-inline:auto;justify-content:center">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
-           stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg>
-      <span>Settings &rsaquo; Checklists &rsaquo; Units. Quantities you already entered are never
-        converted behind your back.</span>
-    </p>
-  </div>
-</section>
-
-<!-- ============================ SHARING ============================ -->
-<section class="sec" id="sharing">
-  <div class="container">
-    <div class="head">
-      <p class="tag" style="--c:var(--mint);--cs:var(--mint-soft)"><span class="dot"></span>04 / Sharing</p>
-      <h2 class="rv">Share a list, get their ticks back.</h2>
-      <p class="lede rv">Nothing sits on a server waiting to be shared &mdash; you send it when you
-        want to, through the app you already use, and their ticks merge into your copy when it
-        comes back.</p>
-    </div>
-
-    <div class="grid2 top">
-      <div class="steps rv">
-        <div class="step" style="--c:var(--violet);--cs:var(--violet-soft)">
-          <div class="sn">1</div>
-          <div>
-            <h3>You share it</h3>
-            <p>Tap Share and pick WhatsApp, email, anything. It goes out as ordinary text carrying
-              the activity&rsquo;s own icon &mdash; an anchor for a ship joining kit, a trolley for
-              the shopping.</p>
-          </div>
-        </div>
-        <div class="step" style="--c:var(--coral);--cs:var(--coral-soft)">
-          <div class="sn">2</div>
-          <div>
-            <h3>They tick it on their phone</h3>
-            <p>They copy the message, open TopTick, tap <strong>Import</strong>. Now it is a real
-              checklist in their app &mdash; quantities, units and all &mdash; and they tick items
-              off in their own aisle.</p>
-          </div>
-        </div>
-        <div class="step" style="--c:var(--mint);--cs:var(--mint-soft)">
-          <div class="sn">3</div>
-          <div>
-            <h3>They send it back, and your list updates</h3>
-            <p>TopTick recognises it as the same list and <strong>updates yours</strong> instead of
-              making a duplicate. Their ticks appear on your copy, with the real time each was done
-              and who did it. Nothing you already ticked is ever undone.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="rv">
-        <div class="chat">
-          <div class="wb">🛒 <b>*Grocery shopping &ndash; 29 Aug*</b>  (3/5 done)
-Shared by Sam &middot; 29 Aug 2026
-
-✅ Ground beef &ndash; 2 lb <span class="t">&middot; 14:32</span>
-✅ Whole milk &ndash; 1 gal <span class="t">&middot; 14:36</span>
-✅ Eggs &ndash; 2 dozen <span class="t">&middot; 14:41</span>
-⬜ Rotisserie chicken
-⬜ Paper towels
-
-<span class="f">&mdash; Sent from TopTick</span></div>
-          <div class="st2">14:42 &check;&check;</div>
-        </div>
-        <div class="merged">
-          <b>On your phone:</b> &ldquo;3 items newly ticked. 1 item of yours not in their copy is
-          kept.&rdquo; &mdash; then one tap to apply it.
-        </div>
-      </div>
+    <div class="steps">
+      <div class="step rv"><div><h3>Tap what you need</h3><p>Open an activity and the items are already there in labelled groups. A full grocery run takes about forty seconds and no typing at all.</p></div></div>
+      <div class="step rv"><div><h3>Paste a sentence, get a checklist</h3><p>Someone texts &ldquo;bread, eggs, coffee, dish soap&rdquo;. Copy, open TopTick, tap once — four separate tickable items. Commas, bullets and numbered lines are all understood.</p></div></div>
+      <div class="step rv"><div><h3>Start blank, or import theirs</h3><p>Type your own when the job is unusual, or take a list somebody shared and it becomes a real checklist — quantities, units and icon included.</p></div></div>
     </div>
   </div>
 </section>
-
-<!-- ============================ TEMPLATES ============================ -->
-<section class="sec warm">
-  <div class="container">
-    <div class="head">
-      <p class="tag" style="--c:var(--amber);--cs:var(--amber-soft)"><span class="dot"></span>05 / Templates</p>
-      <h2 class="rv">Sixteen lists you didn&rsquo;t have to write.</h2>
-      <p class="lede rv">Every one grouped, unit-aware and fully editable. Delete what you never
-        use, add your own activities, and they become yours.</p>
+<section class="sec wash" id="sharing">
+  <div class="wrap">
+    <div class="head center">
+      <span class="eyebrow">Sharing</span>
+      <h2>Share a list, get their ticks back.</h2>
     </div>
-    <div class="tiles rv">
-      <div class="tl" style="--t:#ffe8d6"><span class="e">🛒</span>Grocery <em>195</em></div>
-      <div class="tl" style="--t:#dbeafe"><span class="e">✈️</span>Packing <em>80</em></div>
-      <div class="tl" style="--t:#d7f2ec"><span class="e">⚓</span>Ship joining <em>70</em></div>
-      <div class="tl" style="--t:#fde8e8"><span class="e">🚗</span>Vehicle <em>68</em></div>
-      <div class="tl" style="--t:#ede4ff"><span class="e">✏️</span>Stationery <em>65</em></div>
-      <div class="tl" style="--t:#e6f4d9"><span class="e">👕</span>Textiles <em>64</em></div>
-      <div class="tl" style="--t:#d9f0f7"><span class="e">🧹</span>Cleaning <em>60</em></div>
-      <div class="tl" style="--t:#ffe4f1"><span class="e">🎉</span>Party <em>57</em></div>
-      <div class="tl" style="--t:#fff3cd"><span class="e">🌅</span>Daily goals <em>51</em></div>
-      <div class="tl" style="--t:#e8e6df"><span class="e">🛋️</span>Guests <em>49</em></div>
-      <div class="tl" style="--t:#ffe1d4"><span class="e">🎯</span>Goal review <em>49</em></div>
-      <div class="tl" style="--t:#e2e8f0"><span class="e">📝</span>Meetings <em>41</em></div>
-      <div class="tl" style="--t:#e0f2e9"><span class="e">📚</span>Exam prep <em>39</em></div>
-      <div class="tl" style="--t:#e7eaff"><span class="e">🏠</span>Leaving home <em>38</em></div>
-      <div class="tl" style="--t:#d9f7e4"><span class="e">💰</span>Monthly bills <em>37</em></div>
-      <div class="tl" style="--t:#f4e3f7"><span class="e">🩺</span>Doctor visit <em>35</em></div>
+    <div class="steps">
+      <div class="step rv"><div><h3>You share it</h3><p>Tap Share and pick WhatsApp, email, anything. It goes out as ordinary text carrying the activity&rsquo;s own icon.</p></div></div>
+      <div class="step rv"><div><h3>They tick it on their phone</h3><p>They copy the message, tap Import, and it is a real checklist in their app — quantities and units and all.</p></div></div>
+      <div class="step rv"><div><h3>Your list updates</h3><p>They send it back and TopTick recognises it as the same list. Their ticks appear on your copy with the time each was done. Nothing you already ticked is undone.</p></div></div>
     </div>
-    <p class="note rv" style="margin-top:1.5rem">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
-           stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg>
-      <span>Counts shown for US units. Switch to metric and six of these swap to their local
-        versions &mdash; a comparable set, roughly the same size.</span>
-    </p>
+    <p class="note rv" style="justify-content:center"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg><span>Nothing sits on a server waiting to be shared, so your shopping list is never in a database waiting to be leaked.</span></p>
   </div>
 </section>
-
-<!-- ============================ FAQ ============================ -->
-<section class="sec" id="ask">
-  <div class="container grid2 top">
-    <div>
-      <p class="tag" style="--c:var(--violet);--cs:var(--violet-soft)"><span class="dot"></span>06 / Questions</p>
-      <h2 class="rv">Before you install.</h2>
+<section class="sec" id="faq">
+  <div class="wrap">
+    <div class="head center">
+      <span class="eyebrow">Questions</span>
+      <h2>Before you install.</h2>
     </div>
-    <div class="faq rv">
+    <div class="faq rv" style="max-width:820px;margin-inline:auto">
       <details open>
         <summary>If it has no internet, how does sharing work?</summary>
-        <div class="ans">Your phone&rsquo;s share sheet does it. TopTick hands the text to WhatsApp,
-          Gmail or whatever you pick, and that app sends it &mdash; the same as sharing a photo.
-          TopTick itself never opens a connection, which is why it needs no permission.</div>
+        <div class="ans">Your phone&rsquo;s share sheet does it. TopTick hands the text to WhatsApp or Gmail and that app sends it — the same as sharing a photo. TopTick never opens a connection, which is why it needs no permission.</div>
       </details>
       <details>
         <summary>Can two people work on the same list?</summary>
-        <div class="ans">Yes. Share it, they tick items in their own copy, send it back, and your
-          list updates rather than duplicating &mdash; their ticks, with the time each was done.
-          Because nothing is held online, your shopping list is never sitting in a database waiting
-          to be leaked, and it keeps working in a shop with no signal.</div>
+        <div class="ans">Yes. Share it, they tick items in their copy, send it back, and your list updates rather than duplicating. It also keeps working in a shop with no signal.</div>
       </details>
       <details>
-        <summary>What happens to my lists if I change phones?</summary>
-        <div class="ans">Settings &rarr; Backup to file writes everything to one small file you keep
-          wherever you like. On the new phone, Restore from file brings back every list, tick,
-          quantity and reminder.</div>
+        <summary>What happens if I change phones?</summary>
+        <div class="ans">Settings &rarr; Backup to file writes everything to one small file you keep. Restore on the new phone brings back every list, tick, quantity and reminder.</div>
       </details>
       <details>
-        <summary>Does it work offline, on a ship, in a basement?</summary>
-        <div class="ans">It only works offline. There is no online mode to fall back from. Creating,
-          ticking, reminders and backups all happen on the device with no signal at all.</div>
+        <summary>Which Android versions?</summary>
+        <div class="ans">Android 7.0 (2016) and newer. The app is about 4 MB.</div>
       </details>
       <details>
-        <summary>Which Android versions does it run on?</summary>
-        <div class="ans">Android 7.0 (2016) and newer, which covers effectively every phone still in
-          use. The app is about 4 MB.</div>
-      </details>
-      <details>
-        <summary>Is any of this going to start costing money?</summary>
-        <div class="ans">Every feature described on this page is free, with no account and no time
-          limit, and stays that way. If advanced features are added later they will be a
-          <strong>one-time purchase</strong> &mdash; never a subscription &mdash; you will be able
-          to try them before paying, and a full refund is available for 30 days.
-          <a href="../index.html#pricing">How pricing works</a>.</div>
+        <summary>Will it start costing money?</summary>
+        <div class="ans">Every feature here is free with no account and no time limit. Advanced features, if added, would be a <strong>one-time purchase</strong> — never a subscription. <a href="../pricing.html">How pricing works</a>.</div>
       </details>
     </div>
   </div>
 </section>
 
-<!-- ============================ CTA ============================ -->
-<section class="sec" id="get">
-  <div class="container">
-    <div class="cta">
-      <p class="tag ctr" style="--c:#fff;--cs:rgba(255,255,255,.18)"><span class="dot"></span>Free · No account · No ads</p>
-      <h2>Leave the store<br>with all of it.</h2>
-      <p class="lede ctr">Install it, pick an activity, tap the items you need. Your first list
-        takes about forty seconds &mdash; and every feature on this page is in the free app.</p>
-      <div class="btns ctr" style="margin-top:2rem">
-        <a class="play" href="https://play.google.com/store/apps/details?id=com.tekzova.toptick">
-          <svg width="22" height="24" viewBox="0 0 24 26" aria-hidden="true">
-            <path d="M2 1.6v22.8c0 .7.4 1.1 1 1.3L15 13 3 .3c-.6.2-1 .6-1 1.3Z" fill="currentColor" opacity=".95"/>
-            <path d="m18.7 9.4-3.1-1.8L12.6 13l3 5.4 3.1-1.8c1.2-.7 1.2-2.5 0-3.2Z" fill="currentColor" opacity=".75"/>
-            <path d="M3 .3 15.6 7.6 18.7 9.4 3 .3Z" fill="currentColor" opacity=".6"/>
-          </svg>
-          <span class="t"><small>Get it on</small><span>Google Play</span></span>
-        </a>
-        <a class="btn btn--ghost" href="../privacy/toptick.html">Read the privacy policy</a>
+<section class="sec--sm">
+  <div class="wrap">
+    <div class="cta rv">
+      <span class="eyebrow eyebrow--light">Free · No account · Offline</span>
+      <h2>Leave the store with all of it.</h2>
+      <p class="lede">Install it, pick an activity, tap the items you need. Your first list takes about forty seconds.</p>
+      <div class="btns">
+        <a class="btn btn--onDark" href="https://play.google.com/store/apps/details?id=com.tekzova.toptick">Get it on Google Play</a>
+        <a class="btn btn--outlineLight" href="../privacy/toptick.html">Read the privacy policy</a>
       </div>
     </div>
   </div>
@@ -701,38 +299,34 @@ Shared by Sam &middot; 29 Aug 2026
 
 </main>
 
+<!-- ======================= FOOTER ======================= -->
 <footer class="foot">
-  <div class="container">
+  <div class="wrap">
     <div class="cols">
       <div>
-        <a class="brand" href="../index.html">
-          <svg class="g" viewBox="0 0 32 32" aria-hidden="true">
-            <rect x="1" y="1" width="30" height="30" rx="9" fill="var(--violet)"/>
-            <path d="M7.6 9.4h12.8" stroke="#fff" stroke-width="3.1" stroke-linecap="round"/>
-            <path d="M14 9.4v8" stroke="#fff" stroke-width="3.1" stroke-linecap="round"/>
-            <path d="m12.2 21.2 3.2 3.2 9-10" stroke="#fff" stroke-width="3.1"
-                  fill="none" stroke-linecap="round" stroke-linejoin="round" opacity=".68"/>
-          </svg>
-          <span>Tekzova<i>.</i></span>
+        <a class="brand" href="../index.html" aria-label="Tekzova Technologies — home">
+          <img class="lgo lgo--light" src="../assets/logo-tekzova.svg"
+               alt="Tekzova Technologies" width="668" height="142">
+          <img class="lgo lgo--dark" src="../assets/logo-tekzova-dark.svg"
+               alt="" aria-hidden="true" width="668" height="142">
         </a>
-        <p>Practical apps for everyday problems. Built offline, on purpose.</p>
+        <p class="blurb">Practical apps for everyday problems. Built offline, on purpose.</p>
       </div>
       <div>
         <h4>Apps</h4>
         <ul>
-          <li><a href="toptick.html">TopTick</a></li>
-          <li><a href="nre-tracker.html">NRE Tracker</a></li>
-          <li><a href="portfolio-tracker.html">Portfolio Tracker</a></li>
-          <li><a href="mailto:info@tekzova.com?subject=Tell%20me%20when%20the%20next%20app%20lands">More in build</a></li>
+          <li><a href="../apps/toptick.html">TopTick</a></li>
+          <li><a href="../apps/nre-tracker.html">NRE Tracker</a></li>
+          <li><a href="../apps/portfolio-tracker.html">Portfolio Tracker</a></li>
         </ul>
       </div>
       <div>
         <h4>Company</h4>
         <ul>
-          <li><a href="../index.html#toolkit">Toolkit</a></li>
-          <li><a href="../index.html#safe">Your data</a></li>
-          <li><a href="../index.html#pricing">Pricing</a></li>
-          <li><a href="../index.html#ask">Questions</a></li>
+          <li><a href="../index.html#apps">All apps</a></li>
+          <li><a href="../pricing.html">Pricing</a></li>
+          <li><a href="../index.html#offline">Your data</a></li>
+          <li><a href="../index.html#faq">Questions</a></li>
         </ul>
       </div>
       <div>
@@ -740,18 +334,19 @@ Shared by Sam &middot; 29 Aug 2026
         <ul>
           <li><a href="../privacy/">Privacy</a></li>
           <li><a href="../privacy/toptick.html">TopTick policy</a></li>
+          <li><a href="../privacy/nre-tracker.html">NRE Tracker policy</a></li>
+          <li><a href="../privacy/portfolio-tracker.html">Portfolio Tracker policy</a></li>
           <li><a href="mailto:info@tekzova.com">info@tekzova.com</a></li>
         </ul>
       </div>
     </div>
     <div class="base">
-      <span>&copy; 2026 Tekzova Technologies. All rights reserved.</span>
-      <span><a href="../index.html">tekzova.com</a> &nbsp;&middot;&nbsp;
-            <a href="mailto:info@tekzova.com">info@tekzova.com</a></span>
+      <span>© 2026 Tekzova Technologies. All rights reserved.</span>
+      <span>tekzova.com · info@tekzova.com</span>
     </div>
   </div>
 </footer>
 
-<script src="../assets/theme.js"></script>
+<script src="../assets/bh.js"></script>
 </body>
 </html>
