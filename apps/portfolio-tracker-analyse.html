@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Analyse — money health, action list, fund health and reports | Portfolio Tracker</title>
+<meta name="description" content="Money-health checks, a to-do list from your own numbers, every fund tested against its index, growth charts, a yearly review and sixteen reports.">
+<link rel="canonical" href="https://www.tekzova.com/apps/portfolio-tracker-analyse">
+<meta name="theme-color" content="#16273F">
+<link rel="icon" href="../assets/icon-tekzova-tile.svg" type="image/svg+xml">
+<link rel="icon" href="../assets/favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.tekzova.com/apps/portfolio-tracker-analyse">
+<meta property="og:site_name" content="Tekzova Technologies">
+<meta property="og:title" content="Analyse — money health, action list, fund health and reports | Portfolio Tracker">
+<meta property="og:description" content="Money-health checks, a to-do list from your own numbers, every fund tested against its index, growth charts, a yearly review and sixteen reports.">
+<meta property="og:image" content="https://www.tekzova.com/assets/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<link rel="stylesheet" href="../assets/tz.css">
+<link rel="stylesheet" href="../assets/pages.css">
+<script>document.documentElement.className+=" js";</script>
+</head>
+<body>
+<header class="bar">
+  <div class="wrap">
+    <a class="brand" href="../index.html" aria-label="Tekzova Technologies — home">
+      <img class="lgo lgo--light" src="../assets/logo-tekzova.svg" alt="Tekzova Technologies" width="668" height="142">
+      <img class="lgo lgo--dark" src="../assets/logo-tekzova-white.svg" alt="" aria-hidden="true" width="668" height="142">
+    </a>
+    <nav class="desknav" aria-label="Primary">
+      <a href="../index.html#apps">Apps</a>
+      <a href="../apps/portfolio-tracker.html">Portfolio Tracker</a>
+      <a href="../index.html#privacy">Your data</a>
+      <a href="../index.html#pricing">Pricing</a>
+      <a href="../index.html#faq">FAQ</a>
+    </nav>
+    <span class="spacer"></span>
+    <a class="bar-cta" href="../apps/portfolio-tracker.html#get">Get Portfolio Tracker</a>
+    <button class="burger" type="button" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="drawer">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<div class="scrim" id="scrim" hidden></div>
+
+<aside class="drawer" id="drawer" hidden aria-label="Site menu">
+  <div class="dhead">
+    <span>Menu</span>
+    <button class="dclose" type="button" id="dclose" aria-label="Close menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+  </div>
+  <div class="dgroup">
+    <h4>The apps</h4>
+    <a class="dlink" href="../apps/portfolio-tracker.html"><img src="../assets/icon-portfolio-tracker.png" alt="" width="320" height="320"><span class="t">Portfolio Tracker<small>Investments &amp; planning · Android + Windows</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 5 7 7-7 7"/></svg></a>
+    <a class="dlink" href="../apps/nre-tracker.html"><img src="../assets/icon-nre-tracker.png" alt="" width="320" height="320"><span class="t">NRE Tracker<small>Days &amp; sea service · Android + Windows</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 5 7 7-7 7"/></svg></a>
+    <a class="dlink" href="../apps/toptick.html"><img src="../assets/icon-toptick.png" alt="" width="320" height="320"><span class="t">TopTick<small>Checklists · Android</small></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 5 7 7-7 7"/></svg></a>
+  </div>
+  <div class="dgroup">
+    <h4>Inside Portfolio Tracker</h4>
+    <a class="dlink" href="../apps/portfolio-tracker-track.html"><span class="t">Track</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 5 7 7-7 7"/></svg></a>
+    <a class="dlink" href="../apps/portfolio-tracker-plan.html"><span class="t">Plan</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 5 7 7-7 7"/></svg></a>
+    <a class="dlink" href="../apps/portfolio-tracker-analyse.html"><span class="t">Analyse</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 5 7 7-7 7"/></svg></a>
+    <a class="dlink" href="../apps/portfolio-tracker-tax.html"><span class="t">Tax reports</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 5 7 7-7 7"/></svg></a>
+    <a class="dlink" href="../apps/portfolio-tracker-protect.html"><span class="t">Protect &amp; pass on</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 5 7 7-7 7"/></svg></a>
+    <a class="dlink" href="../apps/portfolio-tracker-learn.html"><span class="t">Learn</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 5 7 7-7 7"/></svg></a>
+    <a class="dlink" href="../apps/portfolio-tracker-start.html"><span class="t">Get started</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 5 7 7-7 7"/></svg></a>
+  </div>
+  <div class="dgroup">
+    <h4>Company</h4>
+    <a class="dlink" href="../index.html#privacy"><span class="t">Where your data lives</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 5 7 7-7 7"/></svg></a>
+    <a class="dlink" href="../index.html#pricing"><span class="t">Pricing</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 5 7 7-7 7"/></svg></a>
+    <a class="dlink" href="../index.html#status"><span class="t">Release status</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 5 7 7-7 7"/></svg></a>
+    <a class="dlink" href="../index.html#faq"><span class="t">Questions</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 5 7 7-7 7"/></svg></a>
+    <a class="dlink" href="mailto:info@tekzova.com"><span class="t">info@tekzova.com</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 5 7 7-7 7"/></svg></a>
+  </div>
+  <div class="dfoot">
+    <a class="btn" href="../apps/portfolio-tracker.html#get">Get Portfolio Tracker</a>
+  </div>
+</aside>
+<main id="top">
+<section class="ahero">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="../index.html">Home</a><span aria-hidden="true">/</span><a href="../apps/portfolio-tracker.html">Portfolio Tracker</a><span aria-hidden="true">/</span><span>Analyse</span></nav>
+    <div class="agrid">
+      <div class="fadeup d1">
+        <span class="eyebrow eyebrow--onDark">Portfolio Tracker · Analyse</span>
+        <h1>Know what is working — and what is not.</h1>
+        <p class="lede">Portfolio Tracker does not stop at totals. It checks the basics, tests each fund against its index, and tells you what deserves attention next.</p>
+        <ul class="hbul"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg><span><b>Money health</b> — six checks on the dashboard</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg><span><b>What to do next</b>, most urgent first</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg><span><b>Fund health</b>, growth and a yearly review</span></li></ul>
+      </div>
+      <div class="fadeup d3"><button type="button" class="shot" data-full="../assets/screens/pt-d-dash.webp" aria-label="Enlarge: Dashboard with money health and the action list"><div class="win"><div class="wbar"><img src="../assets/icon-portfolio-tracker.png" alt="" width="15" height="15"><span class="wt">Portfolio Tracker</span><span class="wc"><i></i><i></i><i></i></span></div><img class="scr" src="../assets/screens/pt-d-dash.webp" alt="Dashboard with money health and the action list" width="1440" height="900"></div></button></div>
+    </div>
+  </div>
+</section>
+<nav class="subnav" aria-label="Portfolio Tracker pages"><div class="wrap"><a href="../apps/portfolio-tracker.html"><img src="../assets/icon-portfolio-tracker.png" alt="" width="20" height="20">Overview</a><a href="../apps/portfolio-tracker-track.html">Track</a><a href="../apps/portfolio-tracker-plan.html">Plan</a><a href="../apps/portfolio-tracker-analyse.html" aria-current="page">Analyse</a><a href="../apps/portfolio-tracker-tax.html">Tax reports</a><a href="../apps/portfolio-tracker-protect.html">Protect &amp; pass on</a><a href="../apps/portfolio-tracker-learn.html">Learn</a><a href="../apps/portfolio-tracker-start.html">Get started</a></div></nav>
+<section class="sec"><div class="wrap"><div class="frow rv"><div class="copy"><span class="tag">Money health</span><h2>Six checks, the moment you open it.</h2>
+<p>Before any chart, the dashboard tells you whether the basics are in place — each check green, amber or red, with the
+  number behind it.</p>
+<ul class="ticks"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg><span><b>Emergency fund</b> — months of spending and EMIs you could cover</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg><span><b>Life cover</b> and <b>health cover</b> against a rough need</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg><span><b>Mix vs target</b> — equity, debt and gold against the split you chose</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg><span><b>Loan EMIs</b> as a share of income, and your <b>savings rate</b></span></li></ul></div><div class="media"><button type="button" class="shot" data-full="../assets/screens/pt-d-card-money-health.webp" aria-label="Enlarge: Money health strip on the dashboard"><div class="win"><img class="scr" src="../assets/screens/pt-d-card-money-health.webp" alt="Money health strip on the dashboard" width="1200" height="130" loading="lazy" decoding="async"></div></button></div></div><div id="actions"></div><div class="frow rv flip"><div class="copy"><span class="tag">What to do next</span><h2>A to-do list written by your own numbers.</h2>
+<p>The app reads across everything you have entered and lists what deserves attention — most urgent first, each with a
+  button that takes you straight to the fix.</p>
+<ul class="ticks"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg><span>A premium overdue, or a deposit maturing soon</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg><span>A goal three years away that is still mostly in equity</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg><span>A fund trailing its index, a regular plan, or funds that overlap</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg><span>An endowment policy worth checking, nominees not recorded</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg><span>Tax-year deadlines before 31 March</span></li></ul>
+<p style="margin-top:16px">Not now? Hide an item for 30 days. These are prompts to review — never instructions to buy or sell.</p></div><div class="media"><button type="button" class="shot" data-full="../assets/screens/pt-d-card-what-to.webp" aria-label="Enlarge: What to do next — the action list"><div class="win"><img class="scr" src="../assets/screens/pt-d-card-what-to.webp" alt="What to do next — the action list" width="1200" height="845" loading="lazy" decoding="async"></div></button></div></div><div id="fundhealth"></div><div class="frow rv"><div class="copy"><span class="tag">Fund health</span><h2>Would an index fund have done better?</h2>
+<p>Each fund is compared with <b>the same money, on the same dates</b>, put into its index instead — every purchase and
+  every sale. It is the fairest test there is, and it takes your own timing into account.</p>
+<ul class="ticks"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg><span>Your XIRR beside the same money in Nifty 50, Nifty 100, Midcap 150 or Smallcap 250</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg><span>A plain verdict — and "too new to judge" for funds under three years</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg><span>Regular plans flagged, with the commission they carry</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg><span>Funds that mostly buy the same companies, called out</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg><span>Index history downloads once; nothing about you is sent</span></li></ul></div><div class="media"><div class="only-lg"><button type="button" class="shot" data-full="../assets/screens/pt-d-fundhealth.webp" aria-label="Enlarge: Fund health check"><div class="win"><div class="wbar"><img src="../assets/icon-portfolio-tracker.png" alt="" width="15" height="15"><span class="wt">Portfolio Tracker</span><span class="wc"><i></i><i></i><i></i></span></div><img class="scr" src="../assets/screens/pt-d-fundhealth.webp" alt="Fund health check" width="1440" height="900" loading="lazy" decoding="async"></div></button></div><div class="only-sm"><button type="button" class="shot " data-full="../assets/screens/pt-m-fundhealth.webp" aria-label="Enlarge: Fund health check (phone)"><div class="phone phone--solo"><img class="scr" src="../assets/screens/pt-m-fundhealth.webp" alt="Fund health check — on a phone" width="390" height="844" loading="lazy" decoding="async"></div></button></div></div></div><div class="frow rv flip"><div class="copy"><span class="tag">Growth &amp; benchmarks</span><h2>Your portfolio over the years — against the market.</h2>
+<p>Value and money invested, month by month or tax year by tax year, over one, three or five years or all of it. Lay an
+  index over it to see how you really did.</p>
+<ul class="ticks"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg><span>Invested, withdrawn and realised gain for any period</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg><span>Compare with Nifty 50, Nifty 100, Midcap 150 and Smallcap 250</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg><span>Built from your own transactions and fund-price history</span></li></ul></div><div class="media"><div class="only-lg"><button type="button" class="shot" data-full="../assets/screens/pt-d-growth.webp" aria-label="Enlarge: Portfolio growth chart"><div class="win"><div class="wbar"><img src="../assets/icon-portfolio-tracker.png" alt="" width="15" height="15"><span class="wt">Portfolio Tracker</span><span class="wc"><i></i><i></i><i></i></span></div><img class="scr" src="../assets/screens/pt-d-growth.webp" alt="Portfolio growth chart" width="1440" height="900" loading="lazy" decoding="async"></div></button></div><div class="only-sm"><button type="button" class="shot " data-full="../assets/screens/pt-m-growth.webp" aria-label="Enlarge: Portfolio growth chart (phone)"><div class="phone phone--solo"><img class="scr" src="../assets/screens/pt-m-growth.webp" alt="Portfolio growth chart — on a phone" width="390" height="844" loading="lazy" decoding="async"></div></button></div></div></div><div id="review"></div><div class="frow rv"><div class="copy"><span class="tag">Yearly review</span><h2>The once-a-year check-up, done for you.</h2>
+<p>One page that puts the year side by side: what you were worth a year ago and today, how the money did, and what needs a
+  decision before the next one.</p>
+<ul class="ticks"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg><span>Where you stand: net worth now, a year ago, and the change</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg><span>Money health and your mix against target</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg><span>Every goal — on track, behind or reached</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg><span>Every fund with a review note</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg><span>Tax this year — and save it all as a PDF</span></li></ul></div><div class="media"><div class="only-lg"><button type="button" class="shot" data-full="../assets/screens/pt-d-review.webp" aria-label="Enlarge: Yearly review"><div class="win"><div class="wbar"><img src="../assets/icon-portfolio-tracker.png" alt="" width="15" height="15"><span class="wt">Portfolio Tracker</span><span class="wc"><i></i><i></i><i></i></span></div><img class="scr" src="../assets/screens/pt-d-review.webp" alt="Yearly review" width="1440" height="900" loading="lazy" decoding="async"></div></button></div><div class="only-sm"><button type="button" class="shot " data-full="../assets/screens/pt-m-review.webp" aria-label="Enlarge: Yearly review (phone)"><div class="phone phone--solo"><img class="scr" src="../assets/screens/pt-m-review.webp" alt="Yearly review — on a phone" width="390" height="844" loading="lazy" decoding="async"></div></button></div></div></div><div class="frow rv flip"><div class="copy"><span class="tag">Reports</span><h2>Sixteen reports, for one person or the family.</h2>
+<p>Pick a report, pick the member or the whole family, and save it as a <b>PDF</b> or open it in <b>Excel</b>. Each one says
+  where its numbers came from.</p></div><div class="media"><div class="only-lg"><button type="button" class="shot" data-full="../assets/screens/pt-d-r-xirr.webp" aria-label="Enlarge: Annualised return (XIRR) report"><div class="win"><div class="wbar"><img src="../assets/icon-portfolio-tracker.png" alt="" width="15" height="15"><span class="wt">Portfolio Tracker</span><span class="wc"><i></i><i></i><i></i></span></div><img class="scr" src="../assets/screens/pt-d-r-xirr.webp" alt="Annualised return (XIRR) report" width="1440" height="900" loading="lazy" decoding="async"></div></button></div><div class="only-sm"><button type="button" class="shot " data-full="../assets/screens/pt-m-r-xirr.webp" aria-label="Enlarge: Annualised return (XIRR) report (phone)"><div class="phone phone--solo"><img class="scr" src="../assets/screens/pt-m-r-xirr.webp" alt="Annualised return (XIRR) report — on a phone" width="390" height="844" loading="lazy" decoding="async"></div></button></div></div></div></div></section><section class="sec wash"><div class="wrap"><div class="head rv"><span class="eyebrow">Every report</span><h2>What you can print.</h2></div><div class="minis"><div class="mini rv"><h4><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></svg>Performance</h4><p>Portfolio summary · Annualised return (XIRR) · Transaction-wise returns</p></div><div class="mini rv"><h4><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></svg>Capital gains</h4><p>Capital gains — summary · Capital gains — ITR format · Schedule 112A format · Unrealised capital gains</p></div><div class="mini rv"><h4><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></svg>Retirement</h4><p>FIRE plan · Year-by-year projection</p></div><div class="mini rv"><h4><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></svg>Tax &amp; year</h4><p>Tax-saving tracker · Year in review</p></div><div class="mini rv"><h4><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></svg>Goals</h4><p>Goals summary</p></div><div class="mini rv"><h4><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></svg>Net worth</h4><p>Member net worth (all assets) · Family net worth</p></div><div class="mini rv"><h4><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></svg>Transactions</h4><p>Mutual-fund transactions, date-wise · All transactions</p></div></div></div></section>
+<section class="sec--sm"><div class="wrap"><div class="pnext"><a href="../apps/portfolio-tracker-plan.html"><small>← Previous</small><b>Plan</b></a><a class="nx" href="../apps/portfolio-tracker-tax.html"><small>Next →</small><b>Tax reports</b></a></div></div></section>
+<section class="sec--sm">
+  <div class="wrap">
+    <div class="cta rv">
+      <span class="eyebrow eyebrow--onDark" style="justify-content:center">Free core · No account · No ads</span>
+      <h2>See it on your own numbers.</h2>
+      <p class="lede" style="margin-top:14px">Portfolio Tracker is in its final stretch. Leave your email and we will write once — the day the Windows download and the Google Play listing go live.</p>
+      <div class="btns">
+        <a class="btn btn--onDark" href="mailto:info@tekzova.com?subject=Tell%20me%20when%20Portfolio%20Tracker%20launches">Tell me when it lands</a>
+        <a class="btn btn--lineDark" href="../apps/portfolio-tracker.html">Portfolio Tracker overview</a>
+      </div>
+      <p class="small" style="margin-top:16px;color:#9FB6C8">Windows: download from this site · Android: Google Play</p>
+    </div>
+  </div>
+</section>
+</main>
+<footer class="foot">
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <a class="brand" href="../index.html" aria-label="Tekzova Technologies — home">
+          <img class="lgo lgo--light" src="../assets/logo-tekzova.svg" alt="Tekzova Technologies" width="668" height="142">
+          <img class="lgo lgo--dark" src="../assets/logo-tekzova-white.svg" alt="" aria-hidden="true" width="668" height="142">
+        </a>
+        <p class="blurb">Practical apps for everyday problems. Built offline, on purpose.</p>
+      </div>
+      <div>
+        <h4>Apps</h4>
+        <ul>
+          <li><a href="../apps/portfolio-tracker.html">Portfolio Tracker</a></li>
+          <li><a href="../apps/nre-tracker.html">NRE Tracker</a></li>
+          <li><a href="../apps/toptick.html">TopTick</a></li>
+          <li><a href="../index.html#status">Release status</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Portfolio Tracker</h4>
+        <ul><li><a href="../apps/portfolio-tracker-track.html">Track</a></li><li><a href="../apps/portfolio-tracker-plan.html">Plan</a></li><li><a href="../apps/portfolio-tracker-analyse.html">Analyse</a></li><li><a href="../apps/portfolio-tracker-tax.html">Tax reports</a></li><li><a href="../apps/portfolio-tracker-protect.html">Protect &amp; pass on</a></li><li><a href="../apps/portfolio-tracker-learn.html">Learn</a></li><li><a href="../apps/portfolio-tracker-start.html">Get started</a></li></ul>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a href="../index.html#privacy">Your data</a></li>
+          <li><a href="../index.html#pricing">Pricing</a></li>
+          <li><a href="../index.html#faq">Questions</a></li>
+          <li><a href="mailto:info@tekzova.com">info@tekzova.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="base">
+      <span>© 2026 Tekzova Technologies. All rights reserved.</span>
+      <span>tekzova.com · info@tekzova.com</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/tz.js"></script>
+<script src="../assets/pages.js"></script>
+</body>
+</html>
