@@ -262,3 +262,12 @@ html.js .rv.in { opacity: 1; transform: none; }
   .top .wrap { height: 64px; }
   .brand img { width: 126px; }
 }
+
+/* offgridwealth.in callout (apps/offgridwealth.html) */
+.sitebar { background: var(--navy); color: #fff; padding: clamp(36px, 4.5vw, 56px) 0; }
+.sitebar-in { display: flex; align-items: center; justify-content: space-between; gap: 28px; flex-wrap: wrap; }
+.sitebar .kicker { color: var(--gold); }
+.sitebar p { color: rgba(255, 255, 255, .78); max-width: 40em; margin-bottom: 0; }
+.sitebar-url { display: inline-block; font-size: clamp(26px, 3.4vw, 42px); font-weight: 800; letter-spacing: -.01em; color: #fff; text-decoration: none; border-bottom: 3px solid var(--gold); margin-bottom: 14px; line-height: 1.2; word-break: break-all; }
+.sitebar-url:hover { color: var(--gold); }
+.sitebar .btns { margin-top: 0; }
