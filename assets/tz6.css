@@ -271,3 +271,19 @@ html.js .rv.in { opacity: 1; transform: none; }
 .sitebar-url { display: inline-block; font-size: clamp(26px, 3.4vw, 42px); font-weight: 800; letter-spacing: -.01em; color: #fff; text-decoration: none; border-bottom: 3px solid var(--gold); margin-bottom: 14px; line-height: 1.2; word-break: break-all; }
 .sitebar-url:hover { color: var(--gold); }
 .sitebar .btns { margin-top: 0; }
+
+/* phone-screen strip on app pages (21 Nov 2026) */
+.phones { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; align-items: start; }
+.phones.n2 { grid-template-columns: repeat(2, minmax(0, 280px)); justify-content: center; }
+.phones.n3 { grid-template-columns: repeat(3, minmax(0, 300px)); justify-content: center; }
+.phones figure { margin: 0; box-shadow: var(--shadow); }
+.phones figure img { width: 100%; height: auto; display: block; }
+.phones figcaption { padding: 12px 14px 14px; font-size: 14px; font-weight: 700; color: var(--ink-2); text-align: center; border-top: 1px solid var(--line); }
+.hero-phone { max-width: 270px; margin: 0 auto; box-shadow: var(--shadow); }
+.hero-phone img { width: 100%; height: auto; display: block; }
+.orbshot { max-height: 640px; overflow-y: auto; }
+.orbshot img { height: auto; }
+@media (max-width: 860px) { .phones, .phones.n3 { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 480px) { .phones.n2 { grid-template-columns: repeat(2, 1fr); gap: 14px; } .phones { gap: 14px; } }
+.cards.cards2 { grid-template-columns: repeat(2, 1fr); }
+@media (max-width: 760px) { .cards.cards2 { grid-template-columns: 1fr; } }
