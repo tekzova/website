@@ -2,10 +2,9 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url><loc>https://www.tekzova.com/</loc><lastmod>2026-11-21</lastmod></url>
 <url><loc>https://www.tekzova.com/about.html</loc><lastmod>2026-11-21</lastmod></url>
-<url><loc>https://www.tekzova.com/apps/zovawealth.html</loc><lastmod>2026-11-21</lastmod></url>
 <url><loc>https://www.tekzova.com/apps/nre-tracker.html</loc><lastmod>2026-11-21</lastmod></url>
 <url><loc>https://www.tekzova.com/apps/zovatick.html</loc><lastmod>2026-11-21</lastmod></url>
-<url><loc>https://www.tekzova.com/privacy/index.html</loc><lastmod>2026-11-21</lastmod></url>
+<url><loc>https://www.tekzova.com/privacy/</loc><lastmod>2026-11-21</lastmod></url>
 <url><loc>https://www.tekzova.com/apps/zovascan.html</loc><lastmod>2026-11-21</lastmod></url>
 <url><loc>https://www.tekzova.com/apps/zovapdf.html</loc><lastmod>2026-11-21</lastmod></url>
 <url><loc>https://www.tekzova.com/apps/orb-tracker.html</loc><lastmod>2026-11-21</lastmod></url>
@@ -15,4 +14,15 @@
 <url><loc>https://www.tekzova.com/privacy/zovawealth.html</loc><lastmod>2026-11-21</lastmod></url>
 <url><loc>https://www.tekzova.com/privacy/nre-tracker.html</loc><lastmod>2026-11-21</lastmod></url>
 <url><loc>https://www.tekzova.com/privacy/zovatick.html</loc><lastmod>2026-11-21</lastmod></url>
+<url><loc>https://www.tekzova.com/zovawealth/</loc><lastmod>2026-11-21</lastmod></url>
+<url><loc>https://www.tekzova.com/zovawealth/check.html</loc><lastmod>2026-11-21</lastmod></url>
+<url><loc>https://www.tekzova.com/zovawealth/download.html</loc><lastmod>2026-11-21</lastmod></url>
+<url><loc>https://www.tekzova.com/zovawealth/faq.html</loc><lastmod>2026-11-21</lastmod></url>
+<url><loc>https://www.tekzova.com/zovawealth/features.html</loc><lastmod>2026-11-21</lastmod></url>
+<url><loc>https://www.tekzova.com/zovawealth/film.html</loc><lastmod>2026-11-21</lastmod></url>
+<url><loc>https://www.tekzova.com/zovawealth/learn.html</loc><lastmod>2026-11-21</lastmod></url>
+<url><loc>https://www.tekzova.com/zovawealth/plan.html</loc><lastmod>2026-11-21</lastmod></url>
+<url><loc>https://www.tekzova.com/zovawealth/privacy.html</loc><lastmod>2026-11-21</lastmod></url>
+<url><loc>https://www.tekzova.com/zovawealth/protect.html</loc><lastmod>2026-11-21</lastmod></url>
+<url><loc>https://www.tekzova.com/zovawealth/track.html</loc><lastmod>2026-11-21</lastmod></url>
 </urlset>

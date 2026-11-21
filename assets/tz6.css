@@ -263,7 +263,7 @@ html.js .rv.in { opacity: 1; transform: none; }
   .brand img { width: 126px; }
 }
 
-/* offgridwealth.in callout (apps/offgridwealth.html) */
+/* app-site callout (no longer used) */
 .sitebar { background: var(--navy); color: #fff; padding: clamp(36px, 4.5vw, 56px) 0; }
 .sitebar-in { display: flex; align-items: center; justify-content: space-between; gap: 28px; flex-wrap: wrap; }
 .sitebar .kicker { color: var(--gold); }
