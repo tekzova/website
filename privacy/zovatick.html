@@ -14,7 +14,7 @@
 <link rel="icon" type="image/png" href="../assets/favicon.png"><link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700;6..12,800&display=swap">
-<link rel="stylesheet" href="../assets/tz6.css?v=2">
+<link rel="stylesheet" href="../assets/tz6.css?v=4">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "name": "Tekzova Technologies", "url": "https://www.tekzova.com/", "email": "info@tekzova.com", "logo": "https://www.tekzova.com/assets/icon-tekzova-tile.svg", "address": {"@type": "PostalAddress", "streetAddress": "Puthanaprakunnel / Flat No. 9A, Skyline Grace Apartments, Cathedral Road", "addressLocality": "Pala", "addressRegion": "Kerala", "postalCode": "686575", "addressCountry": "IN"}}</script>
 
 </head>
@@ -22,7 +22,7 @@
 <a class="skip" href="#main">Skip to content</a>
 <header class="top"><div class="wrap">
 <a class="brand" href="../index.html" aria-label="Tekzova Technologies home"><img src="../assets/logo-tekzova.svg" alt="Tekzova Technologies" width="150" height="32"></a>
-<nav class="nav" aria-label="Main"><a href="../index.html#apps">Apps</a><a href="../apps/zovawealth.html">ZovaWealth</a><a href="../privacy/index.html" aria-current=page>Privacy</a><a href="../index.html#pricing">Pricing</a><a href="../about.html">About & contact</a></nav>
+<nav class="nav" aria-label="Main"><div class="nav-dd"><button class="nav-dd-btn" type="button" aria-expanded="false" aria-haspopup="true" aria-controls="apps-menu">Apps<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button><div class="nav-dd-panel" id="apps-menu"><div class="nav-dd-cols"><div><p class="drawer-k">The apps</p><a href="../apps/zovawealth.html"><img src="../assets/icon-zovawealth.png" alt="" width="44" height="44"><span><b>ZovaWealth</b><small>Investments & planning · Windows + Android</small></span></a><a href="../apps/zovascan.html"><img src="../assets/icon-zovascan.png" alt="" width="44" height="44"><span><b>ZovaScan</b><small>Document scanner · Android</small></span></a><a href="../apps/zovapdf.html"><img src="../assets/icon-zovapdf.png" alt="" width="44" height="44"><span><b>ZovaPDF</b><small>PDF reader, editor & presenter · Android</small></span></a><a href="../apps/zovatick.html"><img src="../assets/icon-zovatick.png" alt="" width="44" height="44"><span><b>ZovaTick</b><small>Checklists · Android</small></span></a></div><div><p class="drawer-k">For the merchant navy</p><a href="../apps/nre-tracker.html"><img src="../assets/icon-nre-tracker.png" alt="" width="44" height="44"><span><b>Sea Service &amp; NRE Tracker</b><small>Days abroad & sea service · Android + Windows</small></span></a><a href="../apps/orb-tracker.html"><img src="../assets/icon-orb-tracker.png" alt="" width="44" height="44"><span><b>ORB Tracker</b><small>Oil Record Book, for ships · Windows</small></span></a><a class="nav-dd-all" href="../index.html#apps">See all apps on one page</a></div></div></div></div><a href="../apps/zovawealth.html">ZovaWealth</a><a href="../privacy/index.html" aria-current=page>Privacy</a><a href="../index.html#pricing">Pricing</a><a href="../about.html">About & contact</a></nav>
 <a class="btn btn-go top-cta" href="../apps/zovawealth.html#get"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0l-5-5m5 5l5-5M4 17v2a2 2 0 002 2h12a2 2 0 002-2v-2"/></svg>Get ZovaWealth</a>
 <button class="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="drawer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
 </div></header>
@@ -46,6 +46,8 @@
 <tr><td>Alarms &amp; reminders</td><td>So a reminder fires at the time you set.</td></tr>
 <tr><td>Run at startup</td><td>Android discards scheduled alarms when a phone restarts, so the app re-creates your reminders after a reboot. It does nothing else at startup.</td></tr></table>
 <p>The app does not request internet, location, camera, microphone, contacts, phone or storage permissions.</p>
+<h2>QR codes and voice entry</h2>
+<p>Scanning a shared list’s QR code uses the code scanner built into your phone’s Google Play services, and adding items by voice uses your phone’s own speech screen. ZovaTick receives only the result — the text of the code or the words you spoke — and holds no camera or microphone permission itself.</p>
 <h2>Sharing a checklist</h2>
 <p>When you tap Share, ZovaTick hands plain text to Android’s standard share sheet and you choose which app sends it — WhatsApp, email, or anything else installed. That app, not ZovaTick, performs the sending, and its own privacy policy governs what happens next. ZovaTick never shares anything on its own or in the background.</p>
 <h2>Backups</h2>
@@ -67,10 +69,10 @@
 <address>Tekzova Technologies<br>Puthanaprakunnel / Flat No. 9A, Skyline Grace Apartments<br>Cathedral Road, Pala<br>Kottayam, Kerala 686575, India</address></div>
 <div><h4>Apps</h4><ul><li><a href="../apps/zovawealth.html">ZovaWealth</a></li><li><a href="../apps/zovascan.html">ZovaScan</a></li><li><a href="../apps/zovapdf.html">ZovaPDF</a></li><li><a href="../apps/zovatick.html">ZovaTick</a></li><li><a href="../apps/nre-tracker.html">Sea Service &amp; NRE Tracker</a></li><li><a href="../apps/orb-tracker.html">ORB Tracker</a></li></ul></div>
 <div><h4>Company</h4><ul><li><a href="../about.html">About &amp; contact</a></li><li><a href="../index.html#pricing">Pricing</a></li><li><a href="../index.html#faq">Questions</a></li><li><a href="mailto:info@tekzova.com">info@tekzova.com</a></li></ul></div>
-<div><h4>Privacy</h4><ul><li><a href="../privacy/index.html">How we handle data</a></li><li><a href="../privacy/index.html#policies">Policy for each app</a></li></ul></div>
+<div><h4>Privacy</h4><ul><li><a href="../privacy/index.html">How we handle data</a></li><li><a href="../privacy/zovawealth.html">ZovaWealth policy</a></li><li><a href="../privacy/zovascan.html">ZovaScan policy</a></li><li><a href="../privacy/zovapdf.html">ZovaPDF policy</a></li><li><a href="../privacy/zovatick.html">ZovaTick policy</a></li><li><a href="../privacy/nre-tracker.html">Sea Service &amp; NRE Tracker policy</a></li><li><a href="../privacy/orb-tracker.html">ORB Tracker policy</a></li></ul></div>
 </div>
 <div class="legal"><span>© <span id="yr">2026</span> Tekzova Technologies. All rights reserved.</span><span>tekzova.com · info@tekzova.com</span></div>
 </div></footer>
-<script src="../assets/tz6.js" defer></script>
+<script src="../assets/tz6.js?v=4" defer></script>
 </body>
 </html>
